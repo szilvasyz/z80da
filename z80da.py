@@ -10,6 +10,8 @@ from da_inout import inout
 from da_block import block
 from da_bits import bits
 
+import timeit
+
 
 #
 # parameter flags:
@@ -28,8 +30,13 @@ pc = 0
 instr = ""
 
 
+def inmem(addr):
+    return addr in rom
+
+
 def findinstr(p):
 
+    start = timeit.timeit()
     instr = ""
     addr = "{:04X}".format(p)
 
@@ -60,6 +67,8 @@ def findinstr(p):
                     l.append([x, v[c]])
 
                 next = "{:04X}".format(p)
+                end = timeit.timeit()
+                print("time = {}", end-start)
                 return {"addr": addr,
                         "next": next,
                         "instr": instr,
@@ -68,21 +77,27 @@ def findinstr(p):
 
 
 with open("roms/PROPRIMO.rom", "rb") as f:
-    rom = f.read()
+    d = f.read()
+    rom = {c: d[c] for c in range(len(d))}
 
 for mod in modules:
     insmap += mod.getinstr()
 
 caddr = [0x0000]
+caddr += [0x0008, 0x0010, 0x0018, 0x0020, 0x0028, 0x0030, 0x0038]
+caddr += [0x0066]
 disass = {}
-extrn = {}
+labc = {}
+labd = {}
+extc = {}
+extd = {}
 
 while caddr:
 
     p = caddr[0]
     caddr = caddr[1:]
 
-    if p in range(len(rom)):
+    if inmem(p):
 
         rv = findinstr(p)
         if not rv:
@@ -110,16 +125,28 @@ while caddr:
         if flag != "-":
             a = int(rv["next"], 16)
             if a not in disass:
-                caddr += [a]
+                if inmem(a):
+                    caddr += [a]
+                else:
+                    extc[a] = ""
 
         for r in range(len(pars)):
+            a = int(pars[r][1], 16)
             if pars[r][0].islower():
-                a = int(pars[r][1], 16)
-                if a not in disass:
-                    caddr += [int(pars[r][1], 16)]
+                if inmem(a):
+                    if a not in disass:
+                        caddr += [a]
+                    labc[a] = ""
+                else:
+                    extc[a] = ""
+            elif pars[r][0] in "A":
+                if inmem(a):
+                    labd[a] = ""
+                else:
+                    extd[a] = ""
 
     else:
-        extrn[p] = ""
+        extc[p] = ""
 
 
 print(rom[0])
