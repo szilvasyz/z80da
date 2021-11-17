@@ -1,0 +1,6184 @@
+
+; xref: 0057(code) 
+;
+0000: C3A400     code_0000  JP code_00A4
+;...
+0008: C30040     init_0008  JP code_4000
+;...
+0010: C30340     init_0010  JP code_4003
+;...
+
+; xref: 35BB(code) 0EBD(code) 3911(code) 3918(code) 3992(code) 
+; xref: 3932(code) 3943(code) 395C(code) 
+;
+0015: C32440     code_0015  JP code_4024
+0018: C30640     init_0018  JP code_4006
+;...
+
+; xref: 3822(code) 
+;
+001D: C32A40     code_001D  JP code_402A
+0020: C30940     init_0020  JP code_4009
+;...
+0028: C30C40     init_0028  JP code_400C
+
+; xref: 0060(code) 
+;
+002B: E1         code_002B  POP HL
+002C: E9C330                JP HL
+;...
+
+; xref: 0ED1(code) 0EBA(code) 
+;
+002D: C33040     code_002D  JP code_4030
+0030: C30F40     init_0030  JP code_400F
+;...
+
+; xref: 0EC3(code) 
+;
+0035: C33340     code_0035  JP code_4033
+0038: C31240     init_0038  JP code_4012
+;...
+
+; xref: 007C(code) 
+;
+004B: F1         code_004B  POP AF
+004C: F1                    POP AF
+004D: F1                    POP AF
+
+; xref: 0052(code) 
+;
+004E: DB00       code_004E  IN A,00
+0050: E602                  AND 02
+0052: 20FA                  JR NZ,code_004E
+0054: CD6D0A                CALL code_0A6D
+0057: 38A7                  JR C,code_0000
+0059: 2A1F40                LD HL,(data_401F)
+005C: E5                    PUSH HL
+005D: CDC900                CALL code_00C9
+0060: 18C9                  JR code_002B
+;...
+0066: F5         init_0066  PUSH AF
+0067: E5                    PUSH HL
+0068: 213D40                LD HL,403D
+006B: 34                    INC (HL)
+006C: 2007                  JR NZ,code_0075
+006E: 2A3E40                LD HL,(data_403E)
+0071: 23                    INC HL
+0072: 223E40                LD (data_403E),HL
+
+; xref: 006C(code) 
+;
+0075: DB00       code_0075  IN A,00
+0077: E602                  AND 02
+0079: CA1840                JP Z,code_4018
+007C: 18CD                  JR code_004B
+;...
+
+; xref: 28B7(code) 
+;
+008C: C3CC05     code_008C  JP code_05CC
+;...
+
+; xref: 0000(code) 
+;
+00A4: F3         code_00A4  DI
+00A5: ED56                  IM 1
+00A7: 3100E0                LD SP,E000
+00AA: 213401                LD HL,0134
+00AD: 110040                LD DE,4000
+00B0: 014000                LD BC,0040
+00B3: EDB0                  LDIR
+00B5: E5                    PUSH HL
+00B6: CDC900                CALL code_00C9
+00B9: D1                    POP DE
+00BA: 210030                LD HL,3000
+
+; xref: 00C4(code) 
+;
+00BD: 1A         code_00BD  LD A,(DE)
+00BE: BE                    CP (HL)
+00BF: 00                    NOP
+00C0: 00                    NOP
+00C1: 00                    NOP
+00C2: 13                    INC DE
+00C3: 25                    DEC H
+00C4: 20F7                  JR NZ,code_00BD
+00C6: C37B35                JP code_357B
+
+; xref: 00B6(code) 005D(code) 
+;
+00C9: AF         code_00C9  XOR A
+00CA: 114240                LD DE,4042
+00CD: 0620                  LD B,20
+
+; xref: 00D1(code) 
+;
+00CF: 12         code_00CF  LD (DE),A
+00D0: 13                    INC DE
+00D1: 10FC                  DJNZ code_00CF
+00D3: DD214240              LD IX,4042
+00D7: 3A3B40                LD A,(data_403B)
+00DA: D300                  OUT 00,A
+;...
+
+; xref: 056D(code) 
+;
+00DB: 00         code_00DB  NOP
+00DC: 1120E0                LD DE,E020
+00DF: 0603                  LD B,03
+
+; xref: 00F6(code) 
+;
+00E1: C5         code_00E1  PUSH BC
+00E2: 3EF9                  LD A,F9
+00E4: 12                    LD (DE),A
+00E5: 13                    INC DE
+00E6: 3E29                  LD A,29
+00E8: 060F                  LD B,0F
+
+; xref: 00EC(code) 
+;
+00EA: 12         code_00EA  LD (DE),A
+00EB: 13                    INC DE
+00EC: 10FC                  DJNZ code_00EA
+00EE: 212401                LD HL,0124
+00F1: 0E10                  LD C,10
+00F3: EDB0                  LDIR
+00F5: C1                    POP BC
+00F6: 10E9                  DJNZ code_00E1
+00F8: 210204                LD HL,0402
+00FB: 2200E0                LD (data_E000),HL
+00FE: AF                    XOR A
+00FF: 04                    INC B
+0100: CD7605                CALL code_0576
+0103: 3EFF                  LD A,FF
+0105: 324C40                LD (data_404C),A
+0108: 21FFFF                LD HL,FFFF
+010B: 224E40                LD (data_404E),HL
+010E: 21503E                LD HL,3E50
+0111: 225240                LD (data_4052),HL
+0114: 21E942                LD HL,42E9
+0117: 225A40                LD (data_405A),HL
+011A: 3E01                  LD A,01
+011C: CD2440                CALL code_4024
+011F: 3E0C                  LD A,0C
+0121: C32440                JP code_4024
+;...
+
+; xref: 0488(code) 
+;
+040A: 1010       code_040A  DJNZ code_041C
+040C: 1010                  DJNZ code_041E
+040E: 39                    ADD HL,SP
+040F: 00                    NOP
+0410: 80                    ADD A,B
+0411: 80                    ADD A,B
+
+; xref: 15DD(code) 
+;
+0412: 68         code_0412  LD L,B
+0413: 54                    LD D,H
+0414: 54                    LD D,H
+0415: 54                    LD D,H
+0416: 45                    LD B,L
+0417: 00                    NOP
+0418: 80                    ADD A,B
+0419: 80                    ADD A,B
+
+; xref: 0498(code) 
+;
+041A: 58         code_041A  LD E,B
+041B: 24                    INC H
+
+; xref: 040A(code) 
+;
+041C: 24         code_041C  INC H
+041D: 24                    INC H
+
+; xref: 040C(code) 
+;
+041E: 25         code_041E  DEC H
+041F: 00                    NOP
+0420: 80                    ADD A,B
+0421: 80                    ADD A,B
+0422: 3844                  JR C,code_0468
+0424: 44                    LD B,H
+0425: 44                    LD B,H
+0426: 39                    ADD HL,SP
+0427: 80                    ADD A,B
+0428: 58                    LD E,B
+0429: 64                    LD H,H
+042A: 44                    LD B,H
+042B: 44                    LD B,H
+042C: 78                    LD A,B
+042D: 40                    LD B,B
+042E: 41                    LD B,C
+042F: 80                    ADD A,B
+0430: 34                    INC (HL)
+0431: 4C                    LD C,H
+0432: 44                    LD B,H
+0433: 44                    LD B,H
+0434: 3C                    INC A
+0435: 04                    INC B
+0436: 05                    DEC B
+0437: 00                    NOP
+0438: 80                    ADD A,B
+0439: 80                    ADD A,B
+043A: 58                    LD E,B
+043B: 64                    LD H,H
+043C: 40                    LD B,B
+043D: 40                    LD B,B
+043E: 41                    LD B,C
+043F: 00                    NOP
+0440: 80                    ADD A,B
+0441: 80                    ADD A,B
+0442: 3840                  JR C,code_0484
+0444: 3804                  JR C,code_044A
+0446: 79                    LD A,C
+0447: 00                    NOP
+0448: 2020                  JR NZ,code_046A
+
+; xref: 0444(code) 
+;
+044A: 70         code_044A  LD (HL),B
+044B: 2020                  JR NZ,code_046D
+044D: 24                    INC H
+044E: 19                    ADD HL,DE
+044F: 00                    NOP
+0450: 80                    ADD A,B
+0451: 80                    ADD A,B
+0452: 48                    LD C,B
+0453: 48                    LD C,B
+0454: 48                    LD C,B
+0455: 48                    LD C,B
+0456: 35                    DEC (HL)
+0457: 00                    NOP
+0458: 80                    ADD A,B
+0459: 80                    ADD A,B
+045A: 44                    LD B,H
+045B: 44                    LD B,H
+045C: 2828                  JR Z,code_0486
+045E: 110080                LD DE,8000
+0461: 80                    ADD A,B
+0462: 44                    LD B,H
+0463: 44                    LD B,H
+0464: 54                    LD D,H
+0465: 54                    LD D,H
+0466: 29                    ADD HL,HL
+0467: 00                    NOP
+
+; xref: 0422(code) 
+;
+0468: 80         code_0468  ADD A,B
+0469: 80                    ADD A,B
+
+; xref: 0448(code) 
+;
+046A: 44         code_046A  LD B,H
+046B: 2810                  JR Z,code_047D
+
+; xref: 044B(code) 
+;
+046D: 2845       code_046D  JR Z,code_04B4
+046F: 80                    ADD A,B
+0470: 44                    LD B,H
+0471: 44                    LD B,H
+0472: 44                    LD B,H
+0473: 44                    LD B,H
+0474: 3C                    INC A
+0475: 04                    INC B
+0476: 19                    ADD HL,DE
+0477: 00                    NOP
+0478: 80                    ADD A,B
+0479: 80                    ADD A,B
+047A: 7C                    LD A,H
+047B: 08                    EX AF,AF'
+047C: 1020                  DJNZ code_049E
+;...
+
+; xref: 046B(code) 
+;
+047D: 207D       code_047D  JR NZ,code_04FC
+;...
+047E: 7D                    LD A,L
+047F: 2828                  JR Z,code_04A9
+0481: 80                    ADD A,B
+0482: 3844                  JR C,code_04C8
+
+; xref: 0442(code) 
+;
+0484: 44         code_0484  LD B,H
+0485: 44                    LD B,H
+
+; xref: 045C(code) 
+;
+0486: 39         code_0486  ADD HL,SP
+0487: 00                    NOP
+0488: 2880                  JR Z,code_040A
+048A: 3844                  JR C,code_04D0
+048C: 44                    LD B,H
+048D: 44                    LD B,H
+048E: 39                    ADD HL,SP
+048F: 1010                  DJNZ code_04A1
+0491: 80                    ADD A,B
+0492: 3808                  JR C,code_049C
+0494: 3848                  JR C,code_04DE
+0496: 35                    DEC (HL)
+0497: 00                    NOP
+0498: 2880                  JR Z,code_041A
+049A: 48                    LD C,B
+049B: 48                    LD C,B
+
+; xref: 0492(code) 
+;
+049C: 48         code_049C  LD C,B
+049D: 48                    LD C,B
+
+; xref: 047C(code) 
+;
+049E: 35         code_049E  DEC (HL)
+049F: 2828                  JR Z,code_04C9
+
+; xref: 048F(code) 
+;
+04A1: 80         code_04A1  ADD A,B
+04A2: 48                    LD C,B
+04A3: 48                    LD C,B
+04A4: 48                    LD C,B
+04A5: 48                    LD C,B
+04A6: 35                    DEC (HL)
+04A7: 00                    NOP
+04A8: 80                    ADD A,B
+
+; xref: 047F(code) 
+;
+04A9: 80         code_04A9  ADD A,B
+04AA: 3C                    INC A
+04AB: 68                    LD L,B
+04AC: 2828                  JR Z,code_04D6
+04AE: 29                    ADD HL,HL
+04AF: 00                    NOP
+04B0: 3820                  JR C,code_04D2
+04B2: 2020                  JR NZ,code_04D4
+
+; xref: 046D(code) 
+;
+04B4: 2020       code_04B4  JR NZ,code_04D6
+04B6: 39                    ADD HL,SP
+04B7: 00                    NOP
+04B8: 3808                  JR C,code_04C2
+04BA: 08                    EX AF,AF'
+04BB: 08                    EX AF,AF'
+04BC: 08                    EX AF,AF'
+04BD: 08                    EX AF,AF'
+04BE: 39                    ADD HL,SP
+04BF: 00                    NOP
+04C0: 80                    ADD A,B
+04C1: 1020                  DJNZ code_04E3
+;...
+
+; xref: 04B8(code) 
+;
+04C2: 207C       code_04C2  JR NZ,code_0540
+;...
+04C3: 7C                    LD A,H
+04C4: 2011                  JR NZ,code_04D7
+04C6: FF                    RST 38
+04C7: 00                    NOP
+
+; xref: 0482(code) 
+;
+04C8: 80         code_04C8  ADD A,B
+
+; xref: 049F(code) 
+;
+04C9: 1008       code_04C9  DJNZ code_04D3
+04CB: 7C                    LD A,H
+04CC: 08                    EX AF,AF'
+04CD: 11FF00                LD DE,00FF
+
+; xref: 048A(code) 
+;
+04D0: 1010       code_04D0  DJNZ code_04E2
+
+; xref: 04B0(code) 
+;
+04D2: 1010       code_04D2  DJNZ code_04E4
+;...
+
+; xref: 04C9(code) 
+;
+04D3: 1054       code_04D3  DJNZ code_0529
+;...
+
+; xref: 04B2(code) 
+;
+04D4: 54         code_04D4  LD D,H
+04D5: 3811                  JR C,code_04E8
+;...
+
+; xref: 04B4(code) 04AC(code) 
+;
+04D6: 11001C     code_04D6  LD DE,1C00
+;...
+
+; xref: 04C4(code) 
+;
+04D7: 00         code_04D7  NOP
+04D8: 1C                    INC E
+04D9: 1010                  DJNZ code_04EB
+04DB: 1050                  DJNZ code_052D
+04DD: 3011                  JR NC,code_04F0
+;...
+
+; xref: 0494(code) 
+;
+04DE: 110080     code_04DE  LD DE,8000
+;...
+04DF: 00                    NOP
+04E0: 80                    ADD A,B
+04E1: 80                    ADD A,B
+
+; xref: 04D0(code) 
+;
+04E2: 04         code_04E2  INC B
+
+; xref: 04C1(code) 
+;
+04E3: 48         code_04E3  LD C,B
+
+; xref: 04D2(code) 
+;
+04E4: 50         code_04E4  LD D,B
+04E5: 60                    LD H,B
+04E6: 41                    LD B,C
+04E7: 08                    EX AF,AF'
+
+; xref: 04D5(code) 
+;
+04E8: 14         code_04E8  INC D
+04E9: 1010                  DJNZ code_04FB
+
+; xref: 04D9(code) 
+;
+04EB: 1010       code_04EB  DJNZ code_04FD
+04ED: 50                    LD D,B
+04EE: 21007C                LD HL,7C00
+;...
+
+; xref: 04DD(code) 
+;
+04F0: 7C         code_04F0  LD A,H
+04F1: 40                    LD B,B
+04F2: 50                    LD D,B
+04F3: 78                    LD A,B
+04F4: 50                    LD D,B
+04F5: 54                    LD D,H
+04F6: 49                    LD C,C
+04F7: 00                    NOP
+04F8: 1010                  DJNZ code_050A
+04FA: 1010                  DJNZ code_050C
+;...
+
+; xref: 04E9(code) 
+;
+04FB: 1010       code_04FB  DJNZ code_050D
+;...
+
+; xref: 047D(code) 
+;
+04FC: 1010       code_04FC  DJNZ code_050E
+;...
+
+; xref: 04EB(code) 
+;
+04FD: 1011       code_04FD  DJNZ code_0510
+;...
+04FE: 110080                LD DE,8000
+;...
+04FF: 00                    NOP
+0500: 80                    ADD A,B
+0501: 80                    ADD A,B
+0502: 80                    ADD A,B
+0503: 7C                    LD A,H
+0504: 04                    INC B
+0505: 04                    INC B
+0506: 05                    DEC B
+0507: 00                    NOP
+0508: 1820                  JR code_052A
+
+; xref: 04F8(code) 
+;
+050A: 3828       code_050A  JR C,code_0534
+
+; xref: 04FA(code) 
+;
+050C: 3808       code_050C  JR C,code_0516
+;...
+
+; xref: 04FB(code) 
+;
+050D: 08         code_050D  EX AF,AF'
+
+; xref: 04FC(code) 
+;
+050E: 310080     code_050E  LD SP,8000
+;...
+
+; xref: 04FD(code) 
+;
+0510: 80         code_0510  ADD A,B
+0511: 04                    INC B
+0512: 7C                    LD A,H
+0513: 107C                  DJNZ code_0591
+0515: 41                    LD B,C
+
+; xref: 050C(code) 
+;
+0516: FF         code_0516  RST 38
+0517: 80                    ADD A,B
+0518: 3844                  JR C,code_055E
+051A: 5C                    LD E,H
+051B: 54                    LD D,H
+051C: 5C                    LD E,H
+051D: 40                    LD B,B
+051E: 3D                    DEC A
+051F: 00                    NOP
+0520: 1C                    INC E
+0521: 1010                  DJNZ code_0533
+0523: 2010                  JR NZ,code_0535
+0525: 101D                  DJNZ code_0544
+0527: 00                    NOP
+0528: 3808                  JR C,code_0532
+;...
+
+; xref: 04D3(code) 
+;
+0529: 08         code_0529  EX AF,AF'
+
+; xref: 0508(code) 
+;
+052A: 08         code_052A  EX AF,AF'
+052B: 04                    INC B
+052C: 08                    EX AF,AF'
+
+; xref: 04DB(code) 
+;
+052D: 08         code_052D  EX AF,AF'
+052E: 39                    ADD HL,SP
+052F: 00                    NOP
+0530: 80                    ADD A,B
+0531: 80                    ADD A,B
+
+; xref: 0528(code) 
+;
+0532: 2054       code_0532  JR NZ,code_0588
+;...
+
+; xref: 0521(code) 
+;
+0533: 54         code_0533  LD D,H
+
+; xref: 050A(code) 
+;
+0534: 09         code_0534  ADD HL,BC
+
+; xref: 0523(code) 
+;
+0535: FF         code_0535  RST 38
+0536: FF                    RST 38
+0537: 00                    NOP
+0538: 3844                  JR C,code_057E
+053A: 44                    LD B,H
+053B: 44                    LD B,H
+053C: 2828                  JR Z,code_0566
+053E: 6D                    LD L,L
+053F: 80                    ADD A,B
+
+; xref: 04C2(code) 
+;
+0540: 48         code_0540  LD C,B
+0541: 48                    LD C,B
+0542: 48                    LD C,B
+0543: 48                    LD C,B
+
+; xref: 0525(code) 
+;
+0544: 74         code_0544  LD (HL),H
+0545: 40                    LD B,B
+0546: 41                    LD B,C
+0547: 3048                  JR NC,code_0591
+0549: 1020                  DJNZ code_056B
+054B: 79                    LD A,C
+054C: FF                    RST 38
+054D: FF                    RST 38
+054E: FF                    RST 38
+054F: 00                    NOP
+0550: 80                    ADD A,B
+0551: 80                    ADD A,B
+0552: 6C                    LD L,H
+0553: 54                    LD D,H
+0554: 6D                    LD L,L
+0555: FF                    RST 38
+0556: FF                    RST 38
+0557: 00                    NOP
+0558: 7C                    LD A,H
+0559: 40                    LD B,B
+055A: 2018                  JR NZ,code_0574
+055C: 2040                  JR NZ,code_059E
+
+; xref: 0518(code) 
+;
+055E: 7D         code_055E  LD A,L
+055F: 00                    NOP
+0560: 7C                    LD A,H
+0561: 2828                  JR Z,code_058B
+0563: 2828                  JR Z,code_058D
+0565: 2829                  JR Z,code_0590
+;...
+
+; xref: 053C(code) 
+;
+0566: 29         code_0566  ADD HL,HL
+
+; xref: 0597(code) 059A(code) 
+;
+0567: F5         code_0567  PUSH AF
+
+; xref: 056C(code) 
+;
+0568: DB00       code_0568  IN A,00
+056A: E620                  AND 20
+;...
+
+; xref: 0549(code) 
+;
+056B: 2020       code_056B  JR NZ,code_058D
+;...
+056C: 20FA                  JR NZ,code_0568
+;...
+056D: FADB00                JP M,code_00DB
+;...
+
+; xref: 0572(code) 
+;
+056E: DB00       code_056E  IN A,00
+0570: E620                  AND 20
+0572: 28FA                  JR Z,code_056E
+
+; xref: 055A(code) 
+;
+0574: F1         code_0574  POP AF
+0575: C9                    RET
+
+; xref: 0100(code) 
+;
+0576: E5         code_0576  PUSH HL
+0577: 2101E0                LD HL,E001
+057A: 380C                  JR C,code_0588
+057C: 2009                  JR NZ,code_0587
+
+; xref: 0538(code) 
+;
+057E: 78         code_057E  LD A,B
+057F: FE02                  CP 02
+0581: 3F                    CCF
+0582: 8D                    ADC A,L
+0583: 6F                    LD L,A
+0584: 73                    LD (HL),E
+0585: 2E01                  LD L,01
+
+; xref: 057C(code) 
+;
+0587: AF         code_0587  XOR A
+
+; xref: 057A(code) 0532(code) 
+;
+0588: 9F         code_0588  SBC A,A
+0589: 3E08                  LD A,08
+
+; xref: 0561(code) 
+;
+058B: 0F         code_058B  RRCA
+058C: FD2803                JR Z,code_0593
+;...
+
+; xref: 0563(code) 056B(code) 
+;
+058D: FD2803     code_058D  JR Z,code_0593
+
+; xref: 0565(code) 
+;
+0590: 2F         code_0590  CPLA
+
+; xref: 0513(code) 0547(code) 
+;
+0591: A6         code_0591  AND (HL)
+0592: 06B6                  LD B,B6
+;...
+
+; xref: 058C(code) 058D(code) 
+;
+0593: B6         code_0593  OR (HL)
+0594: F680                  OR 80
+0596: 77                    LD (HL),A
+0597: CD6705                CALL code_0567
+059A: CD6705                CALL code_0567
+059D: CBBE                  RES 7,(HL)
+;...
+
+; xref: 055C(code) 
+;
+059E: BE         code_059E  CP (HL)
+059F: E1                    POP HL
+05A0: C9                    RET
+;...
+
+; xref: 008C(code) 
+;
+05CC: B7         code_05CC  OR A
+05CD: E5                    PUSH HL
+05CE: 2A4840                LD HL,(data_4048)
+05D1: 7C                    LD A,H
+05D2: 26FF                  LD H,FF
+05D4: 380E                  JR C,code_05E4
+05D6: 7D                    LD A,L
+05D7: 2E06                  LD L,06
+05D9: D604                  SUB A,04
+05DB: 3801                  JR C,code_05DE
+
+; xref: 05E6(code) 05DF(code) 
+;
+05DD: 95         code_05DD  SUB A,L
+
+; xref: 05DB(code) 
+;
+05DE: 24         code_05DE  INC H
+05DF: 30FC                  JR NC,code_05DD
+05E1: 7C                    LD A,H
+05E2: E1                    POP HL
+05E3: C9                    RET
+
+; xref: 05D4(code) 
+;
+05E4: 2E0C       code_05E4  LD L,0C
+05E6: 18F5                  JR code_05DD
+;...
+
+; xref: 3B71(code) 
+;
+0676: CDF406     code_0676  CALL code_06F4
+0679: 380A                  JR C,code_0685
+067B: B5                    OR L
+067C: 6F                    LD L,A
+067D: AF                    XOR A
+067E: ED6F                  RLD
+0680: 47                    LD B,A
+0681: ED67                  RRD
+0683: 1806                  JR code_068B
+
+; xref: 0679(code) 
+;
+0685: B5         code_0685  OR L
+0686: 6F                    LD L,A
+0687: 7E                    LD A,(HL)
+0688: E60F                  AND 0F
+068A: 47                    LD B,A
+
+; xref: 0683(code) 
+;
+068B: CDA506     code_068B  CALL code_06A5
+068E: 2600                  LD H,00
+0690: 68                    LD L,B
+0691: 78                    LD A,B
+0692: C8                    RET Z
+0693: C610                  ADD A,10
+0695: 6F                    LD L,A
+0696: C9                    RET
+;...
+
+; xref: 3B6D(code) 
+;
+069C: CDA506     code_069C  CALL code_06A5
+069F: 210000                LD HL,0000
+06A2: C8                    RET Z
+06A3: 2B                    DEC HL
+06A4: C9                    RET
+
+; xref: 069C(code) 068B(code) 
+;
+06A5: CDD906     code_06A5  CALL code_06D9
+06A8: DDCB056E              BIT 5,(IX+05)
+06AC: 2002                  JR NZ,code_06B0
+06AE: A6                    AND (HL)
+06AF: C9                    RET
+
+; xref: 06AC(code) 
+;
+06B0: A6         code_06B0  AND (HL)
+06B1: A9                    XOR C
+06B2: C9                    RET
+;...
+
+; xref: 06A5(code) 
+;
+06D9: 213D00     code_06D9  LD HL,003D
+06DC: 7B                    LD A,E
+06DD: E607                  AND 07
+06DF: 85                    ADD A,L
+06E0: 6F                    LD L,A
+06E1: 4E                    LD C,(HL)
+06E2: 7A                    LD A,D
+06E3: 6B                    LD L,E
+06E4: 1F                    RRA
+06E5: CB1D                  RR L
+06E7: CB3F                  SRL A
+06E9: CB1D                  RR L
+06EB: CB3F                  SRL A
+06ED: CB1D                  RR L
+06EF: C6E5                  ADD A,E5
+06F1: 67                    LD H,A
+06F2: 79                    LD A,C
+06F3: C9                    RET
+
+; xref: 0676(code) 
+;
+06F4: 14         code_06F4  INC D
+06F5: 7A                    LD A,D
+06F6: 1F                    RRA
+06F7: CB3F                  SRL A
+06F9: 82                    ADD A,D
+06FA: 1F                    RRA
+06FB: CB3F                  SRL A
+06FD: 82                    ADD A,D
+06FE: 1F                    RRA
+06FF: CB3F                  SRL A
+0701: 82                    ADD A,D
+0702: 15                    DEC D
+0703: 1F                    RRA
+0704: E6FC                  AND FC
+0706: C610                  ADD A,10
+0708: 261C                  LD H,1C
+070A: 17                    RLA
+070B: CB14                  RL H
+070D: 17                    RLA
+070E: CB14                  RL H
+0710: 17                    RLA
+0711: CB14                  RL H
+0713: 6F                    LD L,A
+0714: 7B                    LD A,E
+0715: D604                  SUB A,04
+0717: 3819                  JR C,code_0732
+0719: 3C                    INC A
+071A: 5F                    LD E,A
+071B: 1F                    RRA
+071C: CB3F                  SRL A
+071E: 83                    ADD A,E
+071F: 1F                    RRA
+0720: CB3F                  SRL A
+0722: 83                    ADD A,E
+0723: 1F                    RRA
+0724: CB3F                  SRL A
+0726: 83                    ADD A,E
+0727: 1F                    RRA
+0728: E6FC                  AND FC
+072A: 0F                    RRCA
+072B: 0F                    RRCA
+072C: 1F                    RRA
+072D: 3C                    INC A
+072E: 1C                    INC E
+072F: 1C                    INC E
+0730: 1C                    INC E
+0731: C9                    RET
+
+; xref: 0717(code) 
+;
+0732: 3E00       code_0732  LD A,00
+0734: C9                    RET
+;...
+
+; xref: 3972(code) 
+;
+07DA: 110075     code_07DA  LD DE,7500
+07DD: 3A3B40                LD A,(data_403B)
+
+; xref: 07E8(code) 
+;
+07E0: 42         code_07E0  LD B,D
+07E1: EE10                  XOR 10
+07E3: D300                  OUT 00,A
+
+; xref: 07E5(code) 
+;
+07E5: 10FE       code_07E5  DJNZ code_07E5
+07E7: 1D                    DEC E
+07E8: 20F6                  JR NZ,code_07E0
+07EA: C9                    RET
+;...
+
+; xref: 391C(code) 
+;
+0A66: DDCB03C6   code_0A66  SET 0,(IX+03)
+0A6A: C32D40                JP code_402D
+
+; xref: 0054(code) 
+;
+0A6D: 0E00       code_0A6D  LD C,00
+0A6F: 79                    LD A,C
+0A70: E63F                  AND 3F
+0A72: 4F                    LD C,A
+0A73: 3E01                  LD A,01
+0A75: 0608                  LD B,08
+0A77: E5                    PUSH HL
+
+; xref: 0A7B(code) 
+;
+0A78: ED68       code_0A78  IN L,(C)
+0A7A: A5                    AND L
+0A7B: 10FB                  DJNZ code_0A78
+0A7D: E1                    POP HL
+0A7E: 1F                    RRA
+0A7F: C9                    RET
+;...
+
+; xref: 3684(code) 
+;
+0B6C: AF         code_0B6C  XOR A
+0B6D: ED52                  SBC HL,DE
+0B6F: EB                    EX DE,HL
+0B70: C8                    RET Z
+
+; xref: 0BAA(code) 
+;
+0B71: AF         code_0B71  XOR A
+0B72: E5                    PUSH HL
+0B73: C5                    PUSH BC
+0B74: ED42                  SBC HL,BC
+0B76: CD070C                CALL code_0C07
+0B79: 3A5C40                LD A,(data_405C)
+0B7C: CD1E0C                CALL code_0C1E
+0B7F: 3A5E40                LD A,(data_405E)
+0B82: C601                  ADD A,01
+0B84: 27                    DAA
+0B85: 4F                    LD C,A
+0B86: 325E40                LD (data_405E),A
+0B89: CD1E0C                CALL code_0C1E
+0B8C: 7D                    LD A,L
+0B8D: CD1A0C                CALL code_0C1A
+0B90: 7C                    LD A,H
+0B91: CD1A0C                CALL code_0C1A
+0B94: 7B                    LD A,E
+0B95: CD1A0C                CALL code_0C1A
+0B98: E1                    POP HL
+0B99: E3                    EX (SP),HL
+0B9A: 43                    LD B,E
+
+; xref: 0BA1(code) 
+;
+0B9B: 7E         code_0B9B  LD A,(HL)
+0B9C: 23                    INC HL
+0B9D: CD1A0C                CALL code_0C1A
+0BA0: 1B                    DEC DE
+0BA1: 10F8                  DJNZ code_0B9B
+0BA3: 79                    LD A,C
+0BA4: CD1E0C                CALL code_0C1E
+0BA7: 7A                    LD A,D
+0BA8: B3                    OR E
+0BA9: C1                    POP BC
+0BAA: 20C5                  JR NZ,code_0B71
+0BAC: C9                    RET
+;...
+
+; xref: 0B76(code) 
+;
+0C07: 0660       code_0C07  LD B,60
+0C09: 3EFF                  LD A,FF
+
+; xref: 0C0E(code) 
+;
+0C0B: CD1E0C     code_0C0B  CALL code_0C1E
+0C0E: 10FB                  DJNZ code_0C0B
+0C10: 3ED3                  LD A,D3
+0C12: 0603                  LD B,03
+
+; xref: 0C17(code) 
+;
+0C14: CD1E0C     code_0C14  CALL code_0C1E
+0C17: 10FB                  DJNZ code_0C14
+0C19: C9                    RET
+
+; xref: 0B8D(code) 0B91(code) 0B95(code) 0B9D(code) 
+;
+0C1A: F5         code_0C1A  PUSH AF
+0C1B: 81                    ADD A,C
+0C1C: 4F                    LD C,A
+0C1D: F1                    POP AF
+
+; xref: 0B7C(code) 0C0B(code) 0C14(code) 0B89(code) 0BA4(code) 
+;
+0C1E: C5         code_0C1E  PUSH BC
+0C1F: 0E08                  LD C,08
+0C21: 07                    RLCA
+0C22: F5                    PUSH AF
+0C23: 062E                  LD B,2E
+0C25: 3802                  JR C,code_0C29
+0C27: 068A                  LD B,8A
+
+; xref: 0C25(code) 
+;
+0C29: C5         code_0C29  PUSH BC
+0C2A: 3A3B40                LD A,(data_403B)
+0C2D: F613                  OR 13
+0C2F: D300                  OUT 00,A
+0C31: 00                    NOP
+0C32: FDE6EC                AND EC
+0C36: D300                  OUT 00,A
+0C38: C1                    POP BC
+0C39: 00                    NOP
+0C3A: FDF601                OR 01
+0C3E: D300                  OUT 00,A
+0C40: F1                    POP AF
+0C41: 0D                    DEC C
+0C42: DDC1                  POP BC
+0C45: C9                    RET
+
+; xref: 3681(code) 
+;
+0C46: AF         code_0C46  XOR A
+0C47: 3E37                  LD A,37
+;...
+
+; xref: 3687(code) 
+;
+0C48: 37         code_0C48  SCF
+0C49: 3A3B40                LD A,(data_403B)
+0C4C: CB97                  RES 2,A
+0C4E: 3002                  JR NC,code_0C52
+0C50: F604                  OR 04
+
+; xref: 0C4E(code) 
+;
+0C52: D300       code_0C52  OUT 00,A
+0C54: 323B40                LD (data_403B),A
+0C57: C9                    RET
+;...
+
+; xref: 3961(code) 
+;
+0DFE: FDE5       code_0DFE  PUSH IY
+0E02: E5                    PUSH HL
+0E03: C5                    PUSH BC
+0E04: FDE1                  POP IY
+0E06: 01FFFF                LD BC,FFFF
+0E09: 3A3B40                LD A,(data_403B)
+0E0C: E6FC                  AND FC
+
+; xref: 0E16(code) 
+;
+0E0E: CD210E     code_0E0E  CALL code_0E21
+0E11: CD210E                CALL code_0E21
+0E14: FD09                  ADD IY,BC
+0E16: DA0E0E                JP C,code_0E0E
+0E19: F602                  OR 02
+0E1B: D306                  OUT 06,A
+0E1D: E1                    POP HL
+0E1E: FDE1                  POP IY
+0E20: C9                    RET
+
+; xref: 0E0E(code) 0E11(code) 
+;
+0E21: EE13       code_0E21  XOR 13
+0E23: D306                  OUT 06,A
+0E25: 62                    LD H,D
+0E26: 6B                    LD L,E
+
+; xref: 0E28(code) 
+;
+0E27: 09         code_0E27  ADD HL,BC
+0E28: DA270E                JP C,code_0E27
+0E2B: C9                    RET
+;...
+
+; xref: 308E(code) 28BE(code) 2217(code) 
+;
+0EAC: C5         code_0EAC  PUSH BC
+0EAD: 4F                    LD C,A
+0EAE: CDC141                CALL code_41C1
+0EB1: 3A9C40                LD A,(data_409C)
+0EB4: B7                    OR A
+0EB5: 79                    LD A,C
+0EB6: C1                    POP BC
+0EB7: FA5736                JP M,code_3657
+0EBA: C22D00                JP NZ,code_002D
+0EBD: C31500                JP code_0015
+
+; xref: 223C(code) 221A(code) 
+;
+0EC0: 2AA740     code_0EC0  LD HL,(data_40A7)
+0EC3: C33500                JP code_0035
+
+; xref: 2362(code) 21E2(code) 
+;
+0EC6: AF         code_0EC6  XOR A
+0EC7: 329C40                LD (data_409C),A
+0ECA: 3A5440                LD A,(data_4054)
+0ECD: B7                    OR A
+0ECE: C8                    RET Z
+0ECF: 3E0D                  LD A,0D
+0ED1: C32D00                JP code_002D
+
+; xref: 1AB8(code) 
+;
+0ED4: 214C1B     code_0ED4  LD HL,1B4C
+0ED7: CD8E11                CALL code_118E
+0EDA: 1806                  JR code_0EE2
+;...
+
+; xref: 0EDA(code) 1116(code) 175D(code) 
+;
+0EE2: 78         code_0EE2  LD A,B
+0EE3: B7                    OR A
+0EE4: C8                    RET Z
+0EE5: 3A2441                LD A,(data_4124)
+0EE8: B7                    OR A
+0EE9: CA8011                JP Z,code_1180
+0EEC: 90                    SUB A,B
+0EED: 300C                  JR NC,code_0EFB
+0EEF: 2F                    CPLA
+0EF0: 3C                    INC A
+0EF1: EB                    EX DE,HL
+0EF2: CD7011                CALL code_1170
+0EF5: EB                    EX DE,HL
+0EF6: CD8011                CALL code_1180
+0EF9: C1                    POP BC
+0EFA: D1                    POP DE
+
+; xref: 0EED(code) 
+;
+0EFB: FE19       code_0EFB  CP 19
+0EFD: D0                    RET NC
+0EFE: F5                    PUSH AF
+0EFF: CDAB11                CALL code_11AB
+0F02: 67                    LD H,A
+0F03: F1                    POP AF
+0F04: CDA30F                CALL code_0FA3
+0F07: B4                    OR H
+0F08: 212141                LD HL,4121
+0F0B: F2200F                JP P,code_0F20
+0F0E: CD830F                CALL code_0F83
+0F11: D2620F                JP NC,code_0F62
+0F14: 23                    INC HL
+0F15: 34                    INC (HL)
+0F16: CA7E0F                JP Z,code_0F7E
+0F19: 2E01                  LD L,01
+0F1B: CDB70F                CALL code_0FB7
+0F1E: 1842                  JR code_0F62
+
+; xref: 0F0B(code) 
+;
+0F20: AF         code_0F20  XOR A
+0F21: 90                    SUB A,B
+0F22: 47                    LD B,A
+0F23: 7E                    LD A,(HL)
+0F24: 9B                    SBC A,E
+0F25: 5F                    LD E,A
+0F26: 23                    INC HL
+0F27: 7E                    LD A,(HL)
+0F28: 9A                    SBC A,D
+0F29: 57                    LD D,A
+0F2A: 23                    INC HL
+0F2B: 7E                    LD A,(HL)
+0F2C: 99                    SBC A,C
+0F2D: 4F                    LD C,A
+
+; xref: 1140(code) 
+;
+0F2E: DC8F0F     code_0F2E  CALL C,code_0F8F
+0F31: 68                    LD L,B
+0F32: 63                    LD H,E
+0F33: AF                    XOR A
+
+; xref: 0F42(code) 
+;
+0F34: 47         code_0F34  LD B,A
+0F35: 79                    LD A,C
+0F36: B7                    OR A
+0F37: 2018                  JR NZ,code_0F51
+0F39: 4A                    LD C,D
+0F3A: 54                    LD D,H
+0F3B: 65                    LD H,L
+0F3C: 6F                    LD L,A
+0F3D: 78                    LD A,B
+0F3E: D608                  SUB A,08
+0F40: FEE0                  CP E0
+0F42: 20F0                  JR NZ,code_0F34
+
+; xref: 1104(code) 0F5F(code) 14D6(code) 14BF(code) 
+;
+0F44: AF         code_0F44  XOR A
+0F45: 322441                LD (data_4124),A
+0F48: C9                    RET
+
+; xref: 0F51(code) 
+;
+0F49: 05         code_0F49  DEC B
+0F4A: 29                    ADD HL,HL
+0F4B: 7A                    LD A,D
+0F4C: 17                    RLA
+0F4D: 57                    LD D,A
+0F4E: 79                    LD A,C
+0F4F: 8F                    ADC A,A
+0F50: 4F                    LD C,A
+
+; xref: 0F37(code) 
+;
+0F51: F2490F     code_0F51  JP P,code_0F49
+0F54: 78                    LD A,B
+0F55: 5C                    LD E,H
+0F56: 45                    LD B,L
+0F57: B7                    OR A
+0F58: 2808                  JR Z,code_0F62
+0F5A: 212441                LD HL,4124
+0F5D: 86                    ADD A,(HL)
+0F5E: 77                    LD (HL),A
+0F5F: 30E3                  JR NC,code_0F44
+0F61: C8                    RET Z
+
+; xref: 0F58(code) 0F11(code) 0F1E(code) 1295(code) 
+;
+0F62: 78         code_0F62  LD A,B
+
+; xref: 10AB(code) 
+;
+0F63: 212441     code_0F63  LD HL,4124
+0F66: B7                    OR A
+0F67: FC740F                CALL M,code_0F74
+0F6A: 46                    LD B,(HL)
+0F6B: 23                    INC HL
+0F6C: 7E                    LD A,(HL)
+0F6D: E680                  AND 80
+0F6F: A9                    XOR C
+0F70: 4F                    LD C,A
+0F71: C38011                JP code_1180
+
+; xref: 0F67(code) 12E1(code) 
+;
+0F74: 1C         code_0F74  INC E
+0F75: C0                    RET NZ
+0F76: 14                    INC D
+0F77: C0                    RET NZ
+0F78: 0C                    INC C
+0F79: C0                    RET NZ
+0F7A: 0E80                  LD C,80
+0F7C: 34                    INC (HL)
+0F7D: C0                    RET NZ
+
+; xref: 1112(code) 1623(code) 1107(code) 111E(code) 162E(code) 
+; xref: 0F16(code) 14F8(code) 1492(code) 2CB8(code) 1602(code) 
+; xref: 10D0(code) 
+;
+0F7E: 1E0A       code_0F7E  LD E,0A
+0F80: C36B21                JP code_216B
+
+; xref: 0F0E(code) 1AE6(code) 
+;
+0F83: 7E         code_0F83  LD A,(HL)
+0F84: 83                    ADD A,E
+0F85: 5F                    LD E,A
+0F86: 23                    INC HL
+0F87: 7E                    LD A,(HL)
+0F88: 8A                    ADC A,D
+0F89: 57                    LD D,A
+0F8A: 23                    INC HL
+0F8B: 7E                    LD A,(HL)
+0F8C: 89                    ADC A,C
+0F8D: 4F                    LD C,A
+0F8E: C9                    RET
+
+; xref: 0F2E(code) 12E6(code) 
+;
+0F8F: 212541     code_0F8F  LD HL,4125
+0F92: 7E                    LD A,(HL)
+0F93: 2F                    CPLA
+0F94: 77                    LD (HL),A
+0F95: AF                    XOR A
+0F96: 6F                    LD L,A
+0F97: 90                    SUB A,B
+0F98: 47                    LD B,A
+0F99: 7D                    LD A,L
+0F9A: 9B                    SBC A,E
+0F9B: 5F                    LD E,A
+0F9C: 7D                    LD A,L
+0F9D: 9A                    SBC A,D
+0F9E: 57                    LD D,A
+0F9F: 7D                    LD A,L
+0FA0: 99                    SBC A,C
+0FA1: 4F                    LD C,A
+0FA2: C9                    RET
+
+; xref: 12DC(code) 0F04(code) 
+;
+0FA3: 0600       code_0FA3  LD B,00
+
+; xref: 0FAE(code) 
+;
+0FA5: D608       code_0FA5  SUB A,08
+0FA7: 3807                  JR C,code_0FB0
+0FA9: 43                    LD B,E
+0FAA: 5A                    LD E,D
+0FAB: 51                    LD D,C
+0FAC: 0E00                  LD C,00
+0FAE: 18F5                  JR code_0FA5
+
+; xref: 0FA7(code) 
+;
+0FB0: C609       code_0FB0  ADD A,09
+0FB2: 6F                    LD L,A
+
+; xref: 0FC2(code) 
+;
+0FB3: AF         code_0FB3  XOR A
+0FB4: 2D                    DEC L
+0FB5: C8                    RET Z
+0FB6: 79                    LD A,C
+
+; xref: 0F1B(code) 
+;
+0FB7: 1F         code_0FB7  RRA
+0FB8: 4F                    LD C,A
+0FB9: 7A                    LD A,D
+0FBA: 1F                    RRA
+0FBB: 57                    LD D,A
+0FBC: 7B                    LD A,E
+0FBD: 1F                    RRA
+0FBE: 5F                    LD E,A
+0FBF: 78                    LD A,B
+0FC0: 1F                    RRA
+0FC1: 47                    LD B,A
+0FC2: 18EF                  JR code_0FB3
+;...
+
+; xref: 10F4(code) 
+;
+105C: E1         code_105C  POP HL
+105D: C9                    RET
+;...
+
+; xref: 16E9(code) 
+;
+1063: CD7011     code_1063  CALL code_1170
+1066: 21A415                LD HL,15A4
+1069: CD7D11                CALL code_117D
+106C: C1                    POP BC
+106D: D1                    POP DE
+106E: CD2111                CALL code_1121
+1071: CA6321                JP Z,code_2163
+1074: 2EFF                  LD L,FF
+1076: CDE010                CALL code_10E0
+1079: 34                    INC (HL)
+107A: 34                    INC (HL)
+107B: 2B                    DEC HL
+107C: 7E                    LD A,(HL)
+107D: 328940                LD (data_4089),A
+1080: 2B                    DEC HL
+1081: 7E                    LD A,(HL)
+1082: 328540                LD (data_4085),A
+1085: 2B                    DEC HL
+1086: 7E                    LD A,(HL)
+1087: 328140                LD (data_4081),A
+108A: 41                    LD B,C
+108B: EB                    EX DE,HL
+108C: AF                    XOR A
+108D: 4F                    LD C,A
+108E: 57                    LD D,A
+108F: 5F                    LD E,A
+1090: 328C40                LD (data_408C),A
+
+; xref: 10C6(code) 10CE(code) 
+;
+1093: E5         code_1093  PUSH HL
+1094: C5                    PUSH BC
+1095: 7D                    LD A,L
+1096: CD8040                CALL code_4080
+1099: DE00                  SBC A,00
+109B: 3F                    CCF
+109C: 3007                  JR NC,code_10A5
+109E: 328C40                LD (data_408C),A
+10A1: F1                    POP AF
+10A2: F1                    POP AF
+10A3: 37                    SCF
+10A4: D2C1E1                JP NC,code_E1C1
+;...
+
+; xref: 109C(code) 
+;
+10A5: C1         code_10A5  POP BC
+10A6: E1                    POP HL
+10A7: 79                    LD A,C
+10A8: 3C                    INC A
+10A9: 3D                    DEC A
+10AA: 1F                    RRA
+10AB: FA630F                JP M,code_0F63
+10AE: 17                    RLA
+10AF: 7B                    LD A,E
+10B0: 17                    RLA
+10B1: 5F                    LD E,A
+10B2: 7A                    LD A,D
+10B3: 17                    RLA
+10B4: 57                    LD D,A
+10B5: 79                    LD A,C
+10B6: 17                    RLA
+10B7: 4F                    LD C,A
+10B8: 29                    ADD HL,HL
+10B9: 78                    LD A,B
+10BA: 17                    RLA
+10BB: 47                    LD B,A
+10BC: 3A8C40                LD A,(data_408C)
+10BF: 17                    RLA
+10C0: 328C40                LD (data_408C),A
+10C3: 79                    LD A,C
+10C4: B2                    OR D
+10C5: B3                    OR E
+10C6: 20CB                  JR NZ,code_1093
+10C8: E5                    PUSH HL
+10C9: 212441                LD HL,4124
+10CC: 35                    DEC (HL)
+10CD: E1                    POP HL
+10CE: 20C3                  JR NZ,code_1093
+10D0: C37E0F                JP code_0F7E
+
+; xref: 15B8(code) 
+;
+10D3: 3EFF       code_10D3  LD A,FF
+10D5: 2EAF                  LD L,AF
+;...
+
+; xref: 1571(code) 
+;
+10D6: AF         code_10D6  XOR A
+10D7: 212D41                LD HL,412D
+10DA: 4E                    LD C,(HL)
+10DB: 23                    INC HL
+10DC: AE                    XOR (HL)
+10DD: 47                    LD B,A
+10DE: 2E00                  LD L,00
+
+; xref: 1076(code) 
+;
+10E0: 78         code_10E0  LD A,B
+10E1: B7                    OR A
+10E2: 281F                  JR Z,code_1103
+10E4: 7D                    LD A,L
+10E5: 212441                LD HL,4124
+10E8: AE                    XOR (HL)
+10E9: 80                    ADD A,B
+10EA: 47                    LD B,A
+10EB: 1F                    RRA
+10EC: A8                    XOR B
+10ED: 78                    LD A,B
+10EE: F20211                JP P,code_1102
+10F1: C680                  ADD A,80
+10F3: 77                    LD (HL),A
+10F4: CA5C10                JP Z,code_105C
+10F7: CDAB11                CALL code_11AB
+10FA: 77                    LD (HL),A
+
+; xref: 1884(code) 19BB(code) 
+;
+10FB: 2B         code_10FB  DEC HL
+10FC: C9                    RET
+;...
+
+; xref: 10EE(code) 
+;
+1102: B7         code_1102  OR A
+
+; xref: 10E2(code) 
+;
+1103: E1         code_1103  POP HL
+1104: F2440F                JP P,code_0F44
+1107: C37E0F                JP code_0F7E
+
+; xref: 16DA(code) 1737(code) 
+;
+110A: CD8B11     code_110A  CALL code_118B
+110D: 78                    LD A,B
+110E: B7                    OR A
+110F: C8                    RET Z
+1110: C602                  ADD A,02
+1112: DA7E0F                JP C,code_0F7E
+1115: 47                    LD B,A
+1116: CDE20E                CALL code_0EE2
+1119: 212441                LD HL,4124
+111C: 34                    INC (HL)
+111D: C0                    RET NZ
+111E: C37E0F                JP code_0F7E
+
+; xref: 197E(code) 18FE(code) 11DA(code) 1220(code) 11E1(code) 
+; xref: 1227(code) 156D(code) 1164(code) 106E(code) 
+;
+1121: 3A2441     code_1121  LD A,(data_4124)
+1124: B7                    OR A
+1125: C8                    RET Z
+1126: 3A2341                LD A,(data_4123)
+1129: FE2F                  CP 2F
+
+; xref: 116E(code) 
+;
+112B: 17         code_112B  RLA
+112C: 9F                    SBC A,A
+112D: C0                    RET NZ
+112E: 3C                    INC A
+112F: C9                    RET
+
+; xref: 174A(code) 1758(code) 
+;
+1130: 0688       code_1130  LD B,88
+1132: 110000                LD DE,0000
+
+; xref: 12A4(code) 1439(code) 
+;
+1135: 212441     code_1135  LD HL,4124
+1138: 4F                    LD C,A
+1139: 70                    LD (HL),B
+113A: 0600                  LD B,00
+113C: 23                    INC HL
+113D: 3680                  LD (HL),80
+113F: 17                    RLA
+1140: C32E0F                JP code_0F2E
+;...
+
+; xref: 179F(code) 2D22(code) 16A1(code) 
+;
+1147: E7         code_1147  RST 20
+1148: FA2714                JP M,code_1427
+114B: CAC212                JP Z,code_12C2
+114E: 212341                LD HL,4123
+1151: 7E                    LD A,(HL)
+1152: EE80                  XOR 80
+1154: 77                    LD (HL),A
+1155: C9                    RET
+;...
+
+; xref: 1794(code) 
+;
+1160: E7         code_1160  RST 20
+1161: CAC212                JP Z,code_12C2
+1164: F22111                JP P,code_1121
+1167: 2A2141                LD HL,(data_4121)
+116A: 7C                    LD A,H
+116B: B5                    OR L
+116C: C8                    RET Z
+116D: 7C                    LD A,H
+116E: 18BB                  JR code_112B
+
+; xref: 1063(code) 0EF2(code) 2B99(code) 1755(code) 
+;
+1170: EB         code_1170  EX DE,HL
+1171: 2A2141                LD HL,(data_4121)
+1174: E3                    EX (SP),HL
+1175: E5                    PUSH HL
+1176: 2A2341                LD HL,(data_4123)
+1179: E3                    EX (SP),HL
+117A: E5                    PUSH HL
+117B: EB                    EX DE,HL
+117C: C9                    RET
+
+; xref: 1069(code) 1AB1(code) 
+;
+117D: CD8E11     code_117D  CALL code_118E
+
+; xref: 1ABF(code) 0EE9(code) 0EF6(code) 0F71(code) 1AEA(code) 
+; xref: 2FEB(code) 
+;
+1180: EB         code_1180  EX DE,HL
+1181: 222141                LD (data_4121),HL
+1184: 60                    LD H,B
+1185: 69                    LD L,C
+1186: 222341                LD (data_4123),HL
+1189: EB                    EX DE,HL
+118A: C9                    RET
+
+; xref: 110A(code) 1348(code) 12CE(code) 1AD0(code) 1285(code) 
+;
+118B: 212141     code_118B  LD HL,4121
+
+; xref: 3106(code) 0ED7(code) 117D(code) 
+;
+118E: 5E         code_118E  LD E,(HL)
+118F: 23                    INC HL
+
+; xref: 3087(code) 
+;
+1190: 56         code_1190  LD D,(HL)
+1191: 23                    INC HL
+1192: 4E                    LD C,(HL)
+1193: 23                    INC HL
+1194: 46                    LD B,(HL)
+
+; xref: 2256(code) 182C(code) 183A(code) 
+;
+1195: 23         code_1195  INC HL
+1196: C9                    RET
+;...
+
+; xref: 306E(code) 1218(code) 19E2(code) 270C(code) 15AE(code) 
+;
+119F: 3AAF40     code_119F  LD A,(data_40AF)
+11A2: 47                    LD B,A
+
+; xref: 11A8(code) 
+;
+11A3: 1A         code_11A3  LD A,(DE)
+11A4: 77                    LD (HL),A
+11A5: 13                    INC DE
+11A6: 23                    INC HL
+11A7: 05                    DEC B
+11A8: 20F9                  JR NZ,code_11A3
+11AA: C9                    RET
+
+; xref: 134B(code) 12D1(code) 0EFF(code) 1471(code) 10F7(code) 
+; xref: 128E(code) 
+;
+11AB: 212341     code_11AB  LD HL,4123
+11AE: 7E                    LD A,(HL)
+11AF: 07                    RLCA
+11B0: 37                    SCF
+11B1: 1F                    RRA
+11B2: 77                    LD (HL),A
+11B3: 3F                    CCF
+11B4: 1F                    RRA
+11B5: 23                    INC HL
+11B6: 23                    INC HL
+11B7: 77                    LD (HL),A
+11B8: 79                    LD A,C
+11B9: 07                    RLCA
+11BA: 37                    SCF
+11BB: 1F                    RRA
+11BC: 4F                    LD C,A
+11BD: 1F                    RRA
+11BE: AE                    XOR (HL)
+11BF: C9                    RET
+
+; xref: 1451(code) 
+;
+11C0: 212741     code_11C0  LD HL,4127
+
+; xref: 1A7D(code) 2D30(code) 
+;
+11C3: 119E11     code_11C3  LD DE,119E
+11C6: 1806                  JR code_11CE
+
+; xref: 1A77(code) 1619(code) 1746(code) 
+;
+11C8: 212741     code_11C8  LD HL,4127
+11CB: 119F11                LD DE,119F
+
+; xref: 11C6(code) 
+;
+11CE: D5         code_11CE  PUSH DE
+
+; xref: 26DE(code) 
+;
+11CF: 112141     code_11CF  LD DE,4121
+11D2: E7                    RST 20
+11D3: D8                    RET C
+11D4: 111D41                LD DE,411D
+11D7: C9                    RET
+
+; xref: 18F6(code) 19FA(code) 1A25(code) 1275(code) 1731(code) 
+;
+11D8: 78         code_11D8  LD A,B
+11D9: B7                    OR A
+11DA: CA2111                JP Z,code_1121
+11DD: 212A11                LD HL,112A
+11E0: E5                    PUSH HL
+11E1: CD2111                CALL code_1121
+11E4: 79                    LD A,C
+11E5: C8                    RET Z
+11E6: 212341                LD HL,4123
+11E9: AE                    XOR (HL)
+11EA: 79                    LD A,C
+11EB: F8                    RET M
+11EC: CDF211                CALL code_11F2
+
+; xref: 123A(code) 
+;
+11EF: 1F         code_11EF  RRA
+11F0: A9                    XOR C
+11F1: C9                    RET
+
+; xref: 11EC(code) 
+;
+11F2: 23         code_11F2  INC HL
+11F3: 78                    LD A,B
+11F4: BE                    CP (HL)
+11F5: C0                    RET NZ
+11F6: 2B                    DEC HL
+11F7: 79                    LD A,C
+11F8: BE                    CP (HL)
+11F9: C0                    RET NZ
+11FA: 2B                    DEC HL
+11FB: 7A                    LD A,D
+11FC: BE                    CP (HL)
+11FD: C0                    RET NZ
+11FE: 2B                    DEC HL
+11FF: 7B                    LD A,E
+1200: 96                    SUB A,(HL)
+1201: C0                    RET NZ
+1202: E1                    POP HL
+1203: E1                    POP HL
+1204: C9                    RET
+;...
+
+; xref: 18DF(code) 1A02(code) 1A2D(code) 
+;
+1215: 212741     code_1215  LD HL,4127
+1218: CD9F11                CALL code_119F
+121B: 112E41                LD DE,412E
+121E: 1A                    LD A,(DE)
+121F: B7                    OR A
+1220: CA2111                JP Z,code_1121
+1223: 212A11                LD HL,112A
+1226: E5                    PUSH HL
+1227: CD2111                CALL code_1121
+122A: 1B                    DEC DE
+122B: 1A                    LD A,(DE)
+122C: 4F                    LD C,A
+122D: C8                    RET Z
+122E: 212341                LD HL,4123
+1231: AE                    XOR (HL)
+1232: 79                    LD A,C
+1233: F8                    RET M
+1234: 13                    INC DE
+1235: 23                    INC HL
+1236: 0608                  LD B,08
+
+; xref: 1240(code) 
+;
+1238: 1A         code_1238  LD A,(DE)
+1239: 96                    SUB A,(HL)
+123A: C2EF11                JP NZ,code_11EF
+123D: 1B                    DEC DE
+123E: 2B                    DEC HL
+123F: 05                    DEC B
+1240: 20F6                  JR NZ,code_1238
+1242: C1                    POP BC
+1243: C9                    RET
+;...
+
+; xref: 2DB0(code) 2BA4(code) 32DA(code) 
+;
+124B: E7         code_124B  RST 20
+124C: 2A2141                LD HL,(data_4121)
+124F: F8                    RET M
+1250: CAC212                JP Z,code_12C2
+1253: D48512                CALL NC,code_1285
+1256: 217E0F                LD HL,0F7E
+1259: E5                    PUSH HL
+125A: 3A2441                LD A,(data_4124)
+125D: FE90                  CP 90
+125F: 300E                  JR NC,code_126F
+1261: CDC712                CALL code_12C7
+1264: EB                    EX DE,HL
+
+; xref: 127B(code) 
+;
+1265: D1         code_1265  POP DE
+
+; xref: 177B(code) 1424(code) 163F(code) 2FE2(code) 2CBB(code) 
+; xref: 2CE1(code) 3B74(code) 
+;
+1266: 222141     code_1266  LD (data_4121),HL
+1269: 3E02                  LD A,02
+
+; xref: 12BD(code) 
+;
+126B: 32AF40     code_126B  LD (data_40AF),A
+126E: C9                    RET
+
+; xref: 125F(code) 16AC(code) 
+;
+126F: 018090     code_126F  LD BC,9080
+1272: 110000                LD DE,0000
+1275: CDD811                CALL code_11D8
+1278: C0                    RET NZ
+1279: 61                    LD H,C
+127A: 6A                    LD L,D
+127B: 18E8                  JR code_1265
+
+; xref: 16CB(code) 2B96(code) 2D62(code) 
+;
+127D: E7         code_127D  RST 20
+127E: E0                    RET PO
+127F: FA9812                JP M,code_1298
+1282: CAC212                JP Z,code_12C2
+
+; xref: 1253(code) 
+;
+1285: CD8B11     code_1285  CALL code_118B
+1288: CDBB12                CALL code_12BB
+128B: 78                    LD A,B
+128C: B7                    OR A
+128D: C8                    RET Z
+128E: CDAB11                CALL code_11AB
+1291: 212041                LD HL,4120
+1294: 46                    LD B,(HL)
+1295: C3620F                JP code_0F62
+
+; xref: 1971(code) 127F(code) 12AC(code) 1725(code) 
+;
+1298: 2A2141     code_1298  LD HL,(data_4121)
+129B: CDBB12                CALL code_12BB
+129E: 7C                    LD A,H
+129F: 55                    LD D,L
+12A0: 1E00                  LD E,00
+12A2: 0690                  LD B,90
+12A4: C33511                JP code_1135
+
+; xref: 16CF(code) 
+;
+12A7: E7         code_12A7  RST 20
+12A8: D0                    RET NC
+12A9: CAC212                JP Z,code_12C2
+12AC: FC9812                CALL M,code_1298
+
+; xref: 1740(code) 174D(code) 173E(code) 
+;
+12AF: 210000     code_12AF  LD HL,0000
+12B2: 221D41                LD (data_411D),HL
+12B5: 221F41                LD (data_411F),HL
+12B8: 3E08                  LD A,08
+12BA: 013E04                LD BC,043E
+;...
+
+; xref: 129B(code) 1433(code) 1288(code) 2FEE(code) 
+;
+12BB: 3E04       code_12BB  LD A,04
+12BD: C36B12                JP code_126B
+
+; xref: 3173(code) 2D45(code) 
+;
+12C0: E7         code_12C0  RST 20
+12C1: C8                    RET Z
+
+; xref: 1161(code) 114B(code) 1250(code) 2B61(code) 1282(code) 
+; xref: 12A9(code) 
+;
+12C2: 1E18       code_12C2  LD E,18
+12C4: C36B21                JP code_216B
+
+; xref: 1ABC(code) 1261(code) 
+;
+12C7: 47         code_12C7  LD B,A
+12C8: 4F                    LD C,A
+12C9: 57                    LD D,A
+12CA: 5F                    LD E,A
+12CB: B7                    OR A
+12CC: C8                    RET Z
+12CD: E5                    PUSH HL
+12CE: CD8B11                CALL code_118B
+12D1: CDAB11                CALL code_11AB
+12D4: AE                    XOR (HL)
+12D5: 67                    LD H,A
+12D6: FCEB12                CALL M,code_12EB
+12D9: 3E98                  LD A,98
+12DB: 90                    SUB A,B
+12DC: CDA30F                CALL code_0FA3
+12DF: 7C                    LD A,H
+12E0: 17                    RLA
+12E1: DC740F                CALL C,code_0F74
+12E4: 0600                  LD B,00
+12E6: DC8F0F                CALL C,code_0F8F
+12E9: E1                    POP HL
+12EA: C9                    RET
+
+; xref: 12D6(code) 
+;
+12EB: 1B         code_12EB  DEC DE
+12EC: 7A                    LD A,D
+12ED: A3                    AND E
+12EE: 3C                    INC A
+12EF: C0                    RET NZ
+
+; xref: 3373(code) 
+;
+12F0: 0B         code_12F0  DEC BC
+12F1: C9                    RET
+;...
+
+; xref: 1A84(code) 
+;
+1347: F5         code_1347  PUSH AF
+1348: CD8B11                CALL code_118B
+134B: CDAB11                CALL code_11AB
+134E: AE                    XOR (HL)
+134F: 2B                    DEC HL
+1350: 36B8                  LD (HL),B8
+1352: F5                    PUSH AF
+1353: FC6C13                CALL M,code_136C
+1356: 212341                LD HL,4123
+1359: 3EB8                  LD A,B8
+135B: 90                    SUB A,B
+135C: CD3515                CALL code_1535
+135F: F1                    POP AF
+1360: FCEC14                CALL M,code_14EC
+1363: AF                    XOR A
+1364: 321C41                LD (data_411C),A
+1367: F1                    POP AF
+1368: D0                    RET NC
+1369: C3A414                JP code_14A4
+
+; xref: 1353(code) 
+;
+136C: 211D41     code_136C  LD HL,411D
+
+; xref: 1373(code) 
+;
+136F: 7E         code_136F  LD A,(HL)
+1370: 35                    DEC (HL)
+1371: B7                    OR A
+1372: 23                    INC HL
+1373: 28FA                  JR Z,code_136F
+1375: C9                    RET
+;...
+
+; xref: 142A(code) 
+;
+141D: AF         code_141D  XOR A
+141E: 4F                    LD C,A
+141F: 95                    SUB A,L
+1420: 6F                    LD L,A
+1421: 79                    LD A,C
+1422: 9C                    SBC A,H
+1423: 67                    LD H,A
+1424: C36612                JP code_1266
+
+; xref: 1148(code) 
+;
+1427: 2A2141     code_1427  LD HL,(data_4121)
+142A: CD1D14                CALL code_141D
+142D: 7C                    LD A,H
+142E: EE80                  XOR 80
+1430: B5                    OR L
+1431: C0                    RET NZ
+
+; xref: 2CC9(code) 
+;
+1432: EB         code_1432  EX DE,HL
+1433: CDBB12                CALL code_12BB
+1436: AF                    XOR A
+1437: 0698                  LD B,98
+1439: C33511                JP code_1135
+;...
+
+; xref: 1A80(code) 1628(code) 1750(code) 
+;
+1443: 212E41     code_1443  LD HL,412E
+1446: 7E                    LD A,(HL)
+1447: B7                    OR A
+1448: C8                    RET Z
+1449: 47                    LD B,A
+144A: 2B                    DEC HL
+144B: 4E                    LD C,(HL)
+144C: 112441                LD DE,4124
+144F: 1A                    LD A,(DE)
+1450: B7                    OR A
+1451: CAC011                JP Z,code_11C0
+1454: 90                    SUB A,B
+1455: 3016                  JR NC,code_146D
+1457: 2F                    CPLA
+1458: 3C                    INC A
+1459: F5                    PUSH AF
+145A: 0E08                  LD C,08
+145C: 23                    INC HL
+145D: E5                    PUSH HL
+
+; xref: 1466(code) 
+;
+145E: 1A         code_145E  LD A,(DE)
+145F: 46                    LD B,(HL)
+1460: 77                    LD (HL),A
+1461: 78                    LD A,B
+1462: 12                    LD (DE),A
+1463: 1B                    DEC DE
+1464: 2B                    DEC HL
+1465: 0D                    DEC C
+1466: 20F6                  JR NZ,code_145E
+1468: E1                    POP HL
+1469: 46                    LD B,(HL)
+146A: 2B                    DEC HL
+146B: 4E                    LD C,(HL)
+146C: F1                    POP AF
+
+; xref: 1455(code) 
+;
+146D: FE39       code_146D  CP 39
+146F: D0                    RET NC
+1470: F5                    PUSH AF
+1471: CDAB11                CALL code_11AB
+1474: 23                    INC HL
+1475: 3600                  LD (HL),00
+1477: 47                    LD B,A
+1478: F1                    POP AF
+1479: 212D41                LD HL,412D
+147C: CD3515                CALL code_1535
+147F: 3A2641                LD A,(data_4126)
+1482: 321C41                LD (data_411C),A
+1485: 78                    LD A,B
+1486: B7                    OR A
+1487: F29B14                JP P,code_149B
+148A: CDFF14                CALL code_14FF
+148D: D2DA14                JP NC,code_14DA
+1490: EB                    EX DE,HL
+1491: 34                    INC (HL)
+1492: CA7E0F                JP Z,code_0F7E
+1495: CD5C15                CALL code_155C
+1498: C3DA14                JP code_14DA
+
+; xref: 1487(code) 
+;
+149B: CD1115     code_149B  CALL code_1511
+149E: 212541                LD HL,4125
+14A1: DC2315                CALL C,code_1523
+
+; xref: 1595(code) 1369(code) 
+;
+14A4: AF         code_14A4  XOR A
+
+; xref: 14BD(code) 
+;
+14A5: 47         code_14A5  LD B,A
+14A6: 3A2341                LD A,(data_4123)
+14A9: B7                    OR A
+14AA: 201E                  JR NZ,code_14CA
+14AC: 211C41                LD HL,411C
+14AF: 0E08                  LD C,08
+
+; xref: 14B6(code) 
+;
+14B1: 56         code_14B1  LD D,(HL)
+14B2: 77                    LD (HL),A
+14B3: 7A                    LD A,D
+14B4: 23                    INC HL
+14B5: 0D                    DEC C
+14B6: 20F9                  JR NZ,code_14B1
+14B8: 78                    LD A,B
+14B9: D608                  SUB A,08
+14BB: FEC0                  CP C0
+14BD: 20E6                  JR NZ,code_14A5
+14BF: C3440F                JP code_0F44
+
+; xref: 14CA(code) 
+;
+14C2: 05         code_14C2  DEC B
+14C3: 211C41                LD HL,411C
+14C6: CD6315                CALL code_1563
+14C9: B7                    OR A
+
+; xref: 14AA(code) 
+;
+14CA: F2C214     code_14CA  JP P,code_14C2
+14CD: 78                    LD A,B
+14CE: B7                    OR A
+14CF: 2809                  JR Z,code_14DA
+14D1: 212441                LD HL,4124
+14D4: 86                    ADD A,(HL)
+14D5: 77                    LD (HL),A
+14D6: D2440F                JP NC,code_0F44
+14D9: C8                    RET Z
+
+; xref: 14CF(code) 148D(code) 1498(code) 
+;
+14DA: 3A1C41     code_14DA  LD A,(data_411C)
+14DD: B7                    OR A
+14DE: FCEC14                CALL M,code_14EC
+14E1: 212541                LD HL,4125
+14E4: 7E                    LD A,(HL)
+14E5: E680                  AND 80
+14E7: 2B                    DEC HL
+14E8: 2B                    DEC HL
+14E9: AE                    XOR (HL)
+14EA: 77                    LD (HL),A
+14EB: C9                    RET
+
+; xref: 1360(code) 14DE(code) 
+;
+14EC: 211D41     code_14EC  LD HL,411D
+14EF: 0607                  LD B,07
+
+; xref: 14F5(code) 
+;
+14F1: 34         code_14F1  INC (HL)
+14F2: C0                    RET NZ
+14F3: 23                    INC HL
+14F4: 05                    DEC B
+14F5: 20FA                  JR NZ,code_14F1
+14F7: 34                    INC (HL)
+14F8: CA7E0F                JP Z,code_0F7E
+14FB: 2B                    DEC HL
+14FC: 3680                  LD (HL),80
+14FE: C9                    RET
+
+; xref: 1586(code) 148A(code) 
+;
+14FF: 212741     code_14FF  LD HL,4127
+
+; xref: 1AA0(code) 
+;
+1502: 111D41     code_1502  LD DE,411D
+
+; xref: 15D9(code) 
+;
+1505: 0E07       code_1505  LD C,07
+1507: AF                    XOR A
+
+; xref: 150E(code) 
+;
+1508: 1A         code_1508  LD A,(DE)
+1509: 8E                    ADC A,(HL)
+150A: 12                    LD (DE),A
+150B: 13                    INC DE
+150C: 23                    INC HL
+150D: 0D                    DEC C
+150E: 20F8                  JR NZ,code_1508
+1510: C9                    RET
+
+; xref: 149B(code) 
+;
+1511: 212741     code_1511  LD HL,4127
+
+; xref: 1A9A(code) 
+;
+1514: 111D41     code_1514  LD DE,411D
+
+; xref: 15CB(code) 
+;
+1517: 0E07       code_1517  LD C,07
+1519: AF                    XOR A
+
+; xref: 1520(code) 
+;
+151A: 1A         code_151A  LD A,(DE)
+151B: 9E                    SBC A,(HL)
+151C: 12                    LD (DE),A
+151D: 13                    INC DE
+151E: 23                    INC HL
+151F: 0D                    DEC C
+1520: 20F8                  JR NZ,code_151A
+1522: C9                    RET
+
+; xref: 14A1(code) 
+;
+1523: 7E         code_1523  LD A,(HL)
+1524: 2F                    CPLA
+1525: 77                    LD (HL),A
+1526: 211C41                LD HL,411C
+1529: 0608                  LD B,08
+152B: AF                    XOR A
+152C: 4F                    LD C,A
+
+; xref: 1532(code) 
+;
+152D: 79         code_152D  LD A,C
+152E: 9E                    SBC A,(HL)
+152F: 77                    LD (HL),A
+1530: 23                    INC HL
+1531: 05                    DEC B
+1532: 20F9                  JR NZ,code_152D
+1534: C9                    RET
+
+; xref: 135C(code) 147C(code) 
+;
+1535: 71         code_1535  LD (HL),C
+1536: E5                    PUSH HL
+
+; xref: 1547(code) 
+;
+1537: D608       code_1537  SUB A,08
+1539: 380E                  JR C,code_1549
+153B: E1                    POP HL
+
+; xref: 159B(code) 
+;
+153C: E5         code_153C  PUSH HL
+153D: 110008                LD DE,0800
+
+; xref: 1545(code) 
+;
+1540: 4E         code_1540  LD C,(HL)
+1541: 73                    LD (HL),E
+1542: 59                    LD E,C
+1543: 2B                    DEC HL
+1544: 15                    DEC D
+1545: 20F9                  JR NZ,code_1540
+1547: 18EE                  JR code_1537
+
+; xref: 1539(code) 
+;
+1549: C609       code_1549  ADD A,09
+154B: 57                    LD D,A
+
+; xref: 155A(code) 
+;
+154C: AF         code_154C  XOR A
+154D: E1                    POP HL
+154E: 15                    DEC D
+154F: C8                    RET Z
+1550: E5                    PUSH HL
+1551: 1E08                  LD E,08
+
+; xref: 1558(code) 
+;
+1553: 7E         code_1553  LD A,(HL)
+1554: 1F                    RRA
+1555: 77                    LD (HL),A
+1556: 2B                    DEC HL
+1557: 1D                    DEC E
+1558: 20F9                  JR NZ,code_1553
+155A: 18F0                  JR code_154C
+
+; xref: 1589(code) 1495(code) 
+;
+155C: 212341     code_155C  LD HL,4123
+155F: 1601                  LD D,01
+1561: ED0E                  NOP
+;...
+
+; xref: 14C6(code) 15F5(code) 
+;
+1563: 0E08       code_1563  LD C,08
+;...
+1564: 08                    EX AF,AF'
+
+; xref: 156A(code) 15EF(code) 
+;
+1565: 7E         code_1565  LD A,(HL)
+1566: 17                    RLA
+1567: 77                    LD (HL),A
+1568: 23                    INC HL
+1569: 0D                    DEC C
+156A: 20F9                  JR NZ,code_1565
+156C: C9                    RET
+
+; xref: 19E5(code) 
+;
+156D: CD2111     code_156D  CALL code_1121
+1570: C8                    RET Z
+1571: CDD610                CALL code_10D6
+1574: CD0516                CALL code_1605
+1577: 71                    LD (HL),C
+1578: 13                    INC DE
+1579: 0607                  LD B,07
+
+; xref: 1593(code) 
+;
+157B: 1A         code_157B  LD A,(DE)
+157C: 13                    INC DE
+157D: B7                    OR A
+157E: D5                    PUSH DE
+157F: 2817                  JR Z,code_1598
+1581: 0E08                  LD C,08
+
+; xref: 158F(code) 
+;
+1583: C5         code_1583  PUSH BC
+1584: 1F                    RRA
+1585: 47                    LD B,A
+1586: DCFF14                CALL C,code_14FF
+1589: CD5C15                CALL code_155C
+158C: 78                    LD A,B
+158D: C1                    POP BC
+158E: 0D                    DEC C
+158F: 20F2                  JR NZ,code_1583
+
+; xref: 159E(code) 
+;
+1591: D1         code_1591  POP DE
+1592: 05                    DEC B
+1593: 20E6                  JR NZ,code_157B
+1595: C3A414                JP code_14A4
+
+; xref: 157F(code) 
+;
+1598: 212341     code_1598  LD HL,4123
+159B: CD3C15                CALL code_153C
+159E: 18F1                  JR code_1591
+;...
+
+; xref: 16ED(code) 
+;
+15A8: 11A015     code_15A8  LD DE,15A0
+15AB: 212741                LD HL,4127
+15AE: CD9F11                CALL code_119F
+15B1: 3A2E41                LD A,(data_412E)
+15B4: B7                    OR A
+15B5: CA6321                JP Z,code_2163
+15B8: CDD310                CALL code_10D3
+15BB: 34                    INC (HL)
+15BC: 34                    INC (HL)
+15BD: CD0516                CALL code_1605
+15C0: 215141                LD HL,4151
+15C3: 71                    LD (HL),C
+15C4: 41                    LD B,C
+
+; xref: 15FA(code) 1600(code) 
+;
+15C5: 114A41     code_15C5  LD DE,414A
+15C8: 212741                LD HL,4127
+15CB: CD1715                CALL code_1517
+15CE: 1A                    LD A,(DE)
+15CF: 99                    SBC A,C
+15D0: 3F                    CCF
+15D1: 380B                  JR C,code_15DE
+15D3: 114A41                LD DE,414A
+15D6: 212741                LD HL,4127
+15D9: CD0515                CALL code_1505
+15DC: AF                    XOR A
+15DD: DA1204                JP C,code_0412
+;...
+
+; xref: 15D1(code) 
+;
+15DE: 12         code_15DE  LD (DE),A
+15DF: 04                    INC B
+15E0: 3A2341                LD A,(data_4123)
+15E3: 3C                    INC A
+15E4: 3D                    DEC A
+15E5: 1F                    RRA
+15E6: DD14                  INC D
+15E9: 17                    RLA
+15EA: 211D41                LD HL,411D
+15ED: 0E07                  LD C,07
+15EF: CD6515                CALL code_1565
+15F2: 214A41                LD HL,414A
+15F5: CD6315                CALL code_1563
+15F8: 78                    LD A,B
+15F9: B7                    OR A
+15FA: 20C9                  JR NZ,code_15C5
+15FC: 212441                LD HL,4124
+15FF: 35                    DEC (HL)
+1600: 20C3                  JR NZ,code_15C5
+1602: C37E0F                JP code_0F7E
+
+; xref: 1574(code) 15BD(code) 
+;
+1605: 79         code_1605  LD A,C
+1606: 322D41                LD (data_412D),A
+1609: 2B                    DEC HL
+160A: 115041                LD DE,4150
+160D: 010007                LD BC,0700
+
+; xref: 1616(code) 
+;
+1610: 7E         code_1610  LD A,(HL)
+1611: 12                    LD (DE),A
+1612: 71                    LD (HL),C
+1613: 1B                    DEC DE
+1614: 2B                    DEC HL
+1615: 05                    DEC B
+1616: 20F8                  JR NZ,code_1610
+1618: C9                    RET
+
+; xref: 16DE(code) 1743(code) 
+;
+1619: CDC811     code_1619  CALL code_11C8
+161C: EB                    EX DE,HL
+161D: 2B                    DEC HL
+161E: 7E                    LD A,(HL)
+161F: B7                    OR A
+1620: C8                    RET Z
+1621: C602                  ADD A,02
+1623: DA7E0F                JP C,code_0F7E
+1626: 77                    LD (HL),A
+1627: E5                    PUSH HL
+1628: CD4314                CALL code_1443
+162B: E1                    POP HL
+162C: 34                    INC (HL)
+162D: C0                    RET NZ
+162E: C37E0F                JP code_0F7E
+;...
+
+; xref: 2C67(code) 
+;
+1638: AF         code_1638  XOR A
+1639: EB                    EX DE,HL
+163A: 01FF00                LD BC,00FF
+163D: 60                    LD H,B
+163E: 68                    LD L,B
+163F: CC6612                CALL Z,code_1266
+1642: EB                    EX DE,HL
+1643: 7E                    LD A,(HL)
+1644: FE2D                  CP 2D
+1646: F5                    PUSH AF
+1647: CA4F16                JP Z,code_164F
+164A: FE2B                  CP 2B
+164C: 2801                  JR Z,code_164F
+164E: 2B                    DEC HL
+
+; xref: 1647(code) 164C(code) 16B7(code) 1720(code) 
+;
+164F: D7         code_164F  RST 10
+1650: DAF516                JP C,code_16F5
+1653: FE2E                  CP 2E
+1655: CAB016                JP Z,code_16B0
+1658: FE45                  CP 45
+165A: 2814                  JR Z,code_1670
+165C: FE25                  CP 25
+165E: CABA16                JP Z,code_16BA
+1661: FE23                  CP 23
+1663: CAC116                JP Z,code_16C1
+1666: FE21                  CP 21
+1668: CAC216                JP Z,code_16C2
+166B: FE44                  CP 44
+166D: 2024                  JR NZ,code_1693
+166F: B7                    OR A
+
+; xref: 165A(code) 
+;
+1670: CDC716     code_1670  CALL code_16C7
+1673: E5                    PUSH HL
+1674: 218916                LD HL,1689
+1677: E3                    EX (SP),HL
+1678: D7                    RST 10
+1679: 15                    DEC D
+167A: FECE                  CP CE
+167C: C8                    RET Z
+167D: FE2D                  CP 2D
+167F: C8                    RET Z
+1680: 14                    INC D
+1681: FECD                  CP CD
+1683: C8                    RET Z
+1684: FE2B                  CP 2B
+1686: C8                    RET Z
+1687: 2B                    DEC HL
+1688: F1                    POP AF
+
+; xref: 1770(code) 
+;
+1689: D7         code_1689  RST 10
+168A: DA6017                JP C,code_1760
+168D: 14                    INC D
+168E: 2003                  JR NZ,code_1693
+1690: AF                    XOR A
+1691: 93                    SUB A,E
+1692: 5F                    LD E,A
+
+; xref: 16B2(code) 16BF(code) 166D(code) 168E(code) 
+;
+1693: E5         code_1693  PUSH HL
+1694: 7B                    LD A,E
+1695: 90                    SUB A,B
+
+; xref: 169C(code) 
+;
+1696: F4D616     code_1696  CALL P,code_16D6
+1699: FCE416                CALL M,code_16E4
+169C: 20F8                  JR NZ,code_1696
+169E: E1                    POP HL
+169F: F1                    POP AF
+16A0: E5                    PUSH HL
+16A1: CC4711                CALL Z,code_1147
+16A4: E1                    POP HL
+16A5: E7                    RST 20
+16A6: E8                    RET PE
+16A7: E5                    PUSH HL
+16A8: 215C10                LD HL,105C
+16AB: E5                    PUSH HL
+16AC: CD6F12                CALL code_126F
+16AF: C9                    RET
+
+; xref: 1655(code) 
+;
+16B0: E7         code_16B0  RST 20
+16B1: 0C                    INC C
+16B2: 20DF                  JR NZ,code_1693
+16B4: DCC716                CALL C,code_16C7
+16B7: C34F16                JP code_164F
+
+; xref: 165E(code) 
+;
+16BA: E7         code_16BA  RST 20
+16BB: F26021                JP P,code_2160
+
+; xref: 16C5(code) 
+;
+16BE: 23         code_16BE  INC HL
+16BF: 18D2                  JR code_1693
+
+; xref: 1663(code) 
+;
+16C1: B7         code_16C1  OR A
+
+; xref: 1668(code) 
+;
+16C2: CDC716     code_16C2  CALL code_16C7
+16C5: 18F7                  JR code_16BE
+
+; xref: 1670(code) 16B4(code) 16C2(code) 
+;
+16C7: E5         code_16C7  PUSH HL
+16C8: D5                    PUSH DE
+16C9: C5                    PUSH BC
+16CA: F5                    PUSH AF
+16CB: CC7D12                CALL Z,code_127D
+16CE: F1                    POP AF
+16CF: C4A712                CALL NZ,code_12A7
+16D2: C1                    POP BC
+16D3: D1                    POP DE
+16D4: E1                    POP HL
+16D5: C9                    RET
+
+; xref: 1696(code) 
+;
+16D6: C8         code_16D6  RET Z
+
+; xref: 1A09(code) 
+;
+16D7: F5         code_16D7  PUSH AF
+16D8: E7                    RST 20
+16D9: F5                    PUSH AF
+16DA: E40A11                CALL PO,code_110A
+16DD: F1                    POP AF
+16DE: EC1916                CALL PE,code_1619
+16E1: F1                    POP AF
+
+; xref: 198B(code) 1926(code) 
+;
+16E2: 3D         code_16E2  DEC A
+16E3: C9                    RET
+
+; xref: 1A10(code) 1930(code) 199C(code) 1699(code) 
+;
+16E4: D5         code_16E4  PUSH DE
+16E5: E5                    PUSH HL
+16E6: F5                    PUSH AF
+16E7: E7                    RST 20
+16E8: F5                    PUSH AF
+16E9: E46310                CALL PO,code_1063
+16EC: F1                    POP AF
+16ED: ECA815                CALL PE,code_15A8
+16F0: F1                    POP AF
+16F1: E1                    POP HL
+16F2: D1                    POP DE
+16F3: 3C                    INC A
+16F4: C9                    RET
+
+; xref: 1650(code) 
+;
+16F5: D5         code_16F5  PUSH DE
+16F6: 78                    LD A,B
+16F7: 89                    ADC A,C
+16F8: 47                    LD B,A
+16F9: C5                    PUSH BC
+16FA: E5                    PUSH HL
+16FB: 7E                    LD A,(HL)
+16FC: D630                  SUB A,30
+16FE: F5                    PUSH AF
+16FF: E7                    RST 20
+1700: F22917                JP P,code_1729
+1703: 2A2141                LD HL,(data_4121)
+1706: 11CD0C                LD DE,0CCD
+1709: DF                    RST 18
+170A: 3019                  JR NC,code_1725
+170C: 54                    LD D,H
+170D: 5D                    LD E,L
+170E: 29                    ADD HL,HL
+170F: 29                    ADD HL,HL
+1710: 19                    ADD HL,DE
+1711: 29                    ADD HL,HL
+1712: F1                    POP AF
+1713: 4F                    LD C,A
+1714: 09                    ADD HL,BC
+1715: 7C                    LD A,H
+1716: B7                    OR A
+1717: FA2317                JP M,code_1723
+171A: 222141                LD (data_4121),HL
+
+; xref: 1753(code) 
+;
+171D: E1         code_171D  POP HL
+171E: C1                    POP BC
+171F: D1                    POP DE
+1720: C34F16                JP code_164F
+
+; xref: 1717(code) 
+;
+1723: 79         code_1723  LD A,C
+1724: F5                    PUSH AF
+
+; xref: 170A(code) 
+;
+1725: CD9812     code_1725  CALL code_1298
+1728: 37                    SCF
+
+; xref: 1700(code) 
+;
+1729: 3018       code_1729  JR NC,code_1743
+172B: 017494                LD BC,9474
+172E: 110024                LD DE,2400
+1731: CDD811                CALL code_11D8
+1734: F24017                JP P,code_1740
+1737: CD0A11                CALL code_110A
+173A: F1                    POP AF
+173B: CD5517                CALL code_1755
+173E: DDCDAF12              CALL code_12AF
+;...
+
+; xref: 1734(code) 
+;
+1740: CDAF12     code_1740  CALL code_12AF
+
+; xref: 1729(code) 
+;
+1743: CD1916     code_1743  CALL code_1619
+1746: CDC811                CALL code_11C8
+1749: F1                    POP AF
+174A: CD3011                CALL code_1130
+174D: CDAF12                CALL code_12AF
+1750: CD4314                CALL code_1443
+1753: 18C8                  JR code_171D
+
+; xref: 173B(code) 
+;
+1755: CD7011     code_1755  CALL code_1170
+1758: CD3011                CALL code_1130
+175B: C1                    POP BC
+175C: D1                    POP DE
+175D: C3E20E                JP code_0EE2
+
+; xref: 168A(code) 
+;
+1760: 7B         code_1760  LD A,E
+1761: FE0A                  CP 0A
+1763: 3009                  JR NC,code_176E
+1765: 07                    RLCA
+1766: 07                    RLCA
+1767: 83                    ADD A,E
+1768: 07                    RLCA
+1769: 86                    ADD A,(HL)
+176A: D630                  SUB A,30
+176C: 5F                    LD E,A
+176D: FA1E32                JP M,code_321E
+;...
+
+; xref: 1763(code) 
+;
+176E: 1E32       code_176E  LD E,32
+1770: C38916                JP code_1689
+;...
+
+; xref: 2209(code) 
+;
+177B: CD6612     code_177B  CALL code_1266
+177E: AF                    XOR A
+177F: CD0018                CALL code_1800
+1782: B6                    OR (HL)
+1783: CDA517                CALL code_17A5
+1786: C38030                JP code_3080
+
+; xref: 18E9(code) 
+;
+1789: AF         code_1789  XOR A
+178A: CD0018                CALL code_1800
+178D: E608                  AND 08
+178F: 2802                  JR Z,code_1793
+1791: 362B                  LD (HL),2B
+
+; xref: 178F(code) 
+;
+1793: EB         code_1793  EX DE,HL
+1794: CD6011                CALL code_1160
+1797: EB                    EX DE,HL
+1798: F2A517                JP P,code_17A5
+179B: 362D                  LD (HL),2D
+179D: C5                    PUSH BC
+179E: E5                    PUSH HL
+179F: CD4711                CALL code_1147
+17A2: E1                    POP HL
+17A3: C1                    POP BC
+17A4: B4                    OR H
+
+; xref: 1783(code) 1798(code) 
+;
+17A5: 23         code_17A5  INC HL
+17A6: 3630                  LD (HL),30
+17A8: 3AD840                LD A,(data_40D8)
+17AB: 57                    LD D,A
+17AC: 17                    RLA
+17AD: 3AAF40                LD A,(data_40AF)
+17B0: DA6618                JP C,code_1866
+17B3: CA5E18                JP Z,code_185E
+17B6: FE04                  CP 04
+17B8: D20918                JP NC,code_1809
+17BB: 010000                LD BC,0000
+17BE: CDFB1A                CALL code_1AFB
+
+; xref: 188C(code) 
+;
+17C1: 213041     code_17C1  LD HL,4130
+17C4: 46                    LD B,(HL)
+17C5: 0E20                  LD C,20
+17C7: 3AD840                LD A,(data_40D8)
+17CA: 5F                    LD E,A
+17CB: E620                  AND 20
+17CD: 2807                  JR Z,code_17D6
+17CF: 78                    LD A,B
+17D0: B9                    CP C
+17D1: 0E2A                  LD C,2A
+17D3: 2001                  JR NZ,code_17D6
+17D5: 41                    LD B,C
+
+; xref: 17CD(code) 17D3(code) 17E4(code) 17E8(code) 
+;
+17D6: 71         code_17D6  LD (HL),C
+17D7: D7                    RST 10
+17D8: 2814                  JR Z,code_17EE
+17DA: FE45                  CP 45
+17DC: 2810                  JR Z,code_17EE
+17DE: FE44                  CP 44
+17E0: 280C                  JR Z,code_17EE
+17E2: FE30                  CP 30
+17E4: 28F0                  JR Z,code_17D6
+17E6: FE2C                  CP 2C
+17E8: 28EC                  JR Z,code_17D6
+17EA: FE2E                  CP 2E
+17EC: 2003                  JR NZ,code_17F1
+
+; xref: 17D8(code) 17DC(code) 17E0(code) 
+;
+17EE: 2B         code_17EE  DEC HL
+17EF: 3630                  LD (HL),30
+
+; xref: 17EC(code) 
+;
+17F1: 7B         code_17F1  LD A,E
+17F2: E610                  AND 10
+17F4: 2803                  JR Z,code_17F9
+17F6: 2B                    DEC HL
+17F7: 3624                  LD (HL),24
+
+; xref: 17F4(code) 
+;
+17F9: 7B         code_17F9  LD A,E
+17FA: E604                  AND 04
+17FC: C0                    RET NZ
+17FD: 2B                    DEC HL
+17FE: 70                    LD (HL),B
+17FF: C9                    RET
+
+; xref: 177F(code) 178A(code) 
+;
+1800: 32D840     code_1800  LD (data_40D8),A
+1803: 213041                LD HL,4130
+1806: 3620                  LD (HL),20
+1808: C9                    RET
+
+; xref: 17B8(code) 
+;
+1809: FE05       code_1809  CP 05
+180B: E5                    PUSH HL
+180C: DE00                  SBC A,00
+180E: 17                    RLA
+180F: 57                    LD D,A
+1810: 14                    INC D
+1811: CDCD19                CALL code_19CD
+1814: 010003                LD BC,0300
+1817: 82                    ADD A,D
+1818: FA2318                JP M,code_1823
+181B: 14                    INC D
+181C: BA                    CP D
+181D: 3004                  JR NC,code_1823
+181F: 3C                    INC A
+1820: 47                    LD B,A
+1821: 3E02                  LD A,02
+
+; xref: 1818(code) 181D(code) 
+;
+1823: D602       code_1823  SUB A,02
+1825: E1                    POP HL
+1826: F5                    PUSH AF
+1827: CD5D1A                CALL code_1A5D
+182A: 3630                  LD (HL),30
+182C: CC9511                CALL Z,code_1195
+182F: CD701A                CALL code_1A70
+
+; xref: 1836(code) 
+;
+1832: 2B         code_1832  DEC HL
+1833: 7E                    LD A,(HL)
+1834: FE30                  CP 30
+1836: 28FA                  JR Z,code_1832
+1838: FE2E                  CP 2E
+183A: C49511                CALL NZ,code_1195
+183D: F1                    POP AF
+183E: 281F                  JR Z,code_185F
+
+; xref: 19C5(code) 
+;
+1840: F5         code_1840  PUSH AF
+1841: E7                    RST 20
+1842: 3E22                  LD A,22
+1844: 8F                    ADC A,A
+1845: 77                    LD (HL),A
+1846: 23                    INC HL
+1847: F1                    POP AF
+1848: 362B                  LD (HL),2B
+184A: F25118                JP P,code_1851
+184D: 362D                  LD (HL),2D
+184F: 2F                    CPLA
+1850: 3C                    INC A
+
+; xref: 184A(code) 
+;
+1851: 062F       code_1851  LD B,2F
+
+; xref: 1856(code) 
+;
+1853: 04         code_1853  INC B
+1854: D60A                  SUB A,0A
+1856: 30FB                  JR NC,code_1853
+1858: C63A                  ADD A,3A
+185A: 23                    INC HL
+185B: 70                    LD (HL),B
+185C: 23                    INC HL
+185D: 77                    LD (HL),A
+
+; xref: 17B3(code) 
+;
+185E: 23         code_185E  INC HL
+
+; xref: 183E(code) 
+;
+185F: 3600       code_185F  LD (HL),00
+1861: EB                    EX DE,HL
+1862: 213041                LD HL,4130
+1865: C9                    RET
+
+; xref: 17B0(code) 
+;
+1866: 23         code_1866  INC HL
+1867: C5                    PUSH BC
+1868: FE04                  CP 04
+186A: 7A                    LD A,D
+186B: D2D518                JP NC,code_18D5
+186E: 1F                    RRA
+186F: DA6F19                JP C,code_196F
+1872: 010306                LD BC,0603
+1875: CD551A                CALL code_1A55
+1878: D1                    POP DE
+1879: 7A                    LD A,D
+187A: D605                  SUB A,05
+187C: F4351A                CALL P,code_1A35
+187F: CDFB1A                CALL code_1AFB
+
+; xref: 1920(code) 
+;
+1882: 7B         code_1882  LD A,E
+1883: B7                    OR A
+1884: CCFB10                CALL Z,code_10FB
+1887: 3D                    DEC A
+1888: F4351A                CALL P,code_1A35
+
+; xref: 196C(code) 19CA(code) 
+;
+188B: E5         code_188B  PUSH HL
+188C: CDC117                CALL code_17C1
+188F: E1                    POP HL
+1890: 2802                  JR Z,code_1894
+1892: 70                    LD (HL),B
+1893: 23                    INC HL
+
+; xref: 1890(code) 
+;
+1894: 3600       code_1894  LD (HL),00
+1896: 212F41                LD HL,412F
+
+; xref: 18A3(code) 18A7(code) 
+;
+1899: 23         code_1899  INC HL
+
+; xref: 18CB(code) 
+;
+189A: 3AF340     code_189A  LD A,(data_40F3)
+189D: 95                    SUB A,L
+189E: 92                    SUB A,D
+189F: C8                    RET Z
+18A0: 7E                    LD A,(HL)
+18A1: FE20                  CP 20
+18A3: 28F4                  JR Z,code_1899
+18A5: FE2A                  CP 2A
+18A7: 28F0                  JR Z,code_1899
+18A9: 2B                    DEC HL
+18AA: E5                    PUSH HL
+18AB: F5                    PUSH AF
+18AC: 01AB18                LD BC,18AB
+18AF: C5                    PUSH BC
+18B0: D7                    RST 10
+18B1: FE2D                  CP 2D
+18B3: C8                    RET Z
+18B4: FE2B                  CP 2B
+18B6: C8                    RET Z
+18B7: FE24                  CP 24
+18B9: C8                    RET Z
+18BA: C1                    POP BC
+18BB: FE30                  CP 30
+18BD: 200F                  JR NZ,code_18CE
+18BF: 23                    INC HL
+18C0: D7                    RST 10
+18C1: 300B                  JR NC,code_18CE
+18C3: 2B                    DEC HL
+18C4: 012B77                LD BC,772B
+;...
+
+; xref: 18C8(code) 
+;
+18C5: 2B         code_18C5  DEC HL
+18C6: 77                    LD (HL),A
+18C7: F1                    POP AF
+18C8: 28FB                  JR Z,code_18C5
+18CA: C1                    POP BC
+18CB: C39A18                JP code_189A
+
+; xref: 18BD(code) 18C1(code) 
+;
+18CE: F1         code_18CE  POP AF
+18CF: FDE1                  POP IY
+18D2: 3625                  LD (HL),25
+18D4: C9                    RET
+
+; xref: 186B(code) 
+;
+18D5: E5         code_18D5  PUSH HL
+18D6: 1F                    RRA
+18D7: DA7619                JP C,code_1976
+18DA: 2814                  JR Z,code_18F0
+18DC: 11501B                LD DE,1B50
+18DF: CD1512                CALL code_1215
+18E2: 1610                  LD D,10
+18E4: FAFE18                JP M,code_18FE
+
+; xref: 18F9(code) 
+;
+18E7: E1         code_18E7  POP HL
+18E8: C1                    POP BC
+18E9: CD8917                CALL code_1789
+18EC: 2B                    DEC HL
+18ED: 3625                  LD (HL),25
+18EF: C9                    RET
+
+; xref: 18DA(code) 
+;
+18F0: 010EB6     code_18F0  LD BC,B60E
+18F3: 11CA1B                LD DE,1BCA
+18F6: CDD811                CALL code_11D8
+18F9: F2E718                JP P,code_18E7
+18FC: 1606                  LD D,06
+
+; xref: 18E4(code) 
+;
+18FE: CD2111     code_18FE  CALL code_1121
+1901: C4CD19                CALL NZ,code_19CD
+1904: E1                    POP HL
+1905: C1                    POP BC
+1906: FA2319                JP M,code_1923
+1909: C5                    PUSH BC
+190A: 5F                    LD E,A
+190B: 78                    LD A,B
+190C: 92                    SUB A,D
+190D: 93                    SUB A,E
+190E: F4351A                CALL P,code_1A35
+1911: CD491A                CALL code_1A49
+1914: CD701A                CALL code_1A70
+1917: B3                    OR E
+1918: C4431A                CALL NZ,code_1A43
+191B: B3                    OR E
+191C: C45D1A                CALL NZ,code_1A5D
+191F: D1                    POP DE
+1920: C38218                JP code_1882
+
+; xref: 1906(code) 
+;
+1923: 5F         code_1923  LD E,A
+1924: 79                    LD A,C
+1925: B7                    OR A
+1926: C4E216                CALL NZ,code_16E2
+1929: 83                    ADD A,E
+192A: FA2E19                JP M,code_192E
+192D: AF                    XOR A
+
+; xref: 192A(code) 
+;
+192E: C5         code_192E  PUSH BC
+192F: F5                    PUSH AF
+
+; xref: 1933(code) 
+;
+1930: FCE416     code_1930  CALL M,code_16E4
+1933: FA3019                JP M,code_1930
+1936: C1                    POP BC
+1937: 7B                    LD A,E
+1938: 90                    SUB A,B
+1939: C1                    POP BC
+193A: 5F                    LD E,A
+193B: 82                    ADD A,D
+193C: 78                    LD A,B
+193D: FA4B19                JP M,code_194B
+1940: 92                    SUB A,D
+1941: 93                    SUB A,E
+1942: F4351A                CALL P,code_1A35
+1945: C5                    PUSH BC
+1946: CD491A                CALL code_1A49
+1949: 1811                  JR code_195C
+
+; xref: 193D(code) 
+;
+194B: CD351A     code_194B  CALL code_1A35
+194E: 79                    LD A,C
+194F: CD601A                CALL code_1A60
+1952: 4F                    LD C,A
+1953: AF                    XOR A
+1954: 92                    SUB A,D
+1955: 93                    SUB A,E
+1956: CD351A                CALL code_1A35
+1959: C5                    PUSH BC
+195A: 47                    LD B,A
+195B: 4F                    LD C,A
+
+; xref: 1949(code) 
+;
+195C: CD701A     code_195C  CALL code_1A70
+195F: C1                    POP BC
+1960: B1                    OR C
+1961: 2003                  JR NZ,code_1966
+1963: 2AF340                LD HL,(data_40F3)
+
+; xref: 1961(code) 
+;
+1966: 83         code_1966  ADD A,E
+1967: 3D                    DEC A
+1968: F4351A                CALL P,code_1A35
+196B: 50                    LD D,B
+196C: C38B18                JP code_188B
+
+; xref: 186F(code) 
+;
+196F: E5         code_196F  PUSH HL
+1970: D5                    PUSH DE
+1971: CD9812                CALL code_1298
+1974: D1                    POP DE
+1975: AF                    XOR A
+
+; xref: 18D7(code) 
+;
+1976: CA7C19     code_1976  JP Z,code_197C
+1979: 1E10                  LD E,10
+197B: 011E06                LD BC,061E
+;...
+
+; xref: 1976(code) 
+;
+197C: 1E06       code_197C  LD E,06
+197E: CD2111                CALL code_1121
+1981: 37                    SCF
+1982: C4CD19                CALL NZ,code_19CD
+1985: E1                    POP HL
+1986: C1                    POP BC
+1987: F5                    PUSH AF
+1988: 79                    LD A,C
+1989: B7                    OR A
+198A: F5                    PUSH AF
+198B: C4E216                CALL NZ,code_16E2
+198E: 80                    ADD A,B
+198F: 4F                    LD C,A
+1990: 7A                    LD A,D
+1991: E604                  AND 04
+1993: FE01                  CP 01
+1995: 9F                    SBC A,A
+1996: 57                    LD D,A
+1997: 81                    ADD A,C
+1998: 4F                    LD C,A
+1999: 93                    SUB A,E
+199A: F5                    PUSH AF
+199B: C5                    PUSH BC
+
+; xref: 199F(code) 
+;
+199C: FCE416     code_199C  CALL M,code_16E4
+199F: FA9C19                JP M,code_199C
+19A2: C1                    POP BC
+19A3: F1                    POP AF
+19A4: C5                    PUSH BC
+19A5: F5                    PUSH AF
+19A6: FAAA19                JP M,code_19AA
+19A9: AF                    XOR A
+
+; xref: 19A6(code) 
+;
+19AA: 2F         code_19AA  CPLA
+19AB: 3C                    INC A
+19AC: 80                    ADD A,B
+19AD: 3C                    INC A
+19AE: 82                    ADD A,D
+19AF: 47                    LD B,A
+19B0: 0E00                  LD C,00
+19B2: CD701A                CALL code_1A70
+19B5: F1                    POP AF
+19B6: F43D1A                CALL P,code_1A3D
+19B9: C1                    POP BC
+19BA: F1                    POP AF
+19BB: CCFB10                CALL Z,code_10FB
+19BE: F1                    POP AF
+19BF: 3803                  JR C,code_19C4
+19C1: 83                    ADD A,E
+19C2: 90                    SUB A,B
+19C3: 92                    SUB A,D
+
+; xref: 19BF(code) 
+;
+19C4: C5         code_19C4  PUSH BC
+19C5: CD4018                CALL code_1840
+19C8: EB                    EX DE,HL
+19C9: D1                    POP DE
+19CA: C38B18                JP code_188B
+
+; xref: 1811(code) 1982(code) 1901(code) 
+;
+19CD: D5         code_19CD  PUSH DE
+19CE: AF                    XOR A
+19CF: F5                    PUSH AF
+19D0: E7                    RST 20
+19D1: E2EE19                JP PO,code_19EE
+
+; xref: 19EC(code) 
+;
+19D4: 3A2441     code_19D4  LD A,(data_4124)
+19D7: FE91                  CP 91
+19D9: D2EE19                JP NC,code_19EE
+19DC: 11301B                LD DE,1B30
+19DF: 212741                LD HL,4127
+19E2: CD9F11                CALL code_119F
+19E5: CD6D15                CALL code_156D
+19E8: F1                    POP AF
+19E9: D60A                  SUB A,0A
+19EB: F5                    PUSH AF
+19EC: 18E6                  JR code_19D4
+
+; xref: 19D1(code) 19D9(code) 
+;
+19EE: CD1B1A     code_19EE  CALL code_1A1B
+
+; xref: 1A0D(code) 
+;
+19F1: E7         code_19F1  RST 20
+19F2: 300B                  JR NC,code_19FF
+19F4: 014391                LD BC,9143
+19F7: 11F94F                LD DE,4FF9
+19FA: CDD811                CALL code_11D8
+19FD: 1806                  JR code_1A05
+
+; xref: 19F2(code) 
+;
+19FF: 11381B     code_19FF  LD DE,1B38
+1A02: CD1512                CALL code_1215
+
+; xref: 19FD(code) 
+;
+1A05: F2171A     code_1A05  JP P,code_1A17
+1A08: F1                    POP AF
+1A09: CDD716                CALL code_16D7
+1A0C: F5                    PUSH AF
+1A0D: 18E2                  JR code_19F1
+
+; xref: 1A31(code) 
+;
+1A0F: F1         code_1A0F  POP AF
+1A10: CDE416                CALL code_16E4
+1A13: F5                    PUSH AF
+1A14: CD1B1A                CALL code_1A1B
+
+; xref: 1A05(code) 
+;
+1A17: F1         code_1A17  POP AF
+1A18: B7                    OR A
+1A19: D1                    POP DE
+1A1A: C9                    RET
+
+; xref: 19EE(code) 1A14(code) 
+;
+1A1B: E7         code_1A1B  RST 20
+1A1C: EA2A1A                JP PE,code_1A2A
+1A1F: 017494                LD BC,9474
+1A22: 11F823                LD DE,23F8
+1A25: CDD811                CALL code_11D8
+1A28: 1806                  JR code_1A30
+
+; xref: 1A1C(code) 
+;
+1A2A: 11401B     code_1A2A  LD DE,1B40
+1A2D: CD1512                CALL code_1215
+
+; xref: 1A28(code) 
+;
+1A30: E1         code_1A30  POP HL
+1A31: F20F1A                JP P,code_1A0F
+1A34: E9B7C8                JP HL
+;...
+
+; xref: 187C(code) 1888(code) 190E(code) 194B(code) 1942(code) 
+; xref: 1956(code) 1968(code) 
+;
+1A35: B7         code_1A35  OR A
+
+; xref: 1A3B(code) 
+;
+1A36: C8         code_1A36  RET Z
+1A37: 3D                    DEC A
+1A38: 3630                  LD (HL),30
+1A3A: 23                    INC HL
+1A3B: 18F9                  JR code_1A36
+
+; xref: 19B6(code) 
+;
+1A3D: 2004       code_1A3D  JR NZ,code_1A43
+
+; xref: 1A47(code) 
+;
+1A3F: C8         code_1A3F  RET Z
+1A40: CD5D1A                CALL code_1A5D
+
+; xref: 1918(code) 1A3D(code) 
+;
+1A43: 3630       code_1A43  LD (HL),30
+1A45: 23                    INC HL
+1A46: 3D                    DEC A
+1A47: 18F6                  JR code_1A3F
+
+; xref: 1911(code) 1946(code) 
+;
+1A49: 7B         code_1A49  LD A,E
+1A4A: 82                    ADD A,D
+1A4B: 3C                    INC A
+1A4C: 47                    LD B,A
+1A4D: 3C                    INC A
+
+; xref: 1A50(code) 
+;
+1A4E: D603       code_1A4E  SUB A,03
+1A50: 30FC                  JR NC,code_1A4E
+1A52: C605                  ADD A,05
+1A54: 4F                    LD C,A
+
+; xref: 1875(code) 
+;
+1A55: 3AD840     code_1A55  LD A,(data_40D8)
+1A58: E640                  AND 40
+1A5A: C0                    RET NZ
+1A5B: 4F                    LD C,A
+1A5C: C9                    RET
+
+; xref: 1B01(code) 1827(code) 191C(code) 1A40(code) 1AC9(code) 
+; xref: 1A8E(code) 1B2A(code) 
+;
+1A5D: 05         code_1A5D  DEC B
+1A5E: 2008                  JR NZ,code_1A68
+
+; xref: 194F(code) 
+;
+1A60: 362E       code_1A60  LD (HL),2E
+1A62: 22F340                LD (data_40F3),HL
+1A65: 23                    INC HL
+1A66: 48                    LD C,B
+1A67: C9                    RET
+
+; xref: 1A5E(code) 
+;
+1A68: 0D         code_1A68  DEC C
+1A69: C0                    RET NZ
+1A6A: 362C                  LD (HL),2C
+1A6C: 23                    INC HL
+1A6D: 0E03                  LD C,03
+1A6F: C9                    RET
+
+; xref: 182F(code) 1914(code) 195C(code) 19B2(code) 
+;
+1A70: D5         code_1A70  PUSH DE
+1A71: E7                    RST 20
+1A72: E2B61A                JP PO,code_1AB6
+1A75: C5                    PUSH BC
+1A76: E5                    PUSH HL
+1A77: CDC811                CALL code_11C8
+1A7A: 21481B                LD HL,1B48
+1A7D: CDC311                CALL code_11C3
+1A80: CD4314                CALL code_1443
+1A83: AF                    XOR A
+1A84: CD4713                CALL code_1347
+1A87: E1                    POP HL
+1A88: C1                    POP BC
+1A89: 11581B                LD DE,1B58
+1A8C: 3E0A                  LD A,0A
+
+; xref: 1AAA(code) 
+;
+1A8E: CD5D1A     code_1A8E  CALL code_1A5D
+1A91: C5                    PUSH BC
+1A92: F5                    PUSH AF
+1A93: E5                    PUSH HL
+1A94: D5                    PUSH DE
+1A95: 062F                  LD B,2F
+
+; xref: 1A9D(code) 
+;
+1A97: 04         code_1A97  INC B
+1A98: E1                    POP HL
+1A99: E5                    PUSH HL
+1A9A: CD1415                CALL code_1514
+1A9D: 30F8                  JR NC,code_1A97
+1A9F: E1                    POP HL
+1AA0: CD0215                CALL code_1502
+1AA3: EB                    EX DE,HL
+1AA4: E1                    POP HL
+1AA5: 70                    LD (HL),B
+1AA6: 23                    INC HL
+1AA7: F1                    POP AF
+1AA8: C1                    POP BC
+1AA9: 3D                    DEC A
+1AAA: 20E2                  JR NZ,code_1A8E
+1AAC: C5                    PUSH BC
+1AAD: E5                    PUSH HL
+1AAE: 211D41                LD HL,411D
+1AB1: CD7D11                CALL code_117D
+1AB4: 180C                  JR code_1AC2
+
+; xref: 1A72(code) 
+;
+1AB6: C5         code_1AB6  PUSH BC
+1AB7: E5                    PUSH HL
+1AB8: CDD40E                CALL code_0ED4
+1ABB: 3C                    INC A
+1ABC: CDC712                CALL code_12C7
+1ABF: CD8011                CALL code_1180
+
+; xref: 1AB4(code) 
+;
+1AC2: E1         code_1AC2  POP HL
+1AC3: C1                    POP BC
+1AC4: AF                    XOR A
+1AC5: 119E1B                LD DE,1B9E
+
+; xref: 1AF3(code) 
+;
+1AC8: 3F         code_1AC8  CCF
+1AC9: CD5D1A                CALL code_1A5D
+1ACC: C5                    PUSH BC
+1ACD: F5                    PUSH AF
+1ACE: E5                    PUSH HL
+1ACF: D5                    PUSH DE
+1AD0: CD8B11                CALL code_118B
+1AD3: E1                    POP HL
+1AD4: 062F                  LD B,2F
+
+; xref: 1AE4(code) 
+;
+1AD6: 04         code_1AD6  INC B
+1AD7: 7B                    LD A,E
+1AD8: 96                    SUB A,(HL)
+1AD9: 5F                    LD E,A
+1ADA: 23                    INC HL
+1ADB: 7A                    LD A,D
+1ADC: 9E                    SBC A,(HL)
+1ADD: 57                    LD D,A
+1ADE: 23                    INC HL
+1ADF: 79                    LD A,C
+1AE0: 9E                    SBC A,(HL)
+1AE1: 4F                    LD C,A
+1AE2: 2B                    DEC HL
+1AE3: 2B                    DEC HL
+1AE4: 30F0                  JR NC,code_1AD6
+1AE6: CD830F                CALL code_0F83
+1AE9: 23                    INC HL
+1AEA: CD8011                CALL code_1180
+1AED: EB                    EX DE,HL
+1AEE: E1                    POP HL
+1AEF: 70                    LD (HL),B
+1AF0: 23                    INC HL
+1AF1: F1                    POP AF
+1AF2: C1                    POP BC
+1AF3: 38D3                  JR C,code_1AC8
+1AF5: 13                    INC DE
+1AF6: 13                    INC DE
+1AF7: 3E04                  LD A,04
+1AF9: 1806                  JR code_1B01
+
+; xref: 17BE(code) 187F(code) 
+;
+1AFB: D5         code_1AFB  PUSH DE
+1AFC: 11A41B                LD DE,1BA4
+1AFF: 3E05                  LD A,05
+
+; xref: 1B28(code) 1AF9(code) 
+;
+1B01: CD5D1A     code_1B01  CALL code_1A5D
+1B04: C5                    PUSH BC
+1B05: F5                    PUSH AF
+1B06: E5                    PUSH HL
+1B07: EB                    EX DE,HL
+1B08: 4E                    LD C,(HL)
+1B09: 23                    INC HL
+1B0A: 46                    LD B,(HL)
+1B0B: C5                    PUSH BC
+1B0C: 23                    INC HL
+1B0D: E3                    EX (SP),HL
+1B0E: EB                    EX DE,HL
+1B0F: 2A2141                LD HL,(data_4121)
+1B12: 062F                  LD B,2F
+
+; xref: 1B1B(code) 
+;
+1B14: 04         code_1B14  INC B
+1B15: 7D                    LD A,L
+1B16: 93                    SUB A,E
+1B17: 6F                    LD L,A
+1B18: 7C                    LD A,H
+1B19: 9A                    SBC A,D
+1B1A: 67                    LD H,A
+1B1B: 30F7                  JR NC,code_1B14
+1B1D: 19                    ADD HL,DE
+1B1E: 222141                LD (data_4121),HL
+1B21: D1                    POP DE
+1B22: E1                    POP HL
+1B23: 70                    LD (HL),B
+1B24: 23                    INC HL
+1B25: F1                    POP AF
+1B26: C1                    POP BC
+1B27: 3D                    DEC A
+1B28: 20D7                  JR NZ,code_1B01
+1B2A: CD5D1A                CALL code_1A5D
+1B2D: 77                    LD (HL),A
+1B2E: D1                    POP DE
+1B2F: C9                    RET
+;...
+
+; xref: 228A(code) 
+;
+211E: CD3521     code_211E  CALL code_2135
+
+; xref: 315C(code) 
+;
+2121: C5         code_2121  PUSH BC
+
+; xref: 3892(code) 
+;
+2122: E3         code_2122  EX (SP),HL
+2123: C1                    POP BC
+
+; xref: 212A(code) 
+;
+2124: DF         code_2124  RST 18
+2125: 7E                    LD A,(HL)
+2126: 02                    LD (BC),A
+2127: C8                    RET Z
+2128: 0B                    DEC BC
+2129: 2B                    DEC HL
+212A: 18F8                  JR code_2124
+
+; xref: 2AFF(code) 3A18(code) 
+;
+212C: E5         code_212C  PUSH HL
+212D: FD40                  LD B,B
+2130: 0600                  LD B,00
+2132: 09                    ADD HL,BC
+2133: 09                    ADD HL,BC
+2134: 3EE5                  LD A,E5
+;...
+
+; xref: 211E(code) 
+;
+2135: E5         code_2135  PUSH HL
+2136: 3EC6                  LD A,C6
+2138: 95                    SUB A,L
+2139: 6F                    LD L,A
+213A: 3EFF                  LD A,FF
+213C: 9C                    SBC A,H
+213D: 3804                  JR C,code_2143
+213F: 67                    LD H,A
+2140: 39                    ADD HL,SP
+2141: E1                    POP HL
+2142: D8                    RET C
+
+; xref: 213D(code) 
+;
+2143: 1E0C       code_2143  LD E,0C
+2145: 1824                  JR code_216B
+;...
+
+; xref: 260C(code) 32C3(code) 2DFC(code) 2B1D(code) 16BB(code) 
+; xref: 3A80(code) 
+;
+2160: 1E02       code_2160  LD E,02
+2162: 011E14                LD BC,141E
+;...
+
+; xref: 1071(code) 15B5(code) 
+;
+2163: 1E14       code_2163  LD E,14
+2165: 011E00                LD BC,001E
+2168: 011E24                LD BC,241E
+
+; xref: 371F(code) 307D(code) 2681(code) 12C4(code) 2C64(code) 
+; xref: 0F80(code) 2145(code) 30B7(code) 317F(code) 25F2(code) 
+;
+216B: 2AA240     code_216B  LD HL,(data_40A2)
+216E: 22EA40                LD (data_40EA),HL
+2171: 22EC40                LD (data_40EC),HL
+2174: 017D21                LD BC,217D
+2177: 2AE840                LD HL,(data_40E8)
+217A: C35B23                JP code_235B
+;...
+
+; xref: 3E78(code) 2224(code) 
+;
+21E2: CDC60E     code_21E2  CALL code_0EC6
+21E5: CDAC41                CALL code_41AC
+21E8: CDB728                CALL code_28B7
+21EB: 21F520                LD HL,20F5
+21EE: CD8130                CALL code_3081
+21F1: 3A9A40                LD A,(data_409A)
+21F4: D602                  SUB A,02
+21F6: CCCC38                CALL Z,code_38CC
+
+; xref: 223F(code) 2245(code) 3921(code) 22B6(code) 
+;
+21F9: 21FFFF     code_21F9  LD HL,FFFF
+21FC: 22A240                LD (data_40A2),HL
+21FF: 3AE140                LD A,(data_40E1)
+2202: B7                    OR A
+2203: 2837                  JR Z,code_223C
+2205: 2AE240                LD HL,(data_40E2)
+2208: E5                    PUSH HL
+2209: CD7B17                CALL code_177B
+220C: D1                    POP DE
+220D: D5                    PUSH DE
+220E: ED22                  NOP
+2211: 3E2A                  LD A,2A
+2213: 3802                  JR C,code_2217
+2215: 3E20                  LD A,20
+
+; xref: 2213(code) 
+;
+2217: CDAC0E     code_2217  CALL code_0EAC
+221A: CDC00E                CALL code_0EC0
+221D: D1                    POP DE
+221E: 3006                  JR NC,code_2226
+
+; xref: 222A(code) 2232(code) 
+;
+2220: AF         code_2220  XOR A
+2221: 32E140                LD (data_40E1),A
+2224: 18BC                  JR code_21E2
+
+; xref: 221E(code) 
+;
+2226: 2AE440     code_2226  LD HL,(data_40E4)
+2229: 19                    ADD HL,DE
+222A: 38F4                  JR C,code_2220
+222C: D5                    PUSH DE
+222D: 11F9FF                LD DE,FFF9
+2230: DF                    RST 18
+2231: D1                    POP DE
+2232: 30EC                  JR NC,code_2220
+2234: 22E240                LD (data_40E2),HL
+2237: F6FF                  OR FF
+2239: C36335                JP code_3563
+
+; xref: 2203(code) 
+;
+223C: CDC00E     code_223C  CALL code_0EC0
+223F: DAF921                JP C,code_21F9
+
+; xref: 396F(code) 
+;
+2242: D7         code_2242  RST 10
+2243: 3C                    INC A
+2244: 3D                    DEC A
+2245: CAF921                JP Z,code_21F9
+2248: F5                    PUSH AF
+2249: CD0026                CALL code_2600
+
+; xref: 2250(code) 
+;
+224C: 2B         code_224C  DEC HL
+224D: 7E                    LD A,(HL)
+224E: FE20                  CP 20
+2250: 28FA                  JR Z,code_224C
+2252: 23                    INC HL
+2253: 7E                    LD A,(HL)
+2254: FE20                  CP 20
+2256: CC9511                CALL Z,code_1195
+
+; xref: 3569(code) 
+;
+2259: D5         code_2259  PUSH DE
+225A: CD8123                CALL code_2381
+225D: D1                    POP DE
+225E: F1                    POP AF
+225F: 22E640                LD (data_40E6),HL
+2262: CDB241                CALL code_41B2
+2265: D21B25                JP NC,code_251B
+2268: D5                    PUSH DE
+2269: C5                    PUSH BC
+226A: AF                    XOR A
+226B: DD40                  LD B,B
+226E: D7                    RST 10
+226F: B7                    OR A
+2270: F5                    PUSH AF
+2271: EB                    EX DE,HL
+2272: 22EC40                LD (data_40EC),HL
+2275: EB                    EX DE,HL
+2276: ED22                  NOP
+2279: C5                    PUSH BC
+227A: DCB533                CALL C,code_33B5
+227D: D1                    POP DE
+227E: F1                    POP AF
+227F: D5                    PUSH DE
+2280: 2827                  JR Z,code_22A9
+2282: D1                    POP DE
+2283: 2AF940                LD HL,(data_40F9)
+2286: E3                    EX (SP),HL
+2287: C1                    POP BC
+2288: 09                    ADD HL,BC
+2289: E5                    PUSH HL
+228A: CD1E21                CALL code_211E
+228D: E1                    POP HL
+228E: 22F940                LD (data_40F9),HL
+2291: EB                    EX DE,HL
+2292: 74                    LD (HL),H
+2293: D1                    POP DE
+2294: E5                    PUSH HL
+2295: 23                    INC HL
+2296: 23                    INC HL
+2297: 73                    LD (HL),E
+2298: 23                    INC HL
+2299: 72                    LD (HL),D
+229A: 23                    INC HL
+229B: EB                    EX DE,HL
+229C: 2AA740                LD HL,(data_40A7)
+229F: EB                    EX DE,HL
+22A0: 1B                    DEC DE
+22A1: 1B                    DEC DE
+
+; xref: 22A7(code) 
+;
+22A2: 1A         code_22A2  LD A,(DE)
+22A3: 77                    LD (HL),A
+22A4: 23                    INC HL
+22A5: 13                    INC DE
+22A6: B7                    OR A
+22A7: 20F9                  JR NZ,code_22A2
+
+; xref: 2280(code) 
+;
+22A9: D1         code_22A9  POP DE
+22AA: CDBD22                CALL code_22BD
+22AD: CDB541                CALL code_41B5
+22B0: CD1E23                CALL code_231E
+22B3: CDB841                CALL code_41B8
+22B6: C3F921                JP code_21F9
+;...
+
+; xref: 22AA(code) 22CF(code) 
+;
+22BD: 62         code_22BD  LD H,D
+22BE: 6B                    LD L,E
+22BF: 7E                    LD A,(HL)
+22C0: 23                    INC HL
+22C1: B6                    OR (HL)
+22C2: C8                    RET Z
+22C3: 23                    INC HL
+22C4: 23                    INC HL
+22C5: 23                    INC HL
+22C6: AF                    XOR A
+
+; xref: 22C9(code) 
+;
+22C7: BE         code_22C7  CP (HL)
+22C8: 23                    INC HL
+22C9: 20FC                  JR NZ,code_22C7
+22CB: EB                    EX DE,HL
+22CC: 73                    LD (HL),E
+22CD: 23                    INC HL
+22CE: 72                    LD (HL),D
+22CF: 18EC                  JR code_22BD
+;...
+
+; xref: 35CC(code) 3E75(code) 
+;
+230E: 2AA440     code_230E  LD HL,(data_40A4)
+2311: CDA125                CALL code_25A1
+2314: 32E140                LD (data_40E1),A
+2317: 77                    LD (HL),A
+2318: 23                    INC HL
+2319: 77                    LD (HL),A
+231A: 23                    INC HL
+231B: 22F940                LD (data_40F9),HL
+
+; xref: 22B0(code) 
+;
+231E: 2AA440     code_231E  LD HL,(data_40A4)
+2321: 2B                    DEC HL
+2322: 22DF40                LD (data_40DF),HL
+2325: 061A                  LD B,1A
+2327: 210141                LD HL,4101
+
+; xref: 232D(code) 
+;
+232A: 3604       code_232A  LD (HL),04
+232C: 23                    INC HL
+232D: 10FB                  DJNZ code_232A
+232F: AF                    XOR A
+2330: 32F240                LD (data_40F2),A
+2333: 6F                    LD L,A
+2334: 67                    LD H,A
+2335: 22F040                LD (data_40F0),HL
+2338: 22F740                LD (data_40F7),HL
+233B: 2AB140                LD HL,(data_40B1)
+233E: 22D640                LD (data_40D6),HL
+2341: CD4438                CALL code_3844
+2344: 2AF940                LD HL,(data_40F9)
+2347: 22FB40                LD (data_40FB),HL
+;...
+
+; xref: 237A(code) 
+;
+2349: 40         code_2349  LD B,B
+234A: FD40                  LD B,B
+234D: CDBB41                CALL code_41BB
+
+; xref: 35B6(code) 
+;
+2350: C1         code_2350  POP BC
+2351: 2AA040                LD HL,(data_40A0)
+2354: 2B                    DEC HL
+2355: 2B                    DEC HL
+2356: 22E840                LD (data_40E8),HL
+2359: 23                    INC HL
+235A: 23                    INC HL
+
+; xref: 217A(code) 
+;
+235B: F9         code_235B  LD SP,HL
+235C: 21B540                LD HL,40B5
+235F: 22B340                LD (data_40B3),HL
+2362: CDC60E                CALL code_0EC6
+2365: CD2F29                CALL code_292F
+2368: AF                    XOR A
+2369: 67                    LD H,A
+236A: 6F                    LD L,A
+236B: 32DC40                LD (data_40DC),A
+236E: E5                    PUSH HL
+236F: C5                    PUSH BC
+2370: 2ADF40                LD HL,(data_40DF)
+2373: C9                    RET
+;...
+
+; xref: 3985(code) 
+;
+237A: 20CD       code_237A  JR NZ,code_2349
+237C: AC                    XOR H
+237D: 0EC3                  LD C,C3
+237F: C0                    RET NZ
+2380: 0EAF                  LD C,AF
+;...
+
+; xref: 225A(code) 
+;
+2381: AF         code_2381  XOR A
+2382: 32B040                LD (data_40B0),A
+2385: 4F                    LD C,A
+2386: EB                    EX DE,HL
+2387: 2AA740                LD HL,(data_40A7)
+238A: 2B                    DEC HL
+238B: 2B                    DEC HL
+238C: EB                    EX DE,HL
+
+; xref: 242D(code) 
+;
+238D: 7E         code_238D  LD A,(HL)
+238E: FE20                  CP 20
+2390: CA1C24                JP Z,code_241C
+2393: 47                    LD B,A
+2394: FE22                  CP 22
+2396: CA3824                JP Z,code_2438
+2399: B7                    OR A
+239A: CA3E24                JP Z,code_243E
+239D: 3AB040                LD A,(data_40B0)
+23A0: B7                    OR A
+23A1: 7E                    LD A,(HL)
+23A2: C21C24                JP NZ,code_241C
+23A5: FE3F                  CP 3F
+23A7: 3EB2                  LD A,B2
+23A9: CA1C24                JP Z,code_241C
+23AC: 7E                    LD A,(HL)
+23AD: FE30                  CP 30
+23AF: 3805                  JR C,code_23B6
+23B1: FE3C                  CP 3C
+23B3: DA1C24                JP C,code_241C
+
+; xref: 23AF(code) 
+;
+23B6: D5         code_23B6  PUSH DE
+23B7: 111B1E                LD DE,1E1B
+23BA: C5                    PUSH BC
+23BB: 01FE23                LD BC,23FE
+23BE: C5                    PUSH BC
+23BF: 067F                  LD B,7F
+23C1: 7E                    LD A,(HL)
+23C2: FE61                  CP 61
+23C4: 3807                  JR C,code_23CD
+23C6: FE7B                  CP 7B
+23C8: 3003                  JR NC,code_23CD
+23CA: E65F                  AND 5F
+23CC: 77                    LD (HL),A
+
+; xref: 23C4(code) 23C8(code) 23F8(code) 
+;
+23CD: 4E         code_23CD  LD C,(HL)
+23CE: EB                    EX DE,HL
+
+; xref: 23D1(code) 23DA(code) 
+;
+23CF: 23         code_23CF  INC HL
+23D0: B6                    OR (HL)
+23D1: F2CF23                JP P,code_23CF
+23D4: 04                    INC B
+23D5: 7E                    LD A,(HL)
+23D6: E67F                  AND 7F
+23D8: C8                    RET Z
+23D9: B9                    CP C
+23DA: 20F3                  JR NZ,code_23CF
+23DC: EB                    EX DE,HL
+23DD: E5                    PUSH HL
+
+; xref: 23F5(code) 
+;
+23DE: 13         code_23DE  INC DE
+23DF: 1A                    LD A,(DE)
+23E0: B7                    OR A
+23E1: FAFA23                JP M,code_23FA
+23E4: 4F                    LD C,A
+23E5: 78                    LD A,B
+23E6: FE8D                  CP 8D
+23E8: 2002                  JR NZ,code_23EC
+23EA: D7                    RST 10
+23EB: 2B                    DEC HL
+
+; xref: 23E8(code) 
+;
+23EC: 23         code_23EC  INC HL
+23ED: 7E                    LD A,(HL)
+23EE: FE61                  CP 61
+23F0: 3802                  JR C,code_23F4
+23F2: E65F                  AND 5F
+
+; xref: 23F0(code) 
+;
+23F4: B9         code_23F4  CP C
+23F5: 28E7                  JR Z,code_23DE
+23F7: E1                    POP HL
+23F8: 18D3                  JR code_23CD
+
+; xref: 23E1(code) 
+;
+23FA: 48         code_23FA  LD C,B
+23FB: F1                    POP AF
+23FC: EB                    EX DE,HL
+23FD: C9                    RET
+;...
+
+; xref: 2390(code) 23A2(code) 23A9(code) 2436(code) 23B3(code) 
+;
+241C: 23         code_241C  INC HL
+241D: 12                    LD (DE),A
+241E: 13                    INC DE
+241F: 0C                    INC C
+2420: D63A                  SUB A,3A
+2422: 2804                  JR Z,code_2428
+2424: FE4E                  CP 4E
+2426: 2003                  JR NZ,code_242B
+
+; xref: 2422(code) 
+;
+2428: 32B040     code_2428  LD (data_40B0),A
+
+; xref: 2426(code) 
+;
+242B: D659       code_242B  SUB A,59
+242D: C28D23                JP NZ,code_238D
+2430: 47                    LD B,A
+
+; xref: 243C(code) 
+;
+2431: 7E         code_2431  LD A,(HL)
+2432: B7                    OR A
+2433: 2809                  JR Z,code_243E
+2435: B8                    CP B
+2436: 28E4                  JR Z,code_241C
+
+; xref: 2396(code) 
+;
+2438: 23         code_2438  INC HL
+2439: 12                    LD (DE),A
+243A: 0C                    INC C
+243B: 13                    INC DE
+243C: 18F3                  JR code_2431
+
+; xref: 239A(code) 2433(code) 
+;
+243E: 210500     code_243E  LD HL,0005
+2441: 44                    LD B,H
+2442: 09                    ADD HL,BC
+2443: 44                    LD B,H
+2444: 4D                    LD C,L
+2445: 2AA740                LD HL,(data_40A7)
+2448: 2B                    DEC HL
+2449: 2B                    DEC HL
+244A: 2B                    DEC HL
+244B: 12                    LD (DE),A
+244C: 13                    INC DE
+244D: 12                    LD (DE),A
+244E: 13                    INC DE
+244F: 12                    LD (DE),A
+2450: C9                    RET
+;...
+
+; xref: 2265(code) 
+;
+251B: D7         code_251B  RST 10
+251C: 11DF24                LD DE,24DF
+251F: D5                    PUSH DE
+2520: C8                    RET Z
+2521: D680                  SUB A,80
+2523: DAC726                JP C,code_26C7
+2526: FE3C                  CP 3C
+2528: D2C132                JP NC,code_32C1
+252B: 07                    RLCA
+252C: 4F                    LD C,A
+252D: 0600                  LD B,00
+252F: EB                    EX DE,HL
+2530: 21EE1F                LD HL,1FEE
+2533: 09                    ADD HL,BC
+2534: 4E                    LD C,(HL)
+2535: 23                    INC HL
+2536: 46                    LD B,(HL)
+2537: C5                    PUSH BC
+2538: EB                    EX DE,HL
+
+; xref: 3054(code) 2540(code) 2549(code) 25FD(code) 
+;
+2539: 23         code_2539  INC HL
+253A: 7E                    LD A,(HL)
+253B: FE3A                  CP 3A
+253D: D0                    RET NC
+253E: FE20                  CP 20
+2540: CA3925                JP Z,code_2539
+2543: FE0B                  CP 0B
+2545: 3005                  JR NC,code_254C
+2547: FE09                  CP 09
+2549: D23925                JP NC,code_2539
+
+; xref: 2545(code) 
+;
+254C: FE30       code_254C  CP 30
+254E: 3F                    CCF
+254F: 3C                    INC A
+2550: 3D                    DEC A
+2551: C9                    RET
+;...
+
+; xref: 2311(code) 
+;
+25A1: AF         code_25A1  XOR A
+25A2: 321B41                LD (data_411B),A
+25A5: C9                    RET
+;...
+
+; xref: 2DF9(code) 2E04(code) 2E0B(code) 2C6A(code) 
+;
+25E3: 7E         code_25E3  LD A,(HL)
+25E4: FE41                  CP 41
+25E6: D8                    RET C
+25E7: FE5B                  CP 5B
+25E9: 3F                    CCF
+25EA: C9                    RET
+;...
+
+; xref: 2CDE(code) 32F6(code) 3BE1(code) 3A07(code) 
+;
+25F0: 1E08       code_25F0  LD E,08
+25F2: C36B21                JP code_216B
+
+; xref: 384A(code) 
+;
+25F5: 7E         code_25F5  LD A,(HL)
+25F6: FE2E                  CP 2E
+25F8: EB                    EX DE,HL
+25F9: 2AEC40                LD HL,(data_40EC)
+25FC: EB                    EX DE,HL
+25FD: CA3925                JP Z,code_2539
+
+; xref: 2249(code) 
+;
+2600: 2B         code_2600  DEC HL
+2601: 110000                LD DE,0000
+
+; xref: 261E(code) 
+;
+2604: D7         code_2604  RST 10
+2605: D0                    RET NC
+2606: E5                    PUSH HL
+2607: F5                    PUSH AF
+2608: 219819                LD HL,1998
+260B: DF                    RST 18
+260C: DA6021                JP C,code_2160
+260F: 62                    LD H,D
+2610: 6B                    LD L,E
+2611: 19                    ADD HL,DE
+2612: 29                    ADD HL,HL
+2613: 19                    ADD HL,DE
+2614: 29                    ADD HL,HL
+2615: F1                    POP AF
+2616: D630                  SUB A,30
+2618: 5F                    LD E,A
+2619: 1600                  LD D,00
+261B: 19                    ADD HL,DE
+261C: EB                    EX DE,HL
+261D: E1                    POP HL
+261E: 18E4                  JR code_2604
+;...
+
+; xref: 38EB(code) 
+;
+267F: 1E0E       code_267F  LD E,0E
+2681: C36B21                JP code_216B
+;...
+
+; xref: 2523(code) 
+;
+26C7: CDF42D     code_26C7  CALL code_2DF4
+26CA: CF                    RST 08
+26CB: D5                    PUSH DE
+26CC: EB                    EX DE,HL
+26CD: 22DF40                LD (data_40DF),HL
+26D0: EB                    EX DE,HL
+
+; xref: 3A64(code) 
+;
+26D1: D5         code_26D1  PUSH DE
+26D2: E7                    RST 20
+26D3: F5                    PUSH AF
+26D4: CDF92A                CALL code_2AF9
+26D7: F1                    POP AF
+26D8: E3                    EX (SP),HL
+26D9: C603                  ADD A,03
+26DB: CDF32F                CALL code_2FF3
+26DE: CDCF11                CALL code_11CF
+26E1: E5                    PUSH HL
+26E2: 2028                  JR NZ,code_270C
+26E4: 2A2141                LD HL,(data_4121)
+26E7: E5                    PUSH HL
+26E8: 23                    INC HL
+26E9: 5E                    LD E,(HL)
+26EA: 23                    INC HL
+26EB: 56                    LD D,(HL)
+26EC: 2AA440                LD HL,(data_40A4)
+26EF: DF                    RST 18
+26F0: 300E                  JR NC,code_2700
+26F2: 2AA040                LD HL,(data_40A0)
+26F5: DF                    RST 18
+26F6: D1                    POP DE
+26F7: 300F                  JR NC,code_2708
+26F9: 2AF940                LD HL,(data_40F9)
+26FC: DF                    RST 18
+26FD: 3009                  JR NC,code_2708
+26FF: 3ED1                  LD A,D1
+;...
+
+; xref: 26F0(code) 
+;
+2700: D1         code_2700  POP DE
+2701: CDCF31                CALL code_31CF
+2704: EB                    EX DE,HL
+2705: CD1D30                CALL code_301D
+
+; xref: 26F7(code) 26FD(code) 
+;
+2708: CDCF31     code_2708  CALL code_31CF
+270B: E3                    EX (SP),HL
+
+; xref: 26E2(code) 
+;
+270C: CD9F11     code_270C  CALL code_119F
+270F: D1                    POP DE
+2710: E1                    POP HL
+2711: C9                    RET
+;...
+
+; xref: 21E8(code) 
+;
+28B7: CD8C00     code_28B7  CALL code_008C
+28BA: B7                    OR A
+28BB: C8                    RET Z
+28BC: 3E0D                  LD A,0D
+28BE: CDAC0E                CALL code_0EAC
+
+; xref: 3093(code) 
+;
+28C1: CDD041     code_28C1  CALL code_41D0
+28C4: AF                    XOR A
+28C5: C9                    RET
+;...
+
+; xref: 2365(code) 
+;
+292F: AF         code_292F  XOR A
+2930: 329C40                LD (data_409C),A
+2933: DDCB0586              RES 0,(IX+05)
+2937: CDBE41                CALL code_41BE
+293A: C9                    RET
+;...
+
+; xref: 2D13(code) 2D40(code) 
+;
+2AF7: CF         code_2AF7  RST 08
+2AF8: 282B                  JR Z,code_2B25
+;...
+
+; xref: 26D4(code) 32D6(code) 3212(code) 32F0(code) 3A7B(code) 
+;
+2AF9: 2B         code_2AF9  DEC HL
+2AFA: 1600                  LD D,00
+
+; xref: 2D1B(code) 2DAD(code) 2B93(code) 
+;
+2AFC: D5         code_2AFC  PUSH DE
+2AFD: 0E01                  LD C,01
+2AFF: CD2C21                CALL code_212C
+2B02: CD612C                CALL code_2C61
+2B05: 22F340                LD (data_40F3),HL
+
+; xref: 2DBD(code) 
+;
+2B08: 2AF340     code_2B08  LD HL,(data_40F3)
+2B0B: C1                    POP BC
+2B0C: 7E                    LD A,(HL)
+2B0D: 1600                  LD D,00
+
+; xref: 2B24(code) 
+;
+2B0F: D6D4       code_2B0F  SUB A,D4
+2B11: 3813                  JR C,code_2B26
+2B13: FE03                  CP 03
+2B15: 300F                  JR NC,code_2B26
+2B17: FE01                  CP 01
+2B19: 17                    RLA
+2B1A: AA                    XOR D
+2B1B: BA                    CP D
+2B1C: 57                    LD D,A
+2B1D: DA6021                JP C,code_2160
+2B20: 22D840                LD (data_40D8),HL
+2B23: D7                    RST 10
+2B24: 18E9                  JR code_2B0F
+;...
+
+; xref: 2AF8(code) 
+;
+2B25: E97AB7     code_2B25  JP HL
+;...
+
+; xref: 2B11(code) 2B15(code) 
+;
+2B26: 7A         code_2B26  LD A,D
+2B27: B7                    OR A
+2B28: C2AE2B                JP NZ,code_2BAE
+2B2B: 7E                    LD A,(HL)
+2B2C: 22D840                LD (data_40D8),HL
+2B2F: D6CD                  SUB A,CD
+2B31: D8                    RET C
+2B32: FE07                  CP 07
+2B34: D0                    RET NC
+2B35: 5F                    LD E,A
+2B36: 3AAF40                LD A,(data_40AF)
+2B39: D603                  SUB A,03
+2B3B: B3                    OR E
+2B3C: CA6931                JP Z,code_3169
+2B3F: 216620                LD HL,2066
+2B42: 19                    ADD HL,DE
+2B43: 78                    LD A,B
+2B44: 56                    LD D,(HL)
+2B45: BA                    CP D
+2B46: D0                    RET NC
+2B47: C5                    PUSH BC
+2B48: 01082B                LD BC,2B08
+2B4B: C5                    PUSH BC
+2B4C: 7A                    LD A,D
+2B4D: FE7F                  CP 7F
+2B4F: CA962B                JP Z,code_2B96
+2B52: FE51                  CP 51
+2B54: DAA32B                JP C,code_2BA3
+
+; xref: 2BBC(code) 
+;
+2B57: 212141     code_2B57  LD HL,4121
+2B5A: B7                    OR A
+2B5B: 3AAF40                LD A,(data_40AF)
+2B5E: 3D                    DEC A
+2B5F: 3D                    DEC A
+2B60: 3D                    DEC A
+2B61: CAC212                JP Z,code_12C2
+2B64: 4E                    LD C,(HL)
+2B65: 23                    INC HL
+2B66: 46                    LD B,(HL)
+2B67: C5                    PUSH BC
+2B68: FA872B                JP M,code_2B87
+2B6B: 23                    INC HL
+2B6C: 4E                    LD C,(HL)
+2B6D: 23                    INC HL
+2B6E: 46                    LD B,(HL)
+2B6F: C5                    PUSH BC
+2B70: F5                    PUSH AF
+2B71: B7                    OR A
+2B72: E2862B                JP PO,code_2B86
+2B75: F1                    POP AF
+2B76: 23                    INC HL
+2B77: 3803                  JR C,code_2B7C
+2B79: 211D41                LD HL,411D
+
+; xref: 2B77(code) 
+;
+2B7C: 4E         code_2B7C  LD C,(HL)
+2B7D: 23                    INC HL
+2B7E: 46                    LD B,(HL)
+2B7F: 23                    INC HL
+2B80: C5                    PUSH BC
+2B81: 4E                    LD C,(HL)
+2B82: 23                    INC HL
+2B83: 46                    LD B,(HL)
+2B84: C5                    PUSH BC
+2B85: 06F1                  LD B,F1
+;...
+
+; xref: 2B72(code) 
+;
+2B86: F1         code_2B86  POP AF
+
+; xref: 2B68(code) 
+;
+2B87: C603       code_2B87  ADD A,03
+2B89: 4B                    LD C,E
+2B8A: 47                    LD B,A
+2B8B: C5                    PUSH BC
+2B8C: 01C82B                LD BC,2BC8
+
+; xref: 2BC6(code) 2BA1(code) 2BAC(code) 
+;
+2B8F: C5         code_2B8F  PUSH BC
+2B90: 2AD840                LD HL,(data_40D8)
+2B93: C3FC2A                JP code_2AFC
+
+; xref: 2B4F(code) 
+;
+2B96: CD7D12     code_2B96  CALL code_127D
+2B99: CD7011                CALL code_1170
+2B9C: 01BE1B                LD BC,1BBE
+2B9F: 167F                  LD D,7F
+2BA1: 18EC                  JR code_2B8F
+
+; xref: 2B54(code) 
+;
+2BA3: D5         code_2BA3  PUSH DE
+2BA4: CD4B12                CALL code_124B
+2BA7: D1                    POP DE
+2BA8: E5                    PUSH HL
+2BA9: 01D02D                LD BC,2DD0
+2BAC: 18E1                  JR code_2B8F
+
+; xref: 2B28(code) 
+;
+2BAE: 78         code_2BAE  LD A,B
+2BAF: FE64                  CP 64
+2BB1: D0                    RET NC
+2BB2: C5                    PUSH BC
+2BB3: D5                    PUSH DE
+2BB4: 110464                LD DE,6404
+2BB7: 219F2D                LD HL,2D9F
+2BBA: E5                    PUSH HL
+2BBB: E7                    RST 20
+2BBC: C2572B                JP NZ,code_2B57
+2BBF: 2A2141                LD HL,(data_4121)
+2BC2: E5                    PUSH HL
+2BC3: 01732D                LD BC,2D73
+2BC6: 18C7                  JR code_2B8F
+;...
+
+; xref: 2B02(code) 316F(code) 
+;
+2C61: D7         code_2C61  RST 10
+2C62: 1E28                  LD E,28
+2C64: CA6B21                JP Z,code_216B
+2C67: DA3816                JP C,code_1638
+;...
+
+; xref: 2C8F(code) 
+;
+2C68: 3816       code_2C68  JR C,code_2C80
+2C6A: CDE325                CALL code_25E3
+2C6D: D2272D                JP NC,code_2D27
+2C70: FECD                  CP CD
+2C72: EDFE                  NOP
+2C75: 2ECA                  LD L,CA
+2C77: 3816                  JR C,code_2C8F
+2C79: FECE                  CP CE
+2C7B: CA192D                JP Z,code_2D19
+2C7E: FE22                  CP 22
+
+; xref: 2C68(code) 
+;
+2C80: CA4030     code_2C80  JP Z,code_3040
+2C83: FECB                  CP CB
+2C85: CAAB2D                JP Z,code_2DAB
+2C88: FE26                  CP 26
+2C8A: 280E                  JR Z,code_2C9A
+2C8C: FEC3                  CP C3
+2C8E: 2030                  JR NZ,code_2CC0
+;...
+
+; xref: 2C77(code) 
+;
+2C8F: 30D7       code_2C8F  JR NC,code_2C68
+;...
+2C90: D7                    RST 10
+2C91: 3A9A40                LD A,(data_409A)
+2C94: E5                    PUSH HL
+2C95: CDDF2F                CALL code_2FDF
+2C98: E1                    POP HL
+2C99: C9                    RET
+
+; xref: 2C8A(code) 
+;
+2C9A: 013005     code_2C9A  LD BC,0530
+2C9D: 110000                LD DE,0000
+
+; xref: 2CB6(code) 
+;
+2CA0: D7         code_2CA0  RST 10
+2CA1: EB                    EX DE,HL
+2CA2: 380A                  JR C,code_2CAE
+;...
+
+; xref: 2CD4(code) 
+;
+2CA3: 0A         code_2CA3  LD A,(BC)
+2CA4: FE47                  CP 47
+2CA6: 3013                  JR NC,code_2CBB
+2CA8: FE41                  CP 41
+2CAA: 380F                  JR C,code_2CBB
+2CAC: D607                  SUB A,07
+
+; xref: 2CA2(code) 
+;
+2CAE: 91         code_2CAE  SUB A,C
+2CAF: 29                    ADD HL,HL
+2CB0: 29                    ADD HL,HL
+2CB1: 29                    ADD HL,HL
+2CB2: 29                    ADD HL,HL
+2CB3: B5                    OR L
+2CB4: 6F                    LD L,A
+2CB5: EB                    EX DE,HL
+2CB6: 10E8                  DJNZ code_2CA0
+2CB8: C37E0F                JP code_0F7E
+
+; xref: 2CA6(code) 2CAA(code) 
+;
+2CBB: CD6612     code_2CBB  CALL code_1266
+2CBE: EB                    EX DE,HL
+2CBF: C9                    RET
+
+; xref: 2C8E(code) 
+;
+2CC0: FEC2       code_2CC0  CP C2
+2CC2: 200A                  JR NZ,code_2CCE
+2CC4: D7                    RST 10
+2CC5: E5                    PUSH HL
+2CC6: 2AEA40                LD HL,(data_40EA)
+2CC9: CD3214                CALL code_1432
+2CCC: E1                    POP HL
+2CCD: C9                    RET
+
+; xref: 2CC2(code) 
+;
+2CCE: FEC0       code_2CCE  CP C0
+2CD0: 2014                  JR NZ,code_2CE6
+2CD2: D7                    RST 10
+2CD3: CF                    RST 08
+2CD4: 28CD                  JR Z,code_2CA3
+2CD6: F42DCF                CALL P,code_CF2D
+2CD9: 29                    ADD HL,HL
+2CDA: E5                    PUSH HL
+2CDB: EB                    EX DE,HL
+2CDC: 7C                    LD A,H
+2CDD: B5                    OR L
+2CDE: CAF025                JP Z,code_25F0
+2CE1: CD6612                CALL code_1266
+2CE4: E1                    POP HL
+2CE5: C9                    RET
+
+; xref: 2CD0(code) 
+;
+2CE6: FEC1       code_2CE6  CP C1
+2CE8: CA7E38                JP Z,code_387E
+2CEB: FEC5                  CP C5
+2CED: CA9D41                JP Z,code_419D
+2CF0: FEC8                  CP C8
+2CF2: CAE52F                JP Z,code_2FE5
+2CF5: FEC7                  CP C7
+2CF7: CA7641                JP Z,code_4176
+2CFA: FEC6                  CP C6
+2CFC: CA643B                JP Z,code_3B64
+2CFF: FEC9                  CP C9
+2D01: CA2138                JP Z,code_3821
+2D04: FEC4                  CP C4
+2D06: CA0932                JP Z,code_3209
+2D09: FEBE                  CP BE
+2D0B: CAF639                JP Z,code_39F6
+2D0E: D6D7                  SUB A,D7
+2D10: D2352D                JP NC,code_2D35
+
+; xref: 2D56(code) 
+;
+2D13: CDF72A     code_2D13  CALL code_2AF7
+2D16: CF                    RST 08
+2D17: 29                    ADD HL,HL
+2D18: C9                    RET
+
+; xref: 2C7B(code) 
+;
+2D19: 167D       code_2D19  LD D,7D
+2D1B: CDFC2A                CALL code_2AFC
+2D1E: 2AF340                LD HL,(data_40F3)
+2D21: E5                    PUSH HL
+2D22: CD4711                CALL code_1147
+2D25: E1                    POP HL
+2D26: C9                    RET
+
+; xref: 2C6D(code) 
+;
+2D27: CDF42D     code_2D27  CALL code_2DF4
+2D2A: E5                    PUSH HL
+2D2B: EB                    EX DE,HL
+2D2C: 222141                LD (data_4121),HL
+2D2F: E7                    RST 20
+2D30: C4C311                CALL NZ,code_11C3
+2D33: E1                    POP HL
+2D34: C9                    RET
+
+; xref: 2D10(code) 
+;
+2D35: 0600       code_2D35  LD B,00
+2D37: 07                    RLCA
+2D38: 4F                    LD C,A
+2D39: C5                    PUSH BC
+2D3A: D7                    RST 10
+2D3B: 79                    LD A,C
+2D3C: FE41                  CP 41
+2D3E: 3816                  JR C,code_2D56
+2D40: CDF72A                CALL code_2AF7
+2D43: CF                    RST 08
+2D44: 2C                    INC L
+2D45: CDC012                CALL code_12C0
+2D48: EB                    EX DE,HL
+2D49: 2A2141                LD HL,(data_4121)
+2D4C: E3                    EX (SP),HL
+2D4D: E5                    PUSH HL
+2D4E: EB                    EX DE,HL
+2D4F: CDF032                CALL code_32F0
+2D52: EB                    EX DE,HL
+2D53: E3                    EX (SP),HL
+2D54: 1814                  JR code_2D6A
+
+; xref: 2D3E(code) 
+;
+2D56: CD132D     code_2D56  CALL code_2D13
+2D59: E3                    EX (SP),HL
+2D5A: 7D                    LD A,L
+2D5B: FE0C                  CP 0C
+2D5D: 3807                  JR C,code_2D66
+2D5F: FE1B                  CP 1B
+2D61: E5                    PUSH HL
+2D62: DC7D12                CALL C,code_127D
+2D65: E1                    POP HL
+
+; xref: 2D5D(code) 
+;
+2D66: 11252D     code_2D66  LD DE,2D25
+2D69: D5                    PUSH DE
+
+; xref: 2D54(code) 
+;
+2D6A: 01D41D     code_2D6A  LD BC,1DD4
+
+; xref: 2FFD(code) 
+;
+2D6D: 09         code_2D6D  ADD HL,BC
+2D6E: 4E                    LD C,(HL)
+2D6F: 23                    INC HL
+2D70: 66                    LD H,(HL)
+2D71: 69                    LD L,C
+2D72: E9CDB1                JP HL
+;...
+
+; xref: 2C85(code) 
+;
+2DAB: 165A       code_2DAB  LD D,5A
+2DAD: CDFC2A                CALL code_2AFC
+2DB0: CD4B12                CALL code_124B
+2DB3: 7D                    LD A,L
+2DB4: 2F                    CPLA
+2DB5: 6F                    LD L,A
+2DB6: 7C                    LD A,H
+2DB7: 2F                    CPLA
+2DB8: 67                    LD H,A
+2DB9: 222141                LD (data_4121),HL
+2DBC: C1                    POP BC
+2DBD: C3082B                JP code_2B08
+;...
+
+; xref: 26C7(code) 2D27(code) 3A20(code) 3A60(code) 
+;
+2DF4: AF         code_2DF4  XOR A
+2DF5: 32AE40                LD (data_40AE),A
+2DF8: 46                    LD B,(HL)
+
+; xref: 39F3(code) 
+;
+2DF9: CDE325     code_2DF9  CALL code_25E3
+2DFC: DA6021                JP C,code_2160
+2DFF: AF                    XOR A
+2E00: 4F                    LD C,A
+2E01: D7                    RST 10
+2E02: 3805                  JR C,code_2E09
+2E04: CDE325                CALL code_25E3
+2E07: 3809                  JR C,code_2E12
+
+; xref: 2E02(code) 
+;
+2E09: 4F         code_2E09  LD C,A
+
+; xref: 2E10(code) 
+;
+2E0A: D7         code_2E0A  RST 10
+2E0B: FDCDE325              CALL code_25E3
+2E10: 30F8                  JR NC,code_2E0A
+
+; xref: 2E07(code) 
+;
+2E12: 11392E     code_2E12  LD DE,2E39
+2E15: D5                    PUSH DE
+2E16: 1602                  LD D,02
+2E18: FE25                  CP 25
+2E1A: C8                    RET Z
+2E1B: 14                    INC D
+2E1C: FE24                  CP 24
+2E1E: C8                    RET Z
+2E1F: 14                    INC D
+2E20: FE21                  CP 21
+2E22: C8                    RET Z
+2E23: 1608                  LD D,08
+2E25: FE23                  CP 23
+2E27: C8                    RET Z
+2E28: 78                    LD A,B
+2E29: D641                  SUB A,41
+2E2B: E67F                  AND 7F
+2E2D: 5F                    LD E,A
+2E2E: 1600                  LD D,00
+2E30: E5                    PUSH HL
+2E31: 210141                LD HL,4101
+2E34: 19                    ADD HL,DE
+2E35: 56                    LD D,(HL)
+2E36: E1                    POP HL
+2E37: 2B                    DEC HL
+2E38: C9                    RET
+;...
+
+; xref: 2C95(code) 
+;
+2FDF: 6F         code_2FDF  LD L,A
+2FE0: AF                    XOR A
+2FE1: 67                    LD H,A
+2FE2: C36612                JP code_1266
+
+; xref: 2CF2(code) 
+;
+2FE5: 014982     code_2FE5  LD BC,8249
+2FE8: 11DB0F                LD DE,0FDB
+2FEB: CD8011                CALL code_1180
+2FEE: CDBB12                CALL code_12BB
+2FF1: D7                    RST 10
+2FF2: C9                    RET
+
+; xref: 26DB(code) 
+;
+2FF3: E5         code_2FF3  PUSH HL
+
+; xref: 3AD3(code) 
+;
+2FF4: E607       code_2FF4  AND 07
+2FF6: 216D20                LD HL,206D
+2FF9: 4F                    LD C,A
+2FFA: 0600                  LD B,00
+2FFC: 09                    ADD HL,BC
+2FFD: CD6D2D                CALL code_2D6D
+3000: E1                    POP HL
+3001: C9                    RET
+;...
+
+; xref: 2705(code) 3A90(code) 
+;
+301D: 7E         code_301D  LD A,(HL)
+301E: 23                    INC HL
+301F: E5                    PUSH HL
+3020: CD9930                CALL code_3099
+3023: E1                    POP HL
+3024: 4E                    LD C,(HL)
+3025: 23                    INC HL
+3026: 46                    LD B,(HL)
+3027: CD3430                CALL code_3034
+302A: E5                    PUSH HL
+302B: 6F                    LD L,A
+302C: CDA831                CALL code_31A8
+302F: D1                    POP DE
+3030: C9                    RET
+
+; xref: 3182(code) 382E(code) 3228(code) 
+;
+3031: CD9930     code_3031  CALL code_3099
+
+; xref: 305B(code) 3027(code) 
+;
+3034: 21D340     code_3034  LD HL,40D3
+3037: E5                    PUSH HL
+3038: 77                    LD (HL),A
+3039: 23                    INC HL
+303A: 73                    LD (HL),E
+303B: 23                    INC HL
+303C: 72                    LD (HL),D
+303D: E1                    POP HL
+303E: C9                    RET
+
+; xref: 3081(code) 
+;
+303F: 2B         code_303F  DEC HL
+
+; xref: 2C80(code) 
+;
+3040: 0622       code_3040  LD B,22
+3042: 50                    LD D,B
+3043: E5                    PUSH HL
+3044: 0EFF                  LD C,FF
+
+; xref: 3050(code) 
+;
+3046: 23         code_3046  INC HL
+3047: 7E                    LD A,(HL)
+3048: 0C                    INC C
+3049: B7                    OR A
+304A: 2806                  JR Z,code_3052
+304C: BA                    CP D
+304D: 2803                  JR Z,code_3052
+304F: B8                    CP B
+3050: 20F4                  JR NZ,code_3046
+
+; xref: 304A(code) 304D(code) 
+;
+3052: FE22       code_3052  CP 22
+3054: CC3925                CALL Z,code_2539
+3057: E3                    EX (SP),HL
+3058: 23                    INC HL
+3059: EB                    EX DE,HL
+305A: 79                    LD A,C
+305B: CD3430                CALL code_3034
+
+; xref: 3836(code) 319D(code) 3206(code) 
+;
+305E: 11D340     code_305E  LD DE,40D3
+3061: 3ED5                  LD A,D5
+;...
+
+; xref: 3A49(code) 3ACF(code) 
+;
+3062: D5         code_3062  PUSH DE
+3063: 2AB340                LD HL,(data_40B3)
+3066: 222141                LD (data_4121),HL
+3069: 3E03                  LD A,03
+306B: 32AF40                LD (data_40AF),A
+306E: CD9F11                CALL code_119F
+3071: 11D640                LD DE,40D6
+3074: DF                    RST 18
+3075: 22B340                LD (data_40B3),HL
+3078: E1                    POP HL
+3079: 7E                    LD A,(HL)
+307A: C0                    RET NZ
+307B: 1E1E                  LD E,1E
+307D: C36B21                JP code_216B
+
+; xref: 1786(code) 
+;
+3080: 23         code_3080  INC HL
+
+; xref: 35D2(code) 21EE(code) 
+;
+3081: CD3F30     code_3081  CALL code_303F
+3084: CDB431                CALL code_31B4
+3087: CD9011                CALL code_1190
+308A: 14                    INC D
+
+; xref: 3097(code) 
+;
+308B: 15         code_308B  DEC D
+308C: C8                    RET Z
+308D: 0A                    LD A,(BC)
+308E: CDAC0E                CALL code_0EAC
+3091: FE0D                  CP 0D
+3093: CCC128                CALL Z,code_28C1
+3096: 03                    INC BC
+3097: 18F2                  JR code_308B
+
+; xref: 3020(code) 3031(code) 
+;
+3099: B7         code_3099  OR A
+309A: 0EF1                  LD C,F1
+309C: F5                    PUSH AF
+309D: 2AA040                LD HL,(data_40A0)
+30A0: EB                    EX DE,HL
+30A1: 2AD640                LD HL,(data_40D6)
+30A4: 2F                    CPLA
+30A5: 4F                    LD C,A
+30A6: 06FF                  LD B,FF
+30A8: 09                    ADD HL,BC
+30A9: 23                    INC HL
+30AA: DF                    RST 18
+30AB: 3807                  JR C,code_30B4
+30AD: 22D640                LD (data_40D6),HL
+30B0: 23                    INC HL
+30B1: EB                    EX DE,HL
+
+; xref: 338B(code) 
+;
+30B2: F1         code_30B2  POP AF
+30B3: C9                    RET
+
+; xref: 30AB(code) 
+;
+30B4: F1         code_30B4  POP AF
+30B5: 1E1A                  LD E,1A
+30B7: CA6B21                JP Z,code_216B
+30BA: BF                    CP A
+30BB: F5                    PUSH AF
+30BC: 019B30                LD BC,309B
+30BF: C5                    PUSH BC
+30C0: 2AB140                LD HL,(data_40B1)
+
+; xref: 002C(code) 3166(code) 
+;
+30C3: 22D640     code_30C3  LD (data_40D6),HL
+30C6: 210000                LD HL,0000
+30C9: E5                    PUSH HL
+30CA: 2AA040                LD HL,(data_40A0)
+30CD: E5                    PUSH HL
+30CE: 21B540                LD HL,40B5
+30D1: EB                    EX DE,HL
+30D2: 2AB340                LD HL,(data_40B3)
+30D5: EB                    EX DE,HL
+30D6: DF                    RST 18
+30D7: 01D130                LD BC,30D1
+30DA: C22431                JP NZ,code_3124
+30DD: 2AF940                LD HL,(data_40F9)
+
+; xref: 30F8(code) 
+;
+30E0: EB         code_30E0  EX DE,HL
+30E1: 2AFB40                LD HL,(data_40FB)
+30E4: EB                    EX DE,HL
+30E5: DF                    RST 18
+30E6: 2813                  JR Z,code_30FB
+30E8: 7E                    LD A,(HL)
+30E9: 23                    INC HL
+30EA: 23                    INC HL
+30EB: 23                    INC HL
+30EC: FE03                  CP 03
+30EE: 2004                  JR NZ,code_30F4
+30F0: CD2531                CALL code_3125
+30F3: AF                    XOR A
+
+; xref: 30EE(code) 
+;
+30F4: 5F         code_30F4  LD E,A
+30F5: 1600                  LD D,00
+30F7: 19                    ADD HL,DE
+30F8: 18E6                  JR code_30E0
+
+; xref: 310D(code) 
+;
+30FA: C1         code_30FA  POP BC
+
+; xref: 30E6(code) 311F(code) 
+;
+30FB: EB         code_30FB  EX DE,HL
+30FC: FD40                  LD B,B
+30FF: EB                    EX DE,HL
+3100: DF                    RST 18
+3101: CA4531                JP Z,code_3145
+3104: 7E                    LD A,(HL)
+3105: 23                    INC HL
+3106: CD8E11                CALL code_118E
+3109: E5                    PUSH HL
+310A: 09                    ADD HL,BC
+310B: FE03                  CP 03
+310D: 20EB                  JR NZ,code_30FA
+310F: 22D840                LD (data_40D8),HL
+3112: E1                    POP HL
+3113: 4E                    LD C,(HL)
+3114: 0600                  LD B,00
+3116: 09                    ADD HL,BC
+3117: 09                    ADD HL,BC
+3118: 23                    INC HL
+3119: EB                    EX DE,HL
+311A: 2AD840                LD HL,(data_40D8)
+311D: EB                    EX DE,HL
+311E: DF                    RST 18
+311F: 28DA                  JR Z,code_30FB
+3121: 011931                LD BC,3119
+
+; xref: 30DA(code) 
+;
+3124: C5         code_3124  PUSH BC
+
+; xref: 30F0(code) 
+;
+3125: AF         code_3125  XOR A
+3126: B6                    OR (HL)
+3127: 23                    INC HL
+3128: 5E                    LD E,(HL)
+3129: 23                    INC HL
+312A: 56                    LD D,(HL)
+312B: 23                    INC HL
+312C: C8                    RET Z
+312D: 44                    LD B,H
+312E: 4D                    LD C,L
+312F: 2AD640                LD HL,(data_40D6)
+3132: DF                    RST 18
+3133: 60                    LD H,B
+3134: 69                    LD L,C
+3135: D8                    RET C
+3136: E1                    POP HL
+3137: E3                    EX (SP),HL
+3138: DF                    RST 18
+3139: E3                    EX (SP),HL
+313A: E5                    PUSH HL
+313B: 60                    LD H,B
+313C: 69                    LD L,C
+313D: D0                    RET NC
+313E: C1                    POP BC
+313F: F1                    POP AF
+3140: F1                    POP AF
+3141: E5                    PUSH HL
+3142: D5                    PUSH DE
+3143: C5                    PUSH BC
+3144: C9                    RET
+
+; xref: 3101(code) 
+;
+3145: D1         code_3145  POP DE
+3146: E1                    POP HL
+3147: 7D                    LD A,L
+3148: B4                    OR H
+3149: C8                    RET Z
+314A: 2B                    DEC HL
+314B: 46                    LD B,(HL)
+314C: 2B                    DEC HL
+314D: 4E                    LD C,(HL)
+314E: E5                    PUSH HL
+314F: 2B                    DEC HL
+3150: 6E                    LD L,(HL)
+3151: 2600                  LD H,00
+3153: 09                    ADD HL,BC
+3154: 50                    LD D,B
+3155: 59                    LD E,C
+3156: 2B                    DEC HL
+3157: 44                    LD B,H
+3158: 4D                    LD C,L
+3159: 2AD640                LD HL,(data_40D6)
+315C: CD2121                CALL code_2121
+315F: E1                    POP HL
+3160: 71                    LD (HL),C
+3161: 23                    INC HL
+3162: 70                    LD (HL),B
+3163: 69                    LD L,C
+3164: 60                    LD H,B
+3165: 2B                    DEC HL
+3166: C3C330                JP code_30C3
+
+; xref: 2B3C(code) 
+;
+3169: C5         code_3169  PUSH BC
+316A: E5                    PUSH HL
+316B: 2A2141                LD HL,(data_4121)
+316E: E3                    EX (SP),HL
+316F: CD612C                CALL code_2C61
+3172: E3                    EX (SP),HL
+3173: CDC012                CALL code_12C0
+3176: 7E                    LD A,(HL)
+3177: E5                    PUSH HL
+3178: 2A2141                LD HL,(data_4121)
+317B: E5                    PUSH HL
+317C: 86                    ADD A,(HL)
+317D: 1E1C                  LD E,1C
+317F: DA6B21                JP C,code_216B
+3182: CD3130                CALL code_3031
+3185: D1                    POP DE
+3186: CDB831                CALL code_31B8
+3189: E3                    EX (SP),HL
+318A: CDB731                CALL code_31B7
+318D: E5                    PUSH HL
+318E: 2AD440                LD HL,(data_40D4)
+3191: EB                    EX DE,HL
+3192: CDA031                CALL code_31A0
+3195: CDA031                CALL code_31A0
+3198: 210B2B                LD HL,2B0B
+319B: E3                    EX (SP),HL
+319C: E5                    PUSH HL
+319D: C35E30                JP code_305E
+
+; xref: 3192(code) 3195(code) 
+;
+31A0: E1         code_31A0  POP HL
+31A1: E3                    EX (SP),HL
+31A2: 7E                    LD A,(HL)
+31A3: 23                    INC HL
+31A4: 4E                    LD C,(HL)
+31A5: 23                    INC HL
+31A6: 46                    LD B,(HL)
+31A7: 6F                    LD L,A
+
+; xref: 302C(code) 
+;
+31A8: 2C         code_31A8  INC L
+
+; xref: 31AF(code) 
+;
+31A9: 2D         code_31A9  DEC L
+31AA: C8                    RET Z
+31AB: 0A                    LD A,(BC)
+31AC: 12                    LD (DE),A
+31AD: 03                    INC BC
+31AE: 13                    INC DE
+31AF: 18F8                  JR code_31A9
+;...
+
+; xref: 3084(code) 
+;
+31B4: 2A2141     code_31B4  LD HL,(data_4121)
+
+; xref: 318A(code) 
+;
+31B7: EB         code_31B7  EX DE,HL
+
+; xref: 3186(code) 
+;
+31B8: CDCF31     code_31B8  CALL code_31CF
+31BB: EB                    EX DE,HL
+31BC: C0                    RET NZ
+31BD: D5                    PUSH DE
+31BE: 50                    LD D,B
+31BF: 59                    LD E,C
+31C0: 1B                    DEC DE
+31C1: 4E                    LD C,(HL)
+31C2: 2AD640                LD HL,(data_40D6)
+31C5: DF                    RST 18
+31C6: 2005                  JR NZ,code_31CD
+31C8: 47                    LD B,A
+31C9: 09                    ADD HL,BC
+31CA: 22D640                LD (data_40D6),HL
+
+; xref: 31C6(code) 
+;
+31CD: E1         code_31CD  POP HL
+31CE: C9                    RET
+
+; xref: 31B8(code) 2701(code) 2708(code) 3ABA(code) 
+;
+31CF: 2AB340     code_31CF  LD HL,(data_40B3)
+31D2: 2B                    DEC HL
+31D3: 46                    LD B,(HL)
+31D4: 2B                    DEC HL
+31D5: 4E                    LD C,(HL)
+31D6: 2B                    DEC HL
+31D7: DF                    RST 18
+31D8: C0                    RET NZ
+31D9: 22B340                LD (data_40B3),HL
+;...
+
+; xref: 320B(code) 
+;
+31DA: B3         code_31DA  OR E
+31DB: 40                    LD B,B
+31DC: C9                    RET
+;...
+
+; xref: 322F(code) 3239(code) 
+;
+3205: C1         code_3205  POP BC
+3206: C35E30                JP code_305E
+
+; xref: 2D06(code) 
+;
+3209: D7         code_3209  RST 10
+320A: CF                    RST 08
+320B: 28CD                  JR Z,code_31DA
+320D: F0                    RET P
+320E: 32D5CF                LD (data_CFD5),A
+3211: 2C                    INC L
+3212: CDF92A                CALL code_2AF9
+3215: CF                    RST 08
+3216: 29                    ADD HL,HL
+3217: E3                    EX (SP),HL
+3218: E5                    PUSH HL
+3219: E7                    RST 20
+321A: 2805                  JR Z,code_3221
+321C: CDF332                CALL code_32F3
+;...
+
+; xref: 176D(code) 
+;
+321E: 321803     code_321E  LD (data_0318),A
+;...
+321F: 1803                  JR code_3224
+
+; xref: 321A(code) 
+;
+3221: ED31       code_3221  NOP
+
+; xref: 321F(code) 
+;
+3224: D1         code_3224  POP DE
+3225: F5                    PUSH AF
+3226: F5                    PUSH AF
+3227: 7B                    LD A,E
+3228: CD3130                CALL code_3031
+322B: 5F                    LD E,A
+322C: F1                    POP AF
+322D: 1C                    INC E
+322E: 1D                    DEC E
+322F: 28D4                  JR Z,code_3205
+3231: 2AD440                LD HL,(data_40D4)
+
+; xref: 3237(code) 
+;
+3234: 77         code_3234  LD (HL),A
+3235: 23                    INC HL
+3236: 1D                    DEC E
+3237: 20FB                  JR NZ,code_3234
+3239: 18CA                  JR code_3205
+;...
+
+; xref: 2528(code) 
+;
+32C1: FE7A       code_32C1  CP 7A
+32C3: C26021                JP NZ,code_2160
+32C6: C3D941                JP code_41D9
+;...
+
+; xref: 3888(code) 
+;
+32D5: D7         code_32D5  RST 10
+
+; xref: 3B84(code) 
+;
+32D6: CDF92A     code_32D6  CALL code_2AF9
+
+; xref: 32F3(code) 
+;
+32D9: E5         code_32D9  PUSH HL
+32DA: CD4B12                CALL code_124B
+32DD: EB                    EX DE,HL
+32DE: E1                    POP HL
+32DF: 7A                    LD A,D
+32E0: B7                    OR A
+32E1: C9                    RET
+;...
+
+; xref: 3BDA(code) 3BB9(code) 2D4F(code) 
+;
+32F0: CDF92A     code_32F0  CALL code_2AF9
+
+; xref: 321C(code) 
+;
+32F3: CDD932     code_32F3  CALL code_32D9
+32F6: C2F025                JP NZ,code_25F0
+32F9: 2B                    DEC HL
+32FA: D7                    RST 10
+32FB: 7B                    LD A,E
+32FC: C9                    RET
+;...
+
+; xref: 3904(code) 
+;
+3356: 16FF       code_3356  LD D,FF
+3358: 1803                  JR code_335D
+
+; xref: 3362(code) 
+;
+335A: 03         code_335A  INC BC
+335B: 15                    DEC D
+335C: C8                    RET Z
+
+; xref: 3358(code) 3395(code) 
+;
+335D: 7E         code_335D  LD A,(HL)
+335E: B7                    OR A
+335F: 23                    INC HL
+3360: 02                    LD (BC),A
+3361: C8                    RET Z
+3362: F25A33                JP P,code_335A
+3365: FEFB                  CP FB
+3367: 2008                  JR NZ,code_3371
+3369: 0B                    DEC BC
+336A: 0B                    DEC BC
+336B: 0B                    DEC BC
+336C: 0B                    DEC BC
+336D: 14                    INC D
+336E: 14                    INC D
+336F: 14                    INC D
+3370: 14                    INC D
+
+; xref: 3367(code) 
+;
+3371: FE95       code_3371  CP 95
+3373: CCF012                CALL Z,code_12F0
+3376: D67F                  SUB A,7F
+3378: E5                    PUSH HL
+3379: 5F                    LD E,A
+337A: 211C1E                LD HL,1E1C
+
+; xref: 3380(code) 3384(code) 
+;
+337D: 7E         code_337D  LD A,(HL)
+337E: B7                    OR A
+337F: 23                    INC HL
+3380: F27D33                JP P,code_337D
+3383: 1D                    DEC E
+3384: 20F7                  JR NZ,code_337D
+3386: E67F                  AND 7F
+
+; xref: 3391(code) 
+;
+3388: 02         code_3388  LD (BC),A
+3389: 03                    INC BC
+338A: 15                    DEC D
+338B: CAB230                JP Z,code_30B2
+338E: 7E                    LD A,(HL)
+338F: 23                    INC HL
+3390: B7                    OR A
+3391: F28833                JP P,code_3388
+3394: E1                    POP HL
+3395: 18C6                  JR code_335D
+;...
+
+; xref: 227A(code) 
+;
+33B5: EB         code_33B5  EX DE,HL
+33B6: 2AF940                LD HL,(data_40F9)
+
+; xref: 33BE(code) 
+;
+33B9: 1A         code_33B9  LD A,(DE)
+33BA: 02                    LD (BC),A
+33BB: 03                    INC BC
+33BC: 13                    INC DE
+33BD: DF                    RST 18
+33BE: 20F9                  JR NZ,code_33B9
+33C0: 60                    LD H,B
+33C1: 69                    LD L,C
+33C2: 22F940                LD (data_40F9),HL
+33C5: C9                    RET
+;...
+
+; xref: 2239(code) 
+;
+3563: 2AA740     code_3563  LD HL,(data_40A7)
+3566: 23                    INC HL
+3567: 37                    SCF
+3568: F5                    PUSH AF
+3569: C35922                JP code_2259
+;...
+
+; xref: 00C6(code) 
+;
+357B: 118040     code_357B  LD DE,4080
+357E: 21C320                LD HL,20C3
+3581: 012A00                LD BC,002A
+3584: EDB0                  LDIR
+3586: 21E541                LD HL,41E5
+3589: 363A                  LD (HL),3A
+358B: 23                    INC HL
+358C: 70                    LD (HL),B
+358D: 23                    INC HL
+358E: 362C                  LD (HL),2C
+3590: 23                    INC HL
+3591: 22A740                LD (data_40A7),HL
+3594: 116021                LD DE,2160
+3597: 061C                  LD B,1C
+3599: 215241                LD HL,4152
+
+; xref: 35A3(code) 
+;
+359C: 36C3       code_359C  LD (HL),C3
+359E: 23                    INC HL
+359F: 73                    LD (HL),E
+35A0: 23                    INC HL
+35A1: 72                    LD (HL),D
+35A2: 23                    INC HL
+35A3: 10F7                  DJNZ code_359C
+35A5: 0615                  LD B,15
+
+; xref: 35AC(code) 
+;
+35A7: 36C9       code_35A7  LD (HL),C9
+35A9: 23                    INC HL
+35AA: 23                    INC HL
+35AB: 23                    INC HL
+35AC: 10F9                  DJNZ code_35A7
+35AE: 21E842                LD HL,42E8
+35B1: 70                    LD (HL),B
+35B2: 21E943                LD HL,43E9
+35B5: 70                    LD (HL),B
+35B6: CD5023                CALL code_2350
+35B9: 3E0C                  LD A,0C
+35BB: CD1500                CALL code_0015
+35BE: 2A1300                LD HL,(data_0013)
+35C1: 2B                    DEC HL
+35C2: 11CEFF                LD DE,FFCE
+35C5: 22B140                LD (data_40B1),HL
+35C8: 19                    ADD HL,DE
+35C9: 22A040                LD (data_40A0),HL
+35CC: CD0E23                CALL code_230E
+35CF: 21D835                LD HL,35D8
+35D2: CD8130                CALL code_3081
+35D5: C3B33D                JP code_3DB3
+;...
+
+; xref: 0EB7(code) 
+;
+3657: F5         code_3657  PUSH AF
+3658: DDCB147E              BIT 7,(IX+14)
+365C: CA1D37                JP Z,code_371D
+365F: DDCB1476              BIT 6,(IX+14)
+3663: C21D37                JP NZ,code_371D
+3666: C5                    PUSH BC
+3667: D5                    PUSH DE
+3668: E5                    PUSH HL
+3669: 2A5840                LD HL,(data_4058)
+366C: 77                    LD (HL),A
+366D: 23                    INC HL
+366E: 3A5740                LD A,(data_4057)
+3671: 3C                    INC A
+3672: 325740                LD (data_4057),A
+3675: 2016                  JR NZ,code_368D
+3677: ED5B5A40              LD DE,(data_405A)
+367B: 42                    LD B,D
+367C: 4B                    LD C,E
+367D: DD361AF7              LD (IX+1A),F7
+3681: CD460C                CALL code_0C46
+3684: CD6C0B                CALL code_0B6C
+3687: CD480C                CALL code_0C48
+368A: 2A5A40                LD HL,(data_405A)
+
+; xref: 3675(code) 
+;
+368D: 225840     code_368D  LD (data_4058),HL
+3690: E1                    POP HL
+3691: D1                    POP DE
+3692: C1                    POP BC
+3693: F1                    POP AF
+3694: C9                    RET
+;...
+
+; xref: 365C(code) 3663(code) 
+;
+371D: 1E2A       code_371D  LD E,2A
+371F: C36B21                JP code_216B
+;...
+
+; xref: 2D01(code) 
+;
+3821: D7         code_3821  RST 10
+3822: CD1D00                CALL code_001D
+3825: 114338                LD DE,3843
+3828: 280F                  JR Z,code_3839
+382A: E5                    PUSH HL
+382B: F5                    PUSH AF
+382C: 3E01                  LD A,01
+382E: CD3130                CALL code_3031
+3831: F1                    POP AF
+3832: 2AD440                LD HL,(data_40D4)
+3835: 77                    LD (HL),A
+3836: C35E30                JP code_305E
+
+; xref: 3828(code) 
+;
+3839: 3E03       code_3839  LD A,03
+383B: 32AF40                LD (data_40AF),A
+383E: ED532141              LD (data_4121),DE
+3842: C9                    RET
+;...
+
+; xref: 2341(code) 
+;
+3844: ED4BA440   code_3844  LD BC,(data_40A4)
+3848: 2809                  JR Z,code_3853
+384A: CDF525                CALL code_25F5
+384D: C0                    RET NZ
+384E: E5                    PUSH HL
+
+; xref: 3880(code) 
+;
+384F: ED22       code_384F  NOP
+3852: E1                    POP HL
+
+; xref: 3848(code) 
+;
+3853: 0B         code_3853  DEC BC
+3854: ED43FF40              LD (data_40FF),BC
+3858: C9                    RET
+;...
+
+; xref: 2CE8(code) 
+;
+387E: D7         code_387E  RST 10
+387F: CF                    RST 08
+3880: 28CD                  JR Z,code_384F
+3882: D632                  SUB A,32
+3884: D5                    PUSH DE
+3885: 3E2C                  LD A,2C
+3887: BE                    CP (HL)
+3888: CCD532                CALL Z,code_32D5
+388B: CF                    RST 08
+388C: 29                    ADD HL,HL
+388D: E3                    EX (SP),HL
+388E: 019338                LD BC,3893
+3891: C5                    PUSH BC
+3892: E92221                JP HL
+;...
+
+; xref: 21F6(code) 
+;
+38CC: 329A40     code_38CC  LD (data_409A),A
+38CF: ED5BEA40              LD DE,(data_40EA)
+38D3: B2                    OR D
+38D4: A3                    AND E
+38D5: 3C                    INC A
+38D6: C8                    RET Z
+38D7: 1806                  JR code_38DF
+;...
+
+; xref: 38D7(code) 
+;
+38DF: ED53EC40   code_38DF  LD (data_40EC),DE
+38E3: E1                    POP HL
+38E4: ED5BEC40              LD DE,(data_40EC)
+38E8: ED22                  NOP
+38EB: D27F26                JP NC,code_267F
+38EE: 210400                LD HL,0004
+38F1: 09                    ADD HL,BC
+38F2: E5                    PUSH HL
+38F3: 2AA740                LD HL,(data_40A7)
+38F6: EB                    EX DE,HL
+38F7: CD9539                CALL code_3995
+38FA: CCBA39                CALL Z,code_39BA
+38FD: 3E20                  LD A,20
+38FF: 12                    LD (DE),A
+3900: 13                    INC DE
+3901: 42                    LD B,D
+3902: 4B                    LD C,E
+3903: E1                    POP HL
+3904: CD5633                CALL code_3356
+
+; xref: 392B(code) 
+;
+3907: 2AA740     code_3907  LD HL,(data_40A7)
+390A: E5                    PUSH HL
+390B: 010000                LD BC,0000
+
+; xref: 3914(code) 
+;
+390E: 7E         code_390E  LD A,(HL)
+390F: 23                    INC HL
+3910: 04                    INC B
+3911: CD1500                CALL code_0015
+3914: 20F8                  JR NZ,code_390E
+3916: 3E0D                  LD A,0D
+
+; xref: 398E(code) 
+;
+3918: CD1500     code_3918  CALL code_0015
+
+; xref: 3954(code) 
+;
+391B: E1         code_391B  POP HL
+
+; xref: 3935(code) 3941(code) 3939(code) 3977(code) 
+;
+391C: CD660A     code_391C  CALL code_0A66
+391F: FE01                  CP 01
+3921: CAF921                JP Z,code_21F9
+3924: FE18                  CP 18
+3926: 2005                  JR NZ,code_392D
+3928: CD9039                CALL code_3990
+392B: 18DA                  JR code_3907
+
+; xref: 3926(code) 
+;
+392D: FE19       code_392D  CP 19
+392F: 200A                  JR NZ,code_393B
+3931: 7E                    LD A,(HL)
+3932: CD1500                CALL code_0015
+3935: 28E5                  JR Z,code_391C
+3937: 23                    INC HL
+3938: 0C                    INC C
+3939: 18E1                  JR code_391C
+
+; xref: 392F(code) 
+;
+393B: FE08       code_393B  CP 08
+393D: 2017                  JR NZ,code_3956
+393F: 0C                    INC C
+3940: 0D                    DEC C
+3941: 28D9                  JR Z,code_391C
+3943: CD1500                CALL code_0015
+3946: 54                    LD D,H
+3947: 5D                    LD E,L
+3948: 1B                    DEC DE
+3949: D5                    PUSH DE
+394A: C5                    PUSH BC
+
+; xref: 394F(code) 
+;
+394B: 7E         code_394B  LD A,(HL)
+394C: EDA0                  LDI
+394E: B7                    OR A
+394F: 20FA                  JR NZ,code_394B
+3951: C1                    POP BC
+3952: 0D                    DEC C
+3953: 05                    DEC B
+3954: 18C5                  JR code_391B
+
+; xref: 393D(code) 
+;
+3956: FE09       code_3956  CP 09
+3958: 2008                  JR NZ,code_3962
+
+; xref: 395F(code) 
+;
+395A: 7E         code_395A  LD A,(HL)
+395B: 23                    INC HL
+395C: CD1500                CALL code_0015
+395F: 20F9                  JR NZ,code_395A
+3961: C2FE0D                JP NZ,code_0DFE
+;...
+
+; xref: 3958(code) 
+;
+3962: FE0D       code_3962  CP 0D
+3964: 200F                  JR NZ,code_3975
+3966: CD9039                CALL code_3990
+3969: 3600                  LD (HL),00
+396B: 2AA740                LD HL,(data_40A7)
+396E: 2B                    DEC HL
+396F: C34222                JP code_2242
+
+; xref: 397D(code) 
+;
+3972: CDDA07     code_3972  CALL code_07DA
+
+; xref: 3964(code) 
+;
+3975: FE1A       code_3975  CP 1A
+3977: 38A3                  JR C,code_391C
+3979: 5F                    LD E,A
+397A: 3ED1                  LD A,D1
+397C: B8                    CP B
+397D: 38F3                  JR C,code_3972
+397F: 23                    INC HL
+3980: E5                    PUSH HL
+3981: 2B                    DEC HL
+3982: 0C                    INC C
+3983: 04                    INC B
+3984: 7B                    LD A,E
+3985: CA7A23                JP Z,code_237A
+;...
+
+; xref: 398B(code) 
+;
+3986: 7A         code_3986  LD A,D
+3987: 23                    INC HL
+3988: 56                    LD D,(HL)
+3989: 77                    LD (HL),A
+398A: B7                    OR A
+398B: 20F9                  JR NZ,code_3986
+398D: 7B                    LD A,E
+398E: 1888                  JR code_3918
+
+; xref: 3928(code) 3966(code) 
+;
+3990: 3E0D       code_3990  LD A,0D
+3992: C31500                JP code_0015
+
+; xref: 38F7(code) 
+;
+3995: AF         code_3995  XOR A
+3996: 011027                LD BC,2710
+3999: CDAF39                CALL code_39AF
+399C: 01E803                LD BC,03E8
+399F: CDAF39                CALL code_39AF
+39A2: 016400                LD BC,0064
+39A5: CDAF39                CALL code_39AF
+39A8: 0E0A                  LD C,0A
+39AA: CDAF39                CALL code_39AF
+39AD: 0E01                  LD C,01
+
+; xref: 3999(code) 399F(code) 39A5(code) 39AA(code) 
+;
+39AF: E630       code_39AF  AND 30
+
+; xref: 39B5(code) 
+;
+39B1: C601       code_39B1  ADD A,01
+39B3: ED42                  SBC HL,BC
+39B5: 30FA                  JR NC,code_39B1
+39B7: 09                    ADD HL,BC
+39B8: 3D                    DEC A
+39B9: C8                    RET Z
+
+; xref: 38FA(code) 
+;
+39BA: F630       code_39BA  OR 30
+39BC: 12                    LD (DE),A
+39BD: 13                    INC DE
+39BE: C9                    RET
+;...
+
+; xref: 39F6(code) 
+;
+39EA: CF         code_39EA  RST 08
+39EB: BE                    CP (HL)
+39EC: 3E80                  LD A,80
+39EE: 32DC40                LD (data_40DC),A
+39F1: B6                    OR (HL)
+39F2: 47                    LD B,A
+39F3: C3F92D                JP code_2DF9
+
+; xref: 2D0B(code) 
+;
+39F6: CDEA39     code_39F6  CALL code_39EA
+39F9: 3AAF40                LD A,(data_40AF)
+39FC: B7                    OR A
+39FD: F5                    PUSH AF
+39FE: 22F340                LD (data_40F3),HL
+3A01: EB                    EX DE,HL
+3A02: 7E                    LD A,(HL)
+3A03: 23                    INC HL
+3A04: 66                    LD H,(HL)
+3A05: 6F                    LD L,A
+3A06: B4                    OR H
+3A07: CAF025                JP Z,code_25F0
+3A0A: 7E                    LD A,(HL)
+3A0B: FE28                  CP 28
+3A0D: 2069                  JR NZ,code_3A78
+3A0F: D7                    RST 10
+3A10: 22D840                LD (data_40D8),HL
+3A13: 01CF2C                LD BC,2CCF
+;...
+
+; xref: 3A55(code) 
+;
+3A14: CF         code_3A14  RST 08
+3A15: 2C                    INC L
+3A16: 0E04                  LD C,04
+3A18: CD2C21                CALL code_212C
+3A1B: 3E80                  LD A,80
+3A1D: 32DC40                LD (data_40DC),A
+3A20: CDF42D                CALL code_2DF4
+3A23: EB                    EX DE,HL
+3A24: 3AAF40                LD A,(data_40AF)
+3A27: D603                  SUB A,03
+3A29: B7                    OR A
+3A2A: 281B                  JR Z,code_3A47
+3A2C: 4E                    LD C,(HL)
+3A2D: 23                    INC HL
+3A2E: 46                    LD B,(HL)
+3A2F: C5                    PUSH BC
+3A30: FA4E3A                JP M,code_3A4E
+3A33: 23                    INC HL
+3A34: 4E                    LD C,(HL)
+3A35: 23                    INC HL
+3A36: 46                    LD B,(HL)
+3A37: C5                    PUSH BC
+3A38: E24E3A                JP PO,code_3A4E
+3A3B: 23                    INC HL
+3A3C: 4E                    LD C,(HL)
+3A3D: 23                    INC HL
+3A3E: 46                    LD B,(HL)
+3A3F: 23                    INC HL
+3A40: C5                    PUSH BC
+3A41: 4E                    LD C,(HL)
+
+; xref: 3A5B(code) 
+;
+3A42: 23         code_3A42  INC HL
+3A43: 46                    LD B,(HL)
+3A44: C5                    PUSH BC
+3A45: 1807                  JR code_3A4E
+
+; xref: 3A2A(code) 
+;
+3A47: D5         code_3A47  PUSH DE
+3A48: EB                    EX DE,HL
+3A49: CD6230                CALL code_3062
+3A4C: D1                    POP DE
+3A4D: AF                    XOR A
+
+; xref: 3A30(code) 3A38(code) 3A45(code) 
+;
+3A4E: 37         code_3A4E  SCF
+3A4F: E5                    PUSH HL
+3A50: F5                    PUSH AF
+3A51: EB                    EX DE,HL
+3A52: 7E                    LD A,(HL)
+3A53: FE29                  CP 29
+3A55: 20BD                  JR NZ,code_3A14
+3A57: 2AF340                LD HL,(data_40F3)
+3A5A: CF                    RST 08
+3A5B: 28E5                  JR Z,code_3A42
+3A5D: 2AD840                LD HL,(data_40D8)
+3A60: CDF42D                CALL code_2DF4
+3A63: E3                    EX (SP),HL
+3A64: CDD126                CALL code_26D1
+3A67: 7E                    LD A,(HL)
+3A68: FE29                  CP 29
+3A6A: 2807                  JR Z,code_3A73
+3A6C: CF                    RST 08
+3A6D: 2C                    INC L
+3A6E: E3                    EX (SP),HL
+3A6F: CF                    RST 08
+3A70: 2C                    INC L
+3A71: EDD7                  NOP
+;...
+
+; xref: 3A6A(code) 
+;
+3A73: D7         code_3A73  RST 10
+3A74: E3                    EX (SP),HL
+3A75: CF                    RST 08
+3A76: 29                    ADD HL,HL
+3A77: 3ED5                  LD A,D5
+;...
+
+; xref: 3A0D(code) 
+;
+3A78: D5         code_3A78  PUSH DE
+3A79: CF                    RST 08
+3A7A: D5                    PUSH DE
+3A7B: CDF92A                CALL code_2AF9
+3A7E: 2B                    DEC HL
+3A7F: D7                    RST 10
+3A80: C26021                JP NZ,code_2160
+3A83: E7                    RST 20
+3A84: 200D                  JR NZ,code_3A93
+3A86: 2AB340                LD HL,(data_40B3)
+3A89: EB                    EX DE,HL
+3A8A: 2A2141                LD HL,(data_4121)
+3A8D: DF                    RST 18
+3A8E: 3825                  JR C,code_3AB5
+3A90: CD1D30                CALL code_301D
+
+; xref: 3A84(code) 
+;
+3A93: D1         code_3A93  POP DE
+
+; xref: 3A9E(code) 3AC7(code) 3AA6(code) 3AB3(code) 
+;
+3A94: F1         code_3A94  POP AF
+3A95: 2823                  JR Z,code_3ABA
+3A97: 3030                  JR NC,code_3AC9
+3A99: E1                    POP HL
+3A9A: C1                    POP BC
+3A9B: 70                    LD (HL),B
+3A9C: 2B                    DEC HL
+3A9D: 71                    LD (HL),C
+3A9E: FA943A                JP M,code_3A94
+3AA1: 2B                    DEC HL
+3AA2: C1                    POP BC
+3AA3: 70                    LD (HL),B
+3AA4: 2B                    DEC HL
+3AA5: 71                    LD (HL),C
+3AA6: E2943A                JP PO,code_3A94
+3AA9: 2B                    DEC HL
+3AAA: C1                    POP BC
+3AAB: 70                    LD (HL),B
+3AAC: 2B                    DEC HL
+3AAD: 71                    LD (HL),C
+3AAE: 2B                    DEC HL
+3AAF: C1                    POP BC
+3AB0: 70                    LD (HL),B
+3AB1: 2B                    DEC HL
+3AB2: 71                    LD (HL),C
+3AB3: 18DF                  JR code_3A94
+
+; xref: 3A8E(code) 
+;
+3AB5: D1         code_3AB5  POP DE
+3AB6: 21D340                LD HL,40D3
+3AB9: E5                    PUSH HL
+
+; xref: 3A95(code) 
+;
+3ABA: CDCF31     code_3ABA  CALL code_31CF
+3ABD: 22B340                LD (data_40B3),HL
+3AC0: 7E                    LD A,(HL)
+3AC1: E1                    POP HL
+3AC2: 77                    LD (HL),A
+3AC3: 23                    INC HL
+3AC4: 71                    LD (HL),C
+3AC5: 23                    INC HL
+3AC6: 70                    LD (HL),B
+3AC7: 18CB                  JR code_3A94
+
+; xref: 3A97(code) 
+;
+3AC9: D5         code_3AC9  PUSH DE
+3ACA: F5                    PUSH AF
+3ACB: E7                    RST 20
+3ACC: 11D340                LD DE,40D3
+3ACF: CC6230                CALL Z,code_3062
+3AD2: F1                    POP AF
+3AD3: C3F42F                JP code_2FF4
+;...
+
+; xref: 2CFC(code) 
+;
+3B64: D7         code_3B64  RST 10
+3B65: CD9E3B                CALL code_3B9E
+3B68: 3A4D40                LD A,(data_404D)
+3B6B: B7                    OR A
+3B6C: F5                    PUSH AF
+3B6D: FC9C06                CALL M,code_069C
+3B70: F1                    POP AF
+3B71: F47606                CALL P,code_0676
+3B74: CD6612                CALL code_1266
+3B77: E1                    POP HL
+3B78: C9                    RET
+;...
+
+; xref: 3BB2(code) 
+;
+3B81: 15         code_3B81  DEC D
+3B82: CF                    RST 08
+3B83: 3B                    DEC SP
+3B84: CDD632                CALL code_32D6
+3B87: 7B                    LD A,E
+3B88: 326740                LD (data_4067),A
+3B8B: 2804                  JR Z,code_3B91
+3B8D: A2                    AND D
+3B8E: 3C                    INC A
+3B8F: 2050                  JR NZ,code_3BE1
+
+; xref: 3B8B(code) 
+;
+3B91: FE02       code_3B91  CP 02
+3B93: 304C                  JR NC,code_3BE1
+3B95: 2B                    DEC HL
+3B96: D7                    RST 10
+
+; xref: 3BA5(code) 
+;
+3B97: D1         code_3B97  POP DE
+3B98: 2002                  JR NZ,code_3B9C
+3B9A: E3                    EX (SP),HL
+3B9B: E9F1C9                JP HL
+;...
+
+; xref: 3B98(code) 
+;
+3B9C: F1         code_3B9C  POP AF
+3B9D: C9                    RET
+
+; xref: 3B65(code) 
+;
+3B9E: CDA73B     code_3B9E  CALL code_3BA7
+3BA1: D5                    PUSH DE
+3BA2: C4C73B                CALL NZ,code_3BC7
+3BA5: 18F0                  JR code_3B97
+
+; xref: 3B9E(code) 
+;
+3BA7: 3EFF       code_3BA7  LD A,FF
+3BA9: 324D40                LD (data_404D),A
+3BAC: 3E01                  LD A,01
+3BAE: 326740                LD (data_4067),A
+3BB1: CF                    RST 08
+3BB2: 28CD                  JR Z,code_3B81
+3BB4: F0                    RET P
+3BB5: 32CF2C                LD (data_2CCF),A
+3BB8: D5                    PUSH DE
+3BB9: CDF032                CALL code_32F0
+3BBC: D1                    POP DE
+3BBD: 57                    LD D,A
+3BBE: 3ED7                  LD A,D7
+3BC0: 92                    SUB A,D
+3BC1: 381E                  JR C,code_3BE1
+3BC3: 57                    LD D,A
+3BC4: CF                    RST 08
+3BC5: 29                    ADD HL,HL
+3BC6: C9                    RET
+
+; xref: 3BA2(code) 
+;
+3BC7: FE2C       code_3BC7  CP 2C
+3BC9: C0                    RET NZ
+3BCA: D7                    RST 10
+3BCB: FE23                  CP 23
+3BCD: 3A4C40                LD A,(data_404C)
+3BD0: C4DA3B                CALL NZ,code_3BDA
+3BD3: E60F                  AND 0F
+3BD5: 324D40                LD (data_404D),A
+3BD8: D7                    RST 10
+3BD9: C9                    RET
+
+; xref: 3BD0(code) 
+;
+3BDA: CDF032     code_3BDA  CALL code_32F0
+3BDD: FE10                  CP 10
+3BDF: 2B                    DEC HL
+3BE0: D8                    RET C
+
+; xref: 3BC1(code) 3B93(code) 3B8F(code) 
+;
+3BE1: C3F025     code_3BE1  JP code_25F0
+;...
+
+; xref: 35D5(code) 
+;
+3DB3: 1E0C       code_3DB3  LD E,0C
+
+; xref: 3E68(code) 
+;
+3DB5: AF         code_3DB5  XOR A
+3DB6: D380                  OUT 80,A
+3DB8: 08                    EX AF,AF'
+3DB9: F3                    DI
+3DBA: 213B40                LD HL,403B
+3DBD: 3E7F                  LD A,7F
+3DBF: A6                    AND (HL)
+3DC0: 77                    LD (HL),A
+3DC1: D300                  OUT 00,A
+3DC3: 7B                    LD A,E
+3DC4: E603                  AND 03
+3DC6: C608                  ADD A,08
+3DC8: F5                    PUSH AF
+3DC9: F620                  OR 20
+3DCB: 57                    LD D,A
+3DCC: CDEB3E                CALL code_3EEB
+3DCF: 16F0                  LD D,F0
+3DD1: CDF13E                CALL code_3EF1
+3DD4: CDE13E                CALL code_3EE1
+3DD7: 1685                  LD D,85
+3DD9: 37                    SCF
+3DDA: CD093F                CALL code_3F09
+3DDD: 163F                  LD D,3F
+3DDF: CDEB3E                CALL code_3EEB
+3DE2: CDCD3E                CALL code_3ECD
+3DE5: F1                    POP AF
+3DE6: F640                  OR 40
+3DE8: 57                    LD D,A
+3DE9: CDEB3E                CALL code_3EEB
+3DEC: 1660                  LD D,60
+3DEE: CDF13E                CALL code_3EF1
+3DF1: CDDC3E                CALL code_3EDC
+3DF4: CDE13E                CALL code_3EE1
+3DF7: 0605                  LD B,05
+
+; xref: 3DF9(code) 
+;
+3DF9: 10FE       code_3DF9  DJNZ code_3DF9
+3DFB: CDC13E                CALL code_3EC1
+
+; xref: 3E05(code) 3E0B(code) 
+;
+3DFE: CD7B3E     code_3DFE  CALL code_3E7B
+3E01: DB40                  IN A,40
+3E03: E620                  AND 20
+3E05: 20F7                  JR NZ,code_3DFE
+3E07: DB40                  IN A,40
+3E09: E620                  AND 20
+3E0B: 20F1                  JR NZ,code_3DFE
+3E0D: 210045                LD HL,4500
+3E10: E5                    PUSH HL
+3E11: 57                    LD D,A
+
+; xref: 3E62(code) 
+;
+3E12: CDB43E     code_3E12  CALL code_3EB4
+
+; xref: 3E34(code) 
+;
+3E15: CDD73E     code_3E15  CALL code_3ED7
+3E18: 060F                  LD B,0F
+
+; xref: 3E24(code) 3E3A(code) 3E26(code) 
+;
+3E1A: DB40       code_3E1A  IN A,40
+3E1C: E620                  AND 20
+3E1E: 2816                  JR Z,code_3E36
+3E20: DB40                  IN A,40
+3E22: E620                  AND 20
+3E24: 28F4                  JR Z,code_3E1A
+3E26: 10F2                  DJNZ code_3E1A
+3E28: CB42                  BIT 0,D
+3E2A: 203B                  JR NZ,code_3E67
+3E2C: CDDC3E                CALL code_3EDC
+3E2F: CDC13E                CALL code_3EC1
+3E32: CBC2                  SET 0,D
+3E34: 18DF                  JR code_3E15
+
+; xref: 3E1E(code) 
+;
+3E36: DB40       code_3E36  IN A,40
+3E38: E620                  AND 20
+3E3A: 20DE                  JR NZ,code_3E1A
+3E3C: 0608                  LD B,08
+
+; xref: 3E53(code) 
+;
+3E3E: CDB43E     code_3E3E  CALL code_3EB4
+3E41: 87                    ADD A,A
+3E42: 87                    ADD A,A
+3E43: 87                    ADD A,A
+3E44: 87                    ADD A,A
+3E45: CB1E                  RR (HL)
+
+; xref: 3E4B(code) 3E51(code) 
+;
+3E47: DB40       code_3E47  IN A,40
+3E49: E620                  AND 20
+3E4B: 20FA                  JR NZ,code_3E47
+3E4D: DB40                  IN A,40
+3E4F: E620                  AND 20
+3E51: 20F4                  JR NZ,code_3E47
+3E53: 10E9                  DJNZ code_3E3E
+3E55: CDDC3E                CALL code_3EDC
+3E58: CD7B3E                CALL code_3E7B
+3E5B: 23                    INC HL
+3E5C: CB7C                  BIT 7,H
+3E5E: 2007                  JR NZ,code_3E67
+3E60: CB42                  BIT 0,D
+3E62: 28AE                  JR Z,code_3E12
+3E64: C3D03E                JP code_3ED0
+
+; xref: 3F10(code) 3F03(code) 3F28(code) 3F46(code) 3E2A(code) 
+; xref: 3E5E(code) 
+;
+3E67: 1D         code_3E67  DEC E
+3E68: C2B53D                JP NZ,code_3DB5
+
+; xref: 3E80(code) 
+;
+3E6B: FB         code_3E6B  EI
+3E6C: 213B40                LD HL,403B
+3E6F: 3E80                  LD A,80
+3E71: B6                    OR (HL)
+3E72: 77                    LD (HL),A
+3E73: D300                  OUT 00,A
+3E75: CD0E23                CALL code_230E
+3E78: C3E221                JP code_21E2
+
+; xref: 3E96(code) 3DFE(code) 3E58(code) 
+;
+3E7B: DB00       code_3E7B  IN A,00
+3E7D: E602                  AND 02
+3E7F: C8                    RET Z
+3E80: 18E9                  JR code_3E6B
+
+; xref: 3F0D(code) 3E8D(code) 3E94(code) 3F25(code) 3F40(code) 
+;
+3E82: DB40       code_3E82  IN A,40
+3E84: E610                  AND 10
+3E86: 2807                  JR Z,code_3E8F
+3E88: DB40                  IN A,40
+3E8A: E610                  AND 10
+3E8C: C0                    RET NZ
+3E8D: 18F3                  JR code_3E82
+
+; xref: 3E86(code) 
+;
+3E8F: DB40       code_3E8F  IN A,40
+3E91: E610                  AND 10
+3E93: C8                    RET Z
+3E94: 18EC                  JR code_3E82
+
+; xref: 3F17(code) 3F1D(code) 3E9D(code) 3EA5(code) 
+;
+3E96: CD7B3E     code_3E96  CALL code_3E7B
+3E99: DB40                  IN A,40
+3E9B: E610                  AND 10
+3E9D: 28F7                  JR Z,code_3E96
+3E9F: DB40                  IN A,40
+3EA1: E610                  AND 10
+3EA3: 37                    SCF
+3EA4: C0                    RET NZ
+3EA5: 18EF                  JR code_3E96
+
+; xref: 3F1A(code) 3EAB(code) 3EB2(code) 
+;
+3EA7: DB40       code_3EA7  IN A,40
+3EA9: E610                  AND 10
+3EAB: 20FA                  JR NZ,code_3EA7
+3EAD: DB40                  IN A,40
+3EAF: E610                  AND 10
+3EB1: C8                    RET Z
+3EB2: 18F3                  JR code_3EA7
+
+; xref: 3E12(code) 3EB8(code) 3EBF(code) 3E3E(code) 
+;
+3EB4: DB40       code_3EB4  IN A,40
+3EB6: E620                  AND 20
+3EB8: 28FA                  JR Z,code_3EB4
+3EBA: DB40                  IN A,40
+3EBC: CB6F                  BIT 5,A
+3EBE: C0                    RET NZ
+3EBF: 18F3                  JR code_3EB4
+
+; xref: 3F13(code) 3ED4(code) 3DFB(code) 3F33(code) 3E2F(code) 
+;
+3EC1: 08         code_3EC1  EX AF,AF'
+3EC2: E6DF                  AND DF
+
+; xref: 3EDA(code) 3EE2(code) 3EE9(code) 3ECB(code) 3EDF(code) 
+;
+3EC4: D380       code_3EC4  OUT 80,A
+3EC6: 08                    EX AF,AF'
+3EC7: C9                    RET
+
+; xref: 3EF1(code) 3F20(code) 3F36(code) 
+;
+3EC8: 08         code_3EC8  EX AF,AF'
+3EC9: F620                  OR 20
+3ECB: 18F7                  JR code_3EC4
+
+; xref: 3DE2(code) 
+;
+3ECD: CDE13E     code_3ECD  CALL code_3EE1
+
+; xref: 3E64(code) 
+;
+3ED0: 060A       code_3ED0  LD B,0A
+
+; xref: 3ED2(code) 
+;
+3ED2: 10FE       code_3ED2  DJNZ code_3ED2
+3ED4: CDC13E                CALL code_3EC1
+
+; xref: 3EEB(code) 3EF4(code) 3F0A(code) 3F30(code) 3F39(code) 
+; xref: 3E15(code) 
+;
+3ED7: 08         code_3ED7  EX AF,AF'
+3ED8: E6EF                  AND EF
+3EDA: 18E8                  JR code_3EC4
+
+; xref: 3DF1(code) 3F2D(code) 3E2C(code) 3E55(code) 
+;
+3EDC: 08         code_3EDC  EX AF,AF'
+3EDD: F610                  OR 10
+3EDF: 18E3                  JR code_3EC4
+
+; xref: 3DD4(code) 3ECD(code) 3DF4(code) 
+;
+3EE1: 08         code_3EE1  EX AF,AF'
+3EE2: FD18DE                JR code_3EC4
+
+; xref: 3EEE(code) 
+;
+3EE6: 08         code_3EE6  EX AF,AF'
+3EE7: F602                  OR 02
+3EE9: 18D9                  JR code_3EC4
+
+; xref: 3DCC(code) 3DDF(code) 3DE9(code) 
+;
+3EEB: CDD73E     code_3EEB  CALL code_3ED7
+3EEE: CDE63E                CALL code_3EE6
+
+; xref: 3DD1(code) 3DEE(code) 
+;
+3EF1: CDC83E     code_3EF1  CALL code_3EC8
+3EF4: CDD73E                CALL code_3ED7
+3EF7: 0638                  LD B,38
+
+; xref: 3F01(code) 
+;
+3EF9: 0E02       code_3EF9  LD C,02
+
+; xref: 3F07(code) 
+;
+3EFB: DB40       code_3EFB  IN A,40
+3EFD: E610                  AND 10
+3EFF: 2805                  JR Z,code_3F06
+3F01: 10F6                  DJNZ code_3EF9
+3F03: C3673E                JP code_3E67
+
+; xref: 3EFF(code) 
+;
+3F06: 0D         code_3F06  DEC C
+3F07: 20F2                  JR NZ,code_3EFB
+
+; xref: 3DDA(code) 
+;
+3F09: F5         code_3F09  PUSH AF
+3F0A: CDD73E                CALL code_3ED7
+3F0D: CD823E                CALL code_3E82
+3F10: C2673E                JP NZ,code_3E67
+3F13: CDC13E                CALL code_3EC1
+3F16: F1                    POP AF
+3F17: DC963E                CALL C,code_3E96
+3F1A: DCA73E                CALL C,code_3EA7
+3F1D: CD963E                CALL code_3E96
+3F20: CDC83E                CALL code_3EC8
+3F23: 0608                  LD B,08
+
+; xref: 3F3C(code) 
+;
+3F25: CD823E     code_3F25  CALL code_3E82
+3F28: CA673E                JP Z,code_3E67
+3F2B: CB3A                  SRL D
+3F2D: D4DC3E                CALL NC,code_3EDC
+3F30: DCD73E                CALL C,code_3ED7
+3F33: CDC13E                CALL code_3EC1
+3F36: CDC83E                CALL code_3EC8
+3F39: CDD73E                CALL code_3ED7
+3F3C: 10E7                  DJNZ code_3F25
+3F3E: 061B                  LD B,1B
+
+; xref: 3F44(code) 
+;
+3F40: CD823E     code_3F40  CALL code_3E82
+3F43: C8                    RET Z
+3F44: 10FA                  DJNZ code_3F40
+3F46: C3673E                JP code_3E67
