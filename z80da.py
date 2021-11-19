@@ -10,6 +10,8 @@ def lname(i):
 disass = disassembler()
 disass.addmem(0x0000, "ROM", "roms/PROPRIMO.rom")
 disass.reset([0x0000, 0x0008, 0x0010, 0x0018, 0x0020, 0x0028, 0x0030, 0x0038, 0x0066])
+disass.resvmem(0x15DD, 1)
+# disass.resvmem(0x412, 1)
 
 print(disass.findinstr(0))
 disass.run()
