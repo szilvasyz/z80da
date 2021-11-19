@@ -31,6 +31,7 @@ class disassembler():
         self.disass = {}
         self.labels = {}
         self.xrefs = {}
+        self.resvd = {}
 
         modules = [jump(), prefix(), load(), alu(), incdec()]
         modules += [stack(), inout(), block(), bits()]
@@ -51,10 +52,15 @@ class disassembler():
     def clearmem(self):
         self.mem = {}
 
-    def addmem(self, addr, label, fname):
+    def addmem(self, addr, section, fname):
         with open(fname, "rb") as f:
             d = f.read()
-            self.mem.update({addr + c: [d[c], label] for c in range(len(d))})
+            self.mem.update({addr + c: [d[c], section] for c in range(len(d))})
+
+    def resvmem(self, addr, length):
+        self.labels.update({addr: "resv"})
+        for i in range(addr, addr + length):
+            self.resvd[i] = True
 
     def inmem(self, addr):
         return addr in self.mem
@@ -62,7 +68,8 @@ class disassembler():
     def findinstr(self, p):
 
         instr = ""
-        addr = "{:04X}".format(p)
+#        addr = "{:04X}".format(p)
+        addr = p
 
         while True:
             if not self.inmem(p):
@@ -107,6 +114,17 @@ class disassembler():
 
             p = self.caddr[0]
             self.caddr = self.caddr[1:]
+
+            if p in self.resvd:
+                while p in self.resvd:
+                    self.disass[p] = {
+                        "instr": "{:02X}".format(self.mem[p][0]),
+                        "next": "{:04X}".format(p + 1),
+                        "disass": "DB {0}",
+                        "pars": [["B", "{:02X}".format(self.mem[p][0])]]
+                    }
+                    p = p + 1
+                break
 
             rv = self.findinstr(p)
             if not rv:
